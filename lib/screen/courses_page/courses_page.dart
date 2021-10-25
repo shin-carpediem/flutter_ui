@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/header/header.dart';
-import 'package:flutter_ui/courses_page/recommended/recommended.dart';
+import 'package:flutter_ui/screen/header/header.dart';
+import 'package:flutter_ui/screen/courses_page/recommended.dart';
 
 class CoursesPage extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/top_page/figma_logo/logo_url.dart';
+import 'package:flutter_ui/model/logo_url.dart';
 
 class FigmaLogo extends StatelessWidget {
   final double size;
