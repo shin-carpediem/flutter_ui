@@ -57,6 +57,8 @@ class Recommended extends StatelessWidget {
                 .toList();
 
             return ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               children: widgets,
             );
           }),
