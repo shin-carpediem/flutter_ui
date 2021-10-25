@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/screen/courses_page/course_card.dart';
+import 'package:flutter_ui/model/course_card.dart';
 import 'package:flutter_ui/model/logo_url.dart';
 
 class Recommended extends StatelessWidget {
