@@ -15,14 +15,22 @@ class CourseCard extends ChangeNotifier {
         snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
+      final String id = document.id;
       final String title = data['title'];
       final String subtitle = data['subtitle'];
       final String logoUrl = data['logoUrl'];
 
-      return CourseCardModel(title, subtitle, logoUrl);
+      return CourseCardModel(id, title, subtitle, logoUrl);
     }).toList();
 
     this.courseCards = courseCards;
     notifyListeners();
+  }
+
+  Future deleteCourse(CourseCardModel course) {
+    return FirebaseFirestore.instance
+        .collection('courseCard')
+        .doc(course.id)
+        .delete();
   }
 }

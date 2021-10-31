@@ -54,7 +54,7 @@ class Recommended extends StatelessWidget {
               ),
             );
           }),
-          Consumer<CourseCard>(builder: (context, model, child) {
+          Consumer<CourseCard>(builder: (context, model, course) {
             final List<CourseCardModel>? courseCards = model.courseCards;
 
             if (courseCards == null) {
@@ -91,7 +91,8 @@ class Recommended extends StatelessWidget {
                           title: Text(courseCard.title),
                           subtitle: Text(courseCard.subtitle),
                           trailing: IconButton(
-                            onPressed: () => modalBottomSheet(context),
+                            onPressed: () =>
+                                modalBottomSheet(context, model, course),
                             icon: Icon(Icons.more_horiz),
                           ),
                         ),

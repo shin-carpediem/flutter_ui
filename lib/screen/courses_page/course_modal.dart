@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-void modalBottomSheet(context) {
+void modalBottomSheet(context, model, course) {
   showModalBottomSheet<void>(
     context: context,
     builder: (BuildContext context) {
@@ -12,12 +12,20 @@ void modalBottomSheet(context) {
           ListTile(
             leading: Icon(Icons.edit),
             title: Text('Edit'),
-            onTap: () => editCoursesSheet(context),
+            onTap: () => {
+              editCoursesSheet(context, model),
+              model.fetchCourseCard(),
+            },
           ),
           ListTile(
             leading: Icon(Icons.delete),
             title: Text('Delete'),
-            onTap: () {},
+            onTap: () => {
+              // TODO: providerで引き継げていない
+              model.deleteCourse(course),
+              Navigator.pop(context),
+              model.fetchCourseCard(),
+            },
           ),
         ],
       );
@@ -25,7 +33,8 @@ void modalBottomSheet(context) {
   );
 }
 
-void editCoursesSheet(context) {
+// TODO: providerで引き継げていない
+void editCoursesSheet(context, model) {
   showModalBottomSheet<void>(
     context: context,
     builder: (BuildContext context) {
@@ -35,34 +44,57 @@ void editCoursesSheet(context) {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
+              // controller: model.logoUrlController,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Logo",
               ),
+              onChanged: (text) {
+                model.logoUrl = text;
+              },
             ),
             SizedBox(
               height: 8,
             ),
             TextField(
+              // controller: model.titleController,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Title",
               ),
+              onChanged: (text) {
+                model.title = text;
+              },
             ),
             SizedBox(
               height: 8,
             ),
             TextField(
+              // controller: model.subtitleController,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Subtitle",
               ),
+              onChanged: (text) {
+                model.subtitle = text;
+              },
             ),
             SizedBox(
               height: 16,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                try {
+                  await model.addCourse();
+                  Navigator.of(context).pop(true);
+                } catch (e) {
+                  final snackBar = SnackBar(
+                    backgroundColor: Colors.red,
+                    content: Text(e.toString()),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
               child: Text("Save"),
             ),
           ],
