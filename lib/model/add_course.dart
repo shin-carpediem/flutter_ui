@@ -7,15 +7,15 @@ class AddCourseModel extends ChangeNotifier {
   String? logoUrl;
 
   Future addCourse() async {
-    if (title == null) {
+    if (title == null || title!.isEmpty) {
       throw 'Title is not input.';
     }
 
-    if (subtitle == null) {
+    if (subtitle == null || subtitle!.isEmpty) {
       throw 'subtitle is not input.';
     }
 
-    if (logoUrl == null) {
+    if (logoUrl == null || logoUrl!.isEmpty) {
       throw 'logo is not input.';
     }
 
