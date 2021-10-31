@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/model/course_card_model.dart';
 import 'package:flutter_ui/provider/course_card.dart';
+import 'package:flutter_ui/screen/courses_page/course_modal.dart';
 import 'package:provider/provider.dart';
 
 class Recommended extends StatelessWidget {
@@ -50,7 +51,10 @@ class Recommended extends StatelessWidget {
                           ),
                           title: Text(courseCard.title),
                           subtitle: Text(courseCard.subtitle),
-                          trailing: Icon(Icons.more_horiz),
+                          trailing: IconButton(
+                            onPressed: () => modalBottomSheet(context),
+                            icon: Icon(Icons.more_horiz),
+                          ),
                         ),
                       ),
                     ))
