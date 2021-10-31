@@ -14,34 +14,46 @@ class Recommended extends StatelessWidget {
       create: (_) => CourseCard()..fetchCourseCard(),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(top: 32, bottom: 8, left: 8),
-            alignment: Alignment.centerLeft,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Recommended',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          Consumer<CourseCard>(builder: (context, model, child) {
+            return Container(
+              padding: EdgeInsets.only(top: 32, bottom: 8, left: 8),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recommended',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AddCoursePage(),
-                        fullscreenDialog: true,
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.add),
-                ),
-              ],
-            ),
-          ),
+                  IconButton(
+                    onPressed: () async {
+                      final bool? added = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddCoursePage(),
+                          fullscreenDialog: true,
+                        ),
+                      );
+
+                      if (added != null && added) {
+                        final snackBar = SnackBar(
+                          backgroundColor: Colors.blue,
+                          content: Text('New course is added!'),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+
+                      model.fetchCourseCard();
+                    },
+                    icon: Icon(Icons.add),
+                  ),
+                ],
+              ),
+            );
+          }),
           Consumer<CourseCard>(builder: (context, model, child) {
             final List<CourseCardModel>? courseCards = model.courseCards;
 
@@ -68,6 +80,12 @@ class Recommended extends StatelessWidget {
                             child: Image.network(
                               courseCard.logoUrl,
                               fit: BoxFit.contain,
+                              errorBuilder: (c, o, s) {
+                                return const Icon(
+                                  Icons.error,
+                                  color: Colors.red,
+                                );
+                              },
                             ),
                           ),
                           title: Text(courseCard.title),

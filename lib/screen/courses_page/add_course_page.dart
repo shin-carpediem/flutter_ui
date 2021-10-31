@@ -11,7 +11,7 @@ class AddCoursePage extends StatelessWidget {
       create: (_) => AddCourseModel(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('You can add your new course.'),
+          title: Text('Add Course'),
         ),
         body: SafeArea(
           child: Consumer<AddCourseModel>(builder: (context, model, child) {
@@ -62,11 +62,7 @@ class AddCoursePage extends StatelessWidget {
                       onPressed: () async {
                         try {
                           await model.addCourse();
-                          final snackBar = SnackBar(
-                            backgroundColor: Colors.blue,
-                            content: Text('New course is added!'),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          Navigator.of(context).pop(true);
                         } catch (e) {
                           final snackBar = SnackBar(
                             backgroundColor: Colors.red,
