@@ -22,12 +22,13 @@ class Heros extends StatelessWidget {
               child: Text('Choose from over 100,000 online video courses'),
             ),
             SizedBox(height: 16),
-            TextButton(
+            ElevatedButton(
               onPressed: () {},
               child: Text('Browse all courses'),
+              // gradient: LinearGradient,
               style: TextButton.styleFrom(
                   primary: Colors.white,
-                  backgroundColor: Colors.blue,
+                  // backgroundColor: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),

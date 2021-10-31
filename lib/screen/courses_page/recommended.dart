@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/model/course_card_model.dart';
-import 'package:flutter_ui/provider/course_card.dart';
+import 'package:flutter_ui/model/course_card.dart';
+import 'package:flutter_ui/screen/courses_page/add_course_page.dart';
 import 'package:flutter_ui/screen/courses_page/course_modal.dart';
 import 'package:provider/provider.dart';
 
@@ -16,9 +17,29 @@ class Recommended extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 32, bottom: 8, left: 8),
             alignment: Alignment.centerLeft,
-            child: Text(
-              'Recommended',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Recommended',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddCoursePage(),
+                        fullscreenDialog: true,
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.add),
+                ),
+              ],
             ),
           ),
           Consumer<CourseCard>(builder: (context, model, child) {

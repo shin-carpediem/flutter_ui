@@ -14,9 +14,11 @@ class CourseCard extends ChangeNotifier {
     final List<CourseCardModel> courseCards =
         snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+
       final String title = data['title'];
       final String subtitle = data['subtitle'];
       final String logoUrl = data['logoUrl'];
+
       return CourseCardModel(title, subtitle, logoUrl);
     }).toList();
 
