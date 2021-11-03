@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/screen/login/login.dart';
 import 'package:flutter_ui/model/course_card_model.dart';
 import 'package:flutter_ui/model/course_card.dart';
 import 'package:flutter_ui/screen/courses_page/add_course_page.dart';
@@ -28,27 +29,44 @@ class Recommended extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  IconButton(
-                    onPressed: () async {
-                      final bool? added = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AddCoursePage(),
-                          fullscreenDialog: true,
-                        ),
-                      );
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () async {
+                          final bool? added = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddCoursePage(),
+                              fullscreenDialog: true,
+                            ),
+                          );
 
-                      if (added != null && added) {
-                        final snackBar = SnackBar(
-                          backgroundColor: Colors.blue,
-                          content: Text('New course is added!'),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
+                          if (added != null && added) {
+                            final snackBar = SnackBar(
+                              backgroundColor: Colors.blue,
+                              content: Text('New course is added!'),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
 
-                      model.fetchCourseCard();
-                    },
-                    icon: Icon(Icons.add),
+                          model.fetchCourseCard();
+                        },
+                        icon: Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LogInPage(),
+                              fullscreenDialog: true,
+                            ),
+                          );
+                        },
+                        icon: Icon(Icons.person),
+                      ),
+                    ],
                   ),
                 ],
               ),

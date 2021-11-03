@@ -9,10 +9,10 @@ import 'package:flutter_ui/screen/courses_page/courses_page.dart';
 
 class TopPage extends StatefulWidget {
   @override
-  _TopPageState createState() => _TopPageState();
+  TopPageState createState() => TopPageState();
 }
 
-class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
+class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation1;
   late Animation<Offset> _animation2;
@@ -71,15 +71,15 @@ class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
                   child: Header(title: 'flutter_ui'),
                 ),
                 SlideTransition(
-                  position: _animation1,
+                  position: _animation2,
                   child: Heros(),
                 ),
                 SlideTransition(
-                  position: _animation1,
+                  position: _animation3,
                   child: Featured(),
                 ),
                 SlideTransition(
-                  position: _animation1,
+                  position: _animation4,
                   child: TrendingCourses(),
                 ),
               ],
