@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/screen/login/login.dart';
 import 'package:flutter_ui/model/course_card_model.dart';
@@ -33,30 +34,40 @@ class Recommended extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () async {
-                          final bool? added = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AddCoursePage(),
-                              fullscreenDialog: true,
-                            ),
-                          );
-
-                          if (added != null && added) {
-                            final snackBar = SnackBar(
-                              backgroundColor: Colors.blue,
-                              content: Text('New course is added!'),
+                          if (FirebaseAuth.instance.currentUser != null) {
+                            final bool? added = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddCoursePage(),
+                                fullscreenDialog: true,
+                              ),
                             );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                          }
 
-                          model.fetchCourseCard();
+                            if (added != null && added) {
+                              final snackBar = SnackBar(
+                                backgroundColor: Colors.blue,
+                                content: Text('New course is added!'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
+
+                            model.fetchCourseCard();
+                          } else {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LogInPage(),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          }
                         },
                         icon: Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: () {
-                          Navigator.push(
+                        onPressed: () async {
+                          await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => LogInPage(),
@@ -109,8 +120,19 @@ class Recommended extends StatelessWidget {
                           title: Text(courseCard.title),
                           subtitle: Text(courseCard.subtitle),
                           trailing: IconButton(
-                            onPressed: () =>
-                                modalBottomSheet(context, model, course),
+                            onPressed: () {
+                              if (FirebaseAuth.instance.currentUser != null) {
+                                modalBottomSheet(context, model, course);
+                              } else {
+                                final snackBar = SnackBar(
+                                  content:
+                                      Text('This menu requires your login.'),
+                                  backgroundColor: Colors.grey,
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              }
+                            },
                             icon: Icon(Icons.more_horiz),
                           ),
                         ),

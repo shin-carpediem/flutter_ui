@@ -89,8 +89,8 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _controller.forward().then((_) {
-            Navigator.of(context)
+          _controller.forward().then((_) async {
+            await Navigator.of(context)
                 .push(
                   PageRouteBuilder(pageBuilder: (_, __, ___) => CoursesPage()),
                 )
