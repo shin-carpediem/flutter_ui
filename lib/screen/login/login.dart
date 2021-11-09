@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/model/auth/login_model.dart';
 import 'package:flutter_ui/screen/signup/signup.dart';
+import 'package:flutter_ui/screen/reset_password/reset_password.dart';
 import 'package:provider/provider.dart';
 
 class LogInPage extends StatelessWidget {
@@ -78,8 +79,30 @@ class LogInPage extends StatelessWidget {
                       child: Text(
                         "Didn't you registered yet?",
                         style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline),
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return ResetPasswordPage();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Reset password",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
                   ],
