@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/model/auth/signup_model.dart';
-import 'package:flutter_ui/screen/login/login.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
