@@ -2,12 +2,13 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_ui/screen/login/login.dart';
 import 'package:flutter_ui/model/course_card_model.dart';
 import 'package:flutter_ui/model/course_card.dart';
 import 'package:flutter_ui/screen/courses_page/add_course_page.dart';
 import 'package:flutter_ui/screen/courses_page/course_modal.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_ui/screen/my_page/my_page_sheet.dart';
 
 class Recommended extends StatelessWidget {
   @override
@@ -67,13 +68,23 @@ class Recommended extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LogInPage(),
-                              fullscreenDialog: true,
-                            ),
-                          );
+                          if (FirebaseAuth.instance.currentUser != null) {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyPageSheet(),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          } else {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LogInPage(),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          }
                         },
                         icon: Icon(Icons.person),
                       ),

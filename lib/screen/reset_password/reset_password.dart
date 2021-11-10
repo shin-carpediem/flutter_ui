@@ -35,9 +35,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     email = text;
                   },
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () async {
                     if (email != null) {
