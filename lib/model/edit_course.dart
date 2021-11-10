@@ -38,9 +38,9 @@ class EditCourseModel extends ChangeNotifier {
   }
 
   Future update() async {
-    this.title = titleController.text;
-    this.subtitle = subtitleController.text;
-    this.logoUrl = logoUrlController.text;
+    title = titleController.text;
+    subtitle = subtitleController.text;
+    logoUrl = logoUrlController.text;
 
     await FirebaseFirestore.instance
         .collection('courseCard')
