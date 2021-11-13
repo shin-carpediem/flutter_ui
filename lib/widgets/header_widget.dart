@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/app_theme.dart';
+import 'package:flutter_ui/models/app_theme_model.dart';
 import 'package:provider/provider.dart';
 
 class Header extends StatelessWidget {
