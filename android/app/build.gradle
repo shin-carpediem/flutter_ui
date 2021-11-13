@@ -50,6 +50,8 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+        // manifestPlaceholdersを利用して、環境変数から取得した値を任意の変数で定義する
+        manifestPlaceholders = [API_KEY: System.getenv('Google_Map_API')]
     }
 
     buildTypes {
