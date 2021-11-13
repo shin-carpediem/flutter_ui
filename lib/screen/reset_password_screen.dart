@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/screen/courses_page/recommended.dart';
+import 'package:flutter_ui/screen/recommended_screen.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   @override

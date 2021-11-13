@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/model/auth/login_model.dart';
-import 'package:flutter_ui/screen/signup/signup.dart';
-import 'package:flutter_ui/screen/reset_password/reset_password.dart';
+import 'package:flutter_ui/screen/signup_screen.dart';
+import 'package:flutter_ui/screen/reset_password_screen.dart';
 import 'package:provider/provider.dart';
 
 class LogInPage extends StatelessWidget {

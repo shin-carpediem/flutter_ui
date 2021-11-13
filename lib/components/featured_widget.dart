@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_element, avoid_unnecessary_containers, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/screen/top_page/figma_logo.dart';
+import 'package:flutter_ui/components/figma_logo_widget.dart';
 
 class Featured extends StatelessWidget {
   @override

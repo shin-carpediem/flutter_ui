@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/screen/edit_profile/edit_profile_screen.dart';
+import 'package:flutter_ui/screen/edit_profile_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_ui/model/mypage.dart';
+import 'package:flutter_ui/model/mypage_model.dart';
 
 class MyPageSheet extends StatelessWidget {
   @override
