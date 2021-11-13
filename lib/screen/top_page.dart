@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, unused_field, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/components/header_widget.dart';
-import 'package:flutter_ui/components/heros_widget.dart';
-import 'package:flutter_ui/components/featured_widget.dart';
-import 'package:flutter_ui/components/trending_courses_widget.dart';
+import 'package:flutter_ui/widgets/header_widget.dart';
+import 'package:flutter_ui/widgets/heros_widget.dart';
+import 'package:flutter_ui/widgets/featured_widget.dart';
+import 'package:flutter_ui/widgets/trending_courses_widget.dart';
 import 'package:flutter_ui/screen/courses_screen.dart';
 
 class TopPage extends StatefulWidget {
