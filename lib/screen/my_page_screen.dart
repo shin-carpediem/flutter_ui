@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/util/launch.dart';
 import 'package:flutter_ui/screen/edit_profile_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_ui/model/mypage_model.dart';
 
 class MyPageSheet extends StatelessWidget {
@@ -73,6 +74,25 @@ class MyPageSheet extends StatelessWidget {
                             Navigator.of(context).pop();
                           },
                           child: Text('Log out'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            DatePicker.showDatePicker(
+                              context,
+                              showTitleActions: true,
+                              minTime: DateTime(2021, 4, 1),
+                              maxTime: DateTime(2025, 3, 31),
+                              onChanged: (date) {
+                                print('change $date');
+                              },
+                              onConfirm: (date) {
+                                print('confirm $date');
+                              },
+                              currentTime: DateTime.now(),
+                              locale: LocaleType.zh,
+                            );
+                          },
+                          child: Text("Choose DateTime."),
                         ),
                       ],
                     ),
