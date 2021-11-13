@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ui/screen/login_screen.dart';
 import 'package:flutter_ui/model/course_card_model.dart';
-import 'package:flutter_ui/model/course_card.dart';
+import 'package:flutter_ui/view_model/course_card.dart';
 import 'package:flutter_ui/screen/add_course_screen.dart';
 import 'package:flutter_ui/screen/course_modal.dart';
 import 'package:flutter_ui/screen/my_page_screen.dart';

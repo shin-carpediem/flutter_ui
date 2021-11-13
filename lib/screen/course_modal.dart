@@ -14,7 +14,7 @@ void modalBottomSheet(context, model, course) {
             title: Text('Edit'),
             onTap: () => {
               editCoursesSheet(context, model),
-              model.fetchCourseCard(),
+              // model.fetchCourseCard(),
             },
           ),
           ListTile(
@@ -24,7 +24,7 @@ void modalBottomSheet(context, model, course) {
               // TODO: providerで引き継げていない
               model.deleteCourse(course),
               Navigator.pop(context),
-              model.fetchCourseCard(),
+              // model.fetchCourseCard(),
             },
           ),
         ],

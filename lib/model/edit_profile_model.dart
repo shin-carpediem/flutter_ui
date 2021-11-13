@@ -1,14 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/model/mypage_model.dart';
 
 class EditProfileModel extends ChangeNotifier {
-  // final MyPageModel mypage;
-  // EditProfileModel(this.mypage) {
-  //   nameController.text = mypage.name!;
-  //   descController.text = mypage.desc!;
-  // }
   EditProfileModel(this.name, this.desc) {
     nameController.text = name!;
     descController.text = desc!;
