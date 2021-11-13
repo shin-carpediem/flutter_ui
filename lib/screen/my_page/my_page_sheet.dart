@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/screen/edit_profile/edit_profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ui/model/mypage.dart';
 
@@ -15,8 +16,17 @@ class MyPageSheet extends StatelessWidget {
           actions: [
             Consumer<MyPageModel>(builder: (context, model, child) {
               return IconButton(
-                onPressed: () {
-                  // edit page
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditProfilePage(
+                        model.name!,
+                        model.desc!,
+                      ),
+                    ),
+                  );
+                  model.fetchUser();
                 },
                 icon: Icon(Icons.edit),
               );
