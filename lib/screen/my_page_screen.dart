@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/core/util/launch.dart';
 import 'package:flutter_ui/screen/edit_profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ui/model/mypage_model.dart';
@@ -54,6 +55,17 @@ class MyPageSheet extends StatelessWidget {
                         Text(model.email ?? 'No email'),
                         SizedBox(height: 8),
                         Text(model.desc ?? 'No desc'),
+                        SizedBox(height: 8),
+                        GestureDetector(
+                          onTap: () => launchGitHub(),
+                          child: Text(
+                            'See the source code of this app',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
                         SizedBox(height: 16),
                         TextButton(
                           onPressed: () async {

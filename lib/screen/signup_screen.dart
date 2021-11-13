@@ -72,8 +72,9 @@ class SignUpPage extends StatelessWidget {
                       child: Text(
                         "Have you already created your account?",
                         style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline),
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
                   ],

@@ -103,6 +103,9 @@ class Recommended extends StatelessWidget {
 
             final List<Widget> widgets = courseCards
                 .map((courseCard) => Card(
+                      // draggableにするためには要素を
+                      // 識別するkeyが必要
+                      key: Key(courseCard.id),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -155,6 +158,9 @@ class Recommended extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               children: widgets,
+              // onReorder: (oldIndex, newIndex) {
+              //   courseCards.dragAndDrop(oldIndex, newIndex);
+              // },
             );
           }),
         ],
