@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/model/edit_profile_model.dart';
+import 'package:flutter_ui/models/edit_profile_model.dart';
 import 'package:provider/provider.dart';
 
 class EditProfilePage extends StatelessWidget {

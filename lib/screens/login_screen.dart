@@ -1,20 +1,22 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/model/auth/signup_model.dart';
+import 'package:flutter_ui/models/login_model.dart';
+import 'package:flutter_ui/screens/signup_screen.dart';
+import 'package:flutter_ui/screens/reset_password_screen.dart';
 import 'package:provider/provider.dart';
 
-class SignUpPage extends StatelessWidget {
+class LogInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SignUpModel>(
-      create: (_) => SignUpModel(),
+    return ChangeNotifierProvider<LogInModel>(
+      create: (_) => LogInModel(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Sign Up'),
+          title: Text('Log In'),
         ),
         body: SafeArea(
-          child: Consumer<SignUpModel>(builder: (context, model, child) {
+          child: Consumer<LogInModel>(builder: (context, model, child) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
@@ -50,7 +52,7 @@ class SignUpPage extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () async {
                         try {
-                          await model.signUp();
+                          await model.logIn();
                           Navigator.of(context).pop(true);
                         } catch (e) {
                           final snackBar = SnackBar(
@@ -60,17 +62,44 @@ class SignUpPage extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
-                      child: Text("Sign Up"),
+                      child: Text("Log In"),
                     ),
                     SizedBox(
                       height: 16,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
+                      onTap: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return SignUpPage();
+                            },
+                          ),
+                        );
                       },
                       child: Text(
-                        "Have you already created your account?",
+                        "Didn't you registered yet?",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return ResetPasswordPage();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Reset password",
                         style: TextStyle(
                           color: Colors.blue,
                           decoration: TextDecoration.underline,

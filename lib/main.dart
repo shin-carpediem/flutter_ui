@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_ui/app_theme.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_ui/screen/top_page.dart';
+import 'package:flutter_ui/screens/top_page.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");

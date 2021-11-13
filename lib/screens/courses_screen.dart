@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/widgets/header_widget.dart';
-import 'package:flutter_ui/screen/recommended_screen.dart';
+import 'package:flutter_ui/screens/recommended_screen.dart';
 
 class CoursesPage extends StatefulWidget {
   @override

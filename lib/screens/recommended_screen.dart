@@ -3,12 +3,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_ui/screen/login_screen.dart';
+import 'package:flutter_ui/screens/login_screen.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
-import 'package:flutter_ui/model/course_card_modal.dart';
-import 'package:flutter_ui/screen/add_course_screen.dart';
-import 'package:flutter_ui/screen/edit_course_modal.dart';
-import 'package:flutter_ui/screen/my_page_screen.dart';
+import 'package:flutter_ui/models/course_card_modal.dart';
+import 'package:flutter_ui/screens/add_course_screen.dart';
+import 'package:flutter_ui/screens/edit_course_modal.dart';
+import 'package:flutter_ui/screens/my_page_screen.dart';
 
 class Recommended extends StatelessWidget {
   @override

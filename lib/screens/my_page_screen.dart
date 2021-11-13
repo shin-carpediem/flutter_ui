@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/util/launch.dart';
-import 'package:flutter_ui/screen/edit_profile_screen.dart';
-import 'package:flutter_ui/screen/google_map_screen.dart';
+import 'package:flutter_ui/screens/edit_profile_screen.dart';
+import 'package:flutter_ui/screens/google_map_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_ui/model/mypage_model.dart';
+import 'package:flutter_ui/models/mypage_model.dart';
 
 class MyPageSheet extends StatelessWidget {
   @override
