@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/model/course_card_model.dart';
+import 'package:flutter_ui/core/course_card_domain.dart';
 
 class EditCourseModel extends ChangeNotifier {
   final CourseCardModel course;

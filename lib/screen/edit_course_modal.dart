@@ -14,7 +14,7 @@ void modalBottomSheet(context, model, course) {
             title: Text('Edit'),
             onTap: () => {
               editCoursesSheet(context, model),
-              // model.fetchCourseCard(),
+              model.fetchCourseCard(),
             },
           ),
           ListTile(
@@ -24,7 +24,7 @@ void modalBottomSheet(context, model, course) {
               // TODO: providerで引き継げていない
               model.deleteCourse(course),
               Navigator.pop(context),
-              // model.fetchCourseCard(),
+              model.fetchCourseCard(),
             },
           ),
         ],
@@ -44,7 +44,7 @@ void editCoursesSheet(context, model) {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-              // controller: model.logoUrlController,
+              controller: model.logoUrlController,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Logo",
@@ -53,11 +53,9 @@ void editCoursesSheet(context, model) {
                 model.logoUrl = text;
               },
             ),
-            SizedBox(
-              height: 8,
-            ),
+            SizedBox(height: 8),
             TextField(
-              // controller: model.titleController,
+              controller: model.titleController,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Title",
@@ -66,11 +64,9 @@ void editCoursesSheet(context, model) {
                 model.title = text;
               },
             ),
-            SizedBox(
-              height: 8,
-            ),
+            SizedBox(height: 8),
             TextField(
-              // controller: model.subtitleController,
+              controller: model.subtitleController,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Subtitle",
@@ -79,9 +75,7 @@ void editCoursesSheet(context, model) {
                 model.subtitle = text;
               },
             ),
-            SizedBox(
-              height: 16,
-            ),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
                 try {
