@@ -19,6 +19,14 @@ class AddCourseModel extends ChangeNotifier {
       throw 'logo is not input.';
     }
 
+    if (title!.length >= 20) {
+      throw 'Title can be less than 20 letters';
+    }
+
+    if (subtitle!.length >= 30) {
+      throw 'Subtitle can be less than 30 letters';
+    }
+
     await FirebaseFirestore.instance.collection('courseCard').add({
       'title': title,
       'subtitle': subtitle,
