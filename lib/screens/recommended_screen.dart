@@ -131,7 +131,19 @@ class Recommended extends StatelessWidget {
                               },
                             ),
                           ),
-                          title: Text(courseCard.title),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(courseCard.title),
+                              if (FirebaseAuth.instance.currentUser != null)
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.favorite_border),
+                                  color: Colors.grey,
+                                  iconSize: 20,
+                                ),
+                            ],
+                          ),
                           subtitle: Text(courseCard.subtitle),
                           trailing: IconButton(
                             onPressed: () {
