@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_ui/screens/login_screen.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/course_card_modal.dart';
+import 'package:flutter_ui/screens/login_screen.dart';
 import 'package:flutter_ui/screens/add_course_screen.dart';
 import 'package:flutter_ui/screens/edit_course_modal.dart';
 import 'package:flutter_ui/screens/my_page_screen.dart';

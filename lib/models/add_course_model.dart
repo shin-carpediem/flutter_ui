@@ -19,8 +19,8 @@ class AddCourseModel extends ChangeNotifier {
       throw 'logo is not input.';
     }
 
-    if (title!.length >= 20) {
-      throw 'Title can be less than 20 letters';
+    if (title!.length >= 15) {
+      throw 'Title can be less than 15 letters';
     }
 
     if (subtitle!.length >= 30) {

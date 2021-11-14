@@ -20,8 +20,8 @@ class EditCourseModel extends ChangeNotifier {
 
   void setTitle(String title) {
     this.title = title;
-    if (title.length >= 20) {
-      throw 'Title can be less than 20 letters';
+    if (title.length >= 15) {
+      throw 'Title can be less than 15 letters';
     }
     notifyListeners();
   }
