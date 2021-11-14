@@ -14,7 +14,6 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<AppTheme>(context);
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
