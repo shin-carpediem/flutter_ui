@@ -8,6 +8,8 @@ import 'package:flutter_ui/models/course_card_modal.dart';
 import 'package:flutter_ui/widgets/icon_logo_widget.dart';
 
 class Featured extends StatelessWidget {
+  CarouselController buttonCarouselController = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<CourseCard>(
@@ -38,38 +40,25 @@ class Featured extends StatelessWidget {
                                       horizontal: 8,
                                       vertical: 32,
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.navigate_before),
-                                        ),
-                                        Container(
-                                          width: 160,
-                                          child: Column(
-                                            // ignore: prefer_const_literals_to_create_immutables
-                                            children: [
-                                              Text(
-                                                courseCard.title,
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(height: 16),
-                                              Text(
-                                                courseCard.subtitle,
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ],
+                                    child: Container(
+                                      width: 320,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        // ignore: prefer_const_literals_to_create_immutables
+                                        children: [
+                                          Text(
+                                            courseCard.title,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.navigate_next),
-                                        ),
-                                      ],
+                                          SizedBox(height: 16),
+                                          Text(
+                                            courseCard.subtitle,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -104,9 +93,36 @@ class Featured extends StatelessWidget {
                   ),
                 ),
               ),
-              CarouselSlider(
-                items: widgets,
-                options: CarouselOptions(height: 150.0),
+              SizedBox(height: 10),
+              Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: IconButton(
+                      onPressed: () => buttonCarouselController.previousPage(
+                        duration: Duration(milliseconds: 300),
+                      ),
+                      icon: Icon(Icons.navigate_before),
+                    ),
+                  ),
+                  CarouselSlider(
+                    items: widgets,
+                    carouselController: buttonCarouselController,
+                    options: CarouselOptions(
+                      enableInfiniteScroll: true,
+                      enlargeCenterPage: true,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                      onPressed: () => buttonCarouselController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                      ),
+                      icon: Icon(Icons.navigate_next),
+                    ),
+                  ),
+                ],
               ),
             ]);
           }),
