@@ -1,14 +1,15 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/repositories/logo_url.dart';
 
-class FigmaLogo extends StatelessWidget {
+class IconLogo extends StatelessWidget {
   final double size;
+  final String url;
 
-  const FigmaLogo({
+  const IconLogo({
     Key? key,
     required this.size,
+    required this.url,
   }) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class FigmaLogo extends StatelessWidget {
         height: size,
         padding: EdgeInsets.all(8),
         color: Colors.black,
-        child: Image.network(figmaLogoUrl, fit: BoxFit.contain),
+        child: Image.network(url, fit: BoxFit.contain),
       ),
     );
   }
