@@ -16,17 +16,18 @@ class HighlightedText extends StatelessWidget {
   final TextStyle highlightStyle;
 
   int get _highlightStart {
-    if (wholeString != null) {
+    if (wholeString != null && highlightedString != null) {
       return wholeString!
           .toLowerCase()
           .indexOf(highlightedString!.toLowerCase());
     } else {
+      print("hoge");
       return 0;
     }
   }
 
   int get _highlightEnd {
-    if (wholeString != null) {
+    if (wholeString != null && highlightedString != null) {
       return _highlightStart + highlightedString!.length;
     } else {
       return 0;

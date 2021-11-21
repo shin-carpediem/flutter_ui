@@ -18,7 +18,7 @@ class LogInPage extends StatelessWidget {
         body: SafeArea(
           child: Consumer<LogInModel>(builder: (context, model, child) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -33,9 +33,7 @@ class LogInPage extends StatelessWidget {
                         model.email = text;
                       },
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     TextField(
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -46,9 +44,7 @@ class LogInPage extends StatelessWidget {
                       },
                       obscureText: true,
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
+                    SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () async {
                         try {
@@ -64,9 +60,7 @@ class LogInPage extends StatelessWidget {
                       },
                       child: Text("Log In"),
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
+                    SizedBox(height: 16),
                     GestureDetector(
                       onTap: () async {
                         await Navigator.of(context).push(
@@ -85,9 +79,7 @@ class LogInPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     GestureDetector(
                       onTap: () async {
                         await Navigator.of(context).push(
