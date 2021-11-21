@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_element, sized_box_for_whitespace, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/screens/browse_courses_screen.dart';
 
 class Heros extends StatelessWidget {
   @override
@@ -23,7 +24,15 @@ class Heros extends StatelessWidget {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BrowsCourseScreen(),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
               child: Text('Browse all courses'),
               // gradient: LinearGradient,
               style: TextButton.styleFrom(
