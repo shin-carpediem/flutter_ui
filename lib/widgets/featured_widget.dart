@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_element, avoid_unnecessary_containers, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_element, avoid_unnecessary_containers, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

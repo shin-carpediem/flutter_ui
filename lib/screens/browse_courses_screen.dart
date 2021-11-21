@@ -10,15 +10,12 @@ class BrowsCourseScreen extends StatefulWidget {
 
 class _SearchPageState extends State<BrowsCourseScreen> {
   late TextEditingController controller;
-  bool isCaseSensitive = false;
-
   final List<String> searchTargets =
       List.generate(10, (index) => 'Something ${index + 1}');
-
   List<String> searchResults = [];
 
-  void search(String query, {bool isCaseSensitive = false}) {
-    if (query.isEmpty) {
+  void search(String text) {
+    if (text.isEmpty) {
       setState(() {
         searchResults.clear();
       });
@@ -26,7 +23,7 @@ class _SearchPageState extends State<BrowsCourseScreen> {
     }
 
     final List<String> hitItems = searchTargets.where((element) {
-      return element.toLowerCase().contains(query.toLowerCase());
+      return element.toLowerCase().contains(text.toLowerCase());
     }).toList();
 
     setState(() {
@@ -50,22 +47,22 @@ class _SearchPageState extends State<BrowsCourseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Items'),
+        title: Text('Search Items'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         child: Column(
           children: [
             TextField(
               controller: controller,
               decoration: InputDecoration(hintText: 'Enter keyword'),
-              onChanged: (String val) {
-                search(val);
+              onChanged: (String text) {
+                search(text);
               },
             ),
             ListView.builder(
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               itemCount: searchResults.length,
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
