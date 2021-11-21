@@ -94,7 +94,7 @@ class Recommended extends StatelessWidget {
               ),
             );
           }),
-          Consumer<CourseCard>(builder: (context, model, course) {
+          Consumer<CourseCard>(builder: (context, model, child) {
             final List<CourseCardModel>? courseCards = model.courseCards;
 
             if (courseCards == null) {
@@ -148,7 +148,7 @@ class Recommended extends StatelessWidget {
                           trailing: IconButton(
                             onPressed: () {
                               if (FirebaseAuth.instance.currentUser != null) {
-                                modalBottomSheet(context, model, course);
+                                modalBottomSheet(context, courseCard, model);
                               } else {
                                 final snackBar = SnackBar(
                                   content:

@@ -45,17 +45,10 @@ class CourseCard extends ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future deleteCourse(CourseCardModel course) {
+  Future deleteCourse(CourseCardModel courseCard) {
     return FirebaseFirestore.instance
         .collection('courseCard')
-        .doc(course.id)
+        .doc(courseCard.id)
         .delete();
   }
-
-  // Future topCourseCard(CourseCardModel course) {
-  //   return FirebaseFirestore.instance
-  //       .collection('courseCard')
-  //       .doc(course.id)
-  //       .set(course);
-  // }
 }

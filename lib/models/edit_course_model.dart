@@ -28,10 +28,10 @@ class EditCourseModel extends ChangeNotifier {
 
   void setSubTitle(String subtitle) {
     this.subtitle = subtitle;
-    notifyListeners();
     if (subtitle.length >= 30) {
       throw 'Subtitle can be less than 30 letters';
     }
+    notifyListeners();
   }
 
   void setlogoUrl(String logoUrl) {
