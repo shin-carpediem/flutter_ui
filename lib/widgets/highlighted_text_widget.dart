@@ -21,7 +21,6 @@ class HighlightedText extends StatelessWidget {
           .toLowerCase()
           .indexOf(highlightedString!.toLowerCase());
     } else {
-      print("hoge");
       return 0;
     }
   }

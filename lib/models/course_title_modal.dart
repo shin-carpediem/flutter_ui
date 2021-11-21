@@ -26,7 +26,6 @@ class CourseTitle extends ChangeNotifier {
     if (text.isEmpty) {
       searchResults.clear();
       notifyListeners();
-      print("hoge");
       return;
     }
 

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/core/color.dart';
 import 'package:flutter_ui/models/signup_model.dart';
 import 'package:provider/provider.dart';
 
@@ -60,7 +61,10 @@ class SignUpPage extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
-                      child: Text("Sign Up"),
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(color: customBlack),
+                      ),
                     ),
                     SizedBox(
                       height: 16,
