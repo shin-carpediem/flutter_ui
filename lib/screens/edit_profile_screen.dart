@@ -39,9 +39,7 @@ class EditProfilePage extends StatelessWidget {
                         model.setName(text);
                       },
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     TextField(
                       controller: model.descController,
                       decoration: InputDecoration(
@@ -52,9 +50,7 @@ class EditProfilePage extends StatelessWidget {
                         model.setName(text);
                       },
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
+                    SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () async {
                         try {

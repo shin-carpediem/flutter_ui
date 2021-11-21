@@ -31,9 +31,7 @@ class AddCoursePage extends StatelessWidget {
                         model.logoUrl = text;
                       },
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     TextField(
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -43,9 +41,7 @@ class AddCoursePage extends StatelessWidget {
                         model.title = text;
                       },
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     TextField(
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -55,9 +51,7 @@ class AddCoursePage extends StatelessWidget {
                         model.subtitle = text;
                       },
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
+                    SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () async {
                         try {
