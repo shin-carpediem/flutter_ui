@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class IconLogo extends StatelessWidget {
   final double size;
@@ -20,7 +21,16 @@ class IconLogo extends StatelessWidget {
         height: size,
         padding: EdgeInsets.all(8),
         color: Colors.black,
-        child: Image.network(url, fit: BoxFit.contain),
+        child: Image.network(
+          url,
+          fit: BoxFit.contain,
+          errorBuilder: (c, o, s) {
+            return Icon(
+              Icons.error,
+              color: Colors.red,
+            );
+          },
+        ),
       ),
     );
   }

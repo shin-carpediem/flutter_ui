@@ -28,22 +28,23 @@ class CourseCard extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void dragAndDrop(int oldIndex, int newIndex) {
-  //   if (oldIndex < newIndex) {
-  //     // 移動前のインデックスより移動後のインデックスが大きい場合、
-  //     // アイテムの長さがリストの保有数よりも1大きくなってしまうため、
-  //     // newIndexから1引く。
-  //     // 例えば、上の画像のように1番目のアイテムを3番目に移動した場合、
-  //     // oldIndex = 0, newIndex = 3となるので、
-  //     // newIndexを1引いて2とする。
-  //     newIndex -= 1;
-  //   }
+  void dragAndDrop(
+    int oldIndex,
+    int newIndex,
+    List<CourseCardModel> courseCards,
+  ) {
+    // 移動前のindexより移動後のindexが大きい場合、
+    // itemの長さがlistの保有数よりも1大きくなってしまうため、
+    // newIndexから1引く。
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    print(courseCards);
 
-  //   CourseCardModel draggableCourseCard = courseCards.removeAt(oldIndex);
-
-  //   courseCards.insert(newIndex, draggableCourseCard);
-  //   notifyListeners();
-  // }
+    final CourseCardModel reorderedCourseCard = courseCards.removeAt(oldIndex);
+    courseCards.insert(newIndex, reorderedCourseCard);
+    notifyListeners();
+  }
 
   Future deleteCourse(CourseCardModel courseCard) {
     return FirebaseFirestore.instance

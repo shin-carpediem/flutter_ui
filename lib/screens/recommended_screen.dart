@@ -124,7 +124,7 @@ class Recommended extends StatelessWidget {
                               courseCard.logoUrl,
                               fit: BoxFit.contain,
                               errorBuilder: (c, o, s) {
-                                return const Icon(
+                                return Icon(
                                   Icons.error,
                                   color: Colors.red,
                                 );
@@ -137,6 +137,7 @@ class Recommended extends StatelessWidget {
                               Text(courseCard.title),
                               if (FirebaseAuth.instance.currentUser != null)
                                 IconButton(
+                                  // TODO: いいねボタン
                                   onPressed: () {},
                                   icon: Icon(Icons.favorite_border),
                                   color: Colors.grey,
@@ -166,13 +167,14 @@ class Recommended extends StatelessWidget {
                     ))
                 .toList();
 
-            return ListView(
+            // TODO: Draggableになれていない
+            return ReorderableListView(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
               children: widgets,
-              // onReorder: (oldIndex, newIndex) {
-              //   courseCards.dragAndDrop(oldIndex, newIndex);
-              // },
+              onReorder: (oldIndex, newIndex) {
+                model.dragAndDrop(oldIndex, newIndex, courseCards);
+                print(courseCards);
+              },
             );
           }),
         ],
