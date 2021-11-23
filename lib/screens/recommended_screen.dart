@@ -137,10 +137,19 @@ class Recommended extends StatelessWidget {
                               Text(courseCard.title),
                               if (FirebaseAuth.instance.currentUser != null)
                                 IconButton(
-                                  // TODO: いいねボタン
-                                  onPressed: () {},
-                                  icon: Icon(Icons.favorite_border),
-                                  color: Colors.grey,
+                                  onPressed: () {
+                                    model.changefavorite(
+                                      courseCard,
+                                      courseCard.favorite,
+                                    );
+                                    model.fetchCourseCard();
+                                  },
+                                  icon: courseCard.favorite
+                                      ? Icon(Icons.favorite)
+                                      : Icon(Icons.favorite_border),
+                                  color: courseCard.favorite
+                                      ? Colors.red
+                                      : Colors.grey,
                                   iconSize: 20,
                                 ),
                             ],

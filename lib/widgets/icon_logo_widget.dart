@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class IconLogo extends StatelessWidget {
   final double size;
