@@ -18,6 +18,7 @@ class Recommended extends StatelessWidget {
       child: Column(
         children: [
           Consumer<CourseCard>(builder: (context, model, child) {
+            final dynamic user = FirebaseAuth.instance.currentUser;
             return Container(
               padding: EdgeInsets.only(top: 32, bottom: 8, left: 8),
               alignment: Alignment.centerLeft,
@@ -35,7 +36,7 @@ class Recommended extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () async {
-                          if (FirebaseAuth.instance.currentUser != null) {
+                          if (user != null) {
                             final bool? added = await Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -68,7 +69,7 @@ class Recommended extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
-                          if (FirebaseAuth.instance.currentUser != null) {
+                          if (user != null) {
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -96,6 +97,8 @@ class Recommended extends StatelessWidget {
           }),
           Consumer<CourseCard>(builder: (context, model, child) {
             final List<CourseCardModel>? courseCards = model.courseCards;
+            final dynamic user = FirebaseAuth.instance.currentUser;
+            final String uid = FirebaseAuth.instance.currentUser!.uid;
 
             if (courseCards == null) {
               return CircularProgressIndicator();
@@ -135,29 +138,50 @@ class Recommended extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(courseCard.title),
-                              if (FirebaseAuth.instance.currentUser != null)
-                                IconButton(
-                                  onPressed: () {
-                                    model.changefavorite(
-                                      courseCard,
-                                      courseCard.favorite,
-                                    );
-                                    model.fetchCourseCard();
-                                  },
-                                  icon: courseCard.favorite
-                                      ? Icon(Icons.favorite)
-                                      : Icon(Icons.favorite_border),
-                                  color: courseCard.favorite
-                                      ? Colors.red
-                                      : Colors.grey,
-                                  iconSize: 20,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  if (user != null &&
+                                      courseCard.favoriteList.contains(uid))
+                                    IconButton(
+                                      onPressed: () {
+                                        model.changefavorite(
+                                          courseCard,
+                                          uid,
+                                          courseCard.favoriteList,
+                                        );
+                                        model.fetchCourseCard();
+                                      },
+                                      icon: Icon(Icons.favorite),
+                                      color: Colors.red,
+                                      iconSize: 20,
+                                    )
+                                  else if (user != null)
+                                    IconButton(
+                                      onPressed: () {
+                                        model.changefavorite(
+                                          courseCard,
+                                          uid,
+                                          courseCard.favoriteList,
+                                        );
+                                        model.fetchCourseCard();
+                                      },
+                                      icon: Icon(Icons.favorite_border),
+                                      color: Colors.grey,
+                                      iconSize: 20,
+                                    ),
+                                  Text(
+                                    courseCard.favoriteNum.toString(),
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                           subtitle: Text(courseCard.subtitle),
                           trailing: IconButton(
                             onPressed: () {
-                              if (FirebaseAuth.instance.currentUser != null) {
+                              if (user != null) {
                                 modalBottomSheet(context, courseCard, model);
                               } else {
                                 final snackBar = SnackBar(

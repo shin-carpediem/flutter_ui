@@ -20,7 +20,6 @@ class CourseCard extends ChangeNotifier {
       final String title = data['title'];
       final String subtitle = data['subtitle'];
       final String logoUrl = data['logoUrl'];
-      final bool favorite = data['favorite'];
       final List<String> favoriteList =
           data['favoriteList'].cast<String>() as List<String>;
       final int favoriteNum = data['favoriteNum'];
@@ -31,7 +30,6 @@ class CourseCard extends ChangeNotifier {
         title,
         subtitle,
         logoUrl,
-        favorite,
         favoriteList,
         favoriteNum,
       );
@@ -68,18 +66,22 @@ class CourseCard extends ChangeNotifier {
 
   Future changefavorite(
     CourseCardModel courseCard,
-    bool favorite,
+    String uid,
+    List<String> favoriteList,
   ) async {
-    if (favorite) {
-      favorite = false;
+    if (favoriteList.contains(uid)) {
+      favoriteList.remove(uid);
     } else {
-      favorite = true;
+      favoriteList.add(uid);
     }
+    int favoriteNum = favoriteList.length - 1;
+
     await FirebaseFirestore.instance
         .collection('courseCard')
         .doc(courseCard.id)
         .update({
-      'favorite': favorite,
+      'favoriteList': favoriteList,
+      'favoriteNum': favoriteNum,
     });
     notifyListeners();
   }
