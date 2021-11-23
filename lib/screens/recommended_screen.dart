@@ -206,7 +206,6 @@ class Recommended extends StatelessWidget {
               children: widgets,
               onReorder: (oldIndex, newIndex) {
                 model.dragAndDrop(oldIndex, newIndex, courseCards);
-                print(courseCards);
               },
             );
           }),

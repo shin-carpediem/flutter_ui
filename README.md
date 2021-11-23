@@ -9,12 +9,18 @@
 - shared Preferences
 
 #### 実装練習内容
+Policy
+- ProviderによるBLoC
+
 Auth
 - userのsignup/login
 - login状態に応じたUI
 
 Theme
-- dark mode
+- dark mode（端末保存）
+
+DB
+- NoSQL
 
 model
 - 基本的なCRUD
@@ -26,3 +32,4 @@ API
 
 ##### 未完了
 - ReorderableListView
+- いいね数に基づいてitemの並び替え

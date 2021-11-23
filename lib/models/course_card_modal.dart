@@ -50,7 +50,6 @@ class CourseCard extends ChangeNotifier {
     if (oldIndex < newIndex) {
       newIndex -= 1;
     }
-    print(courseCards);
 
     final CourseCardModel reorderedCourseCard = courseCards.removeAt(oldIndex);
     courseCards.insert(newIndex, reorderedCourseCard);
