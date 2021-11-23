@@ -20,8 +20,18 @@ class CourseCard extends ChangeNotifier {
       final String title = data['title'];
       final String subtitle = data['subtitle'];
       final String logoUrl = data['logoUrl'];
+      final List<String> favoriteList = data['favoriteList'];
+      final int favoriteNum = data['favoriteNum'];
 
-      return CourseCardModel(id, key, title, subtitle, logoUrl);
+      return CourseCardModel(
+        id,
+        key,
+        title,
+        subtitle,
+        logoUrl,
+        favoriteList,
+        favoriteNum,
+      );
     }).toList();
 
     this.courseCards = courseCards;
