@@ -1,20 +1,5 @@
 # flutter_ui
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 ## Technology:
 
 - Flutter
@@ -22,3 +7,22 @@ samples, guidance on mobile development, and a full API reference.
 - Cloud Firestore
 - Provider
 - shared Preferences
+
+#### 実装練習内容
+Auth
+- userのsignup/login
+- login状態に応じたUI
+
+Theme
+- dark mode
+
+model
+- 基本的なCRUD
+- 検索と候補の表示
+- いいね（item毎に全ユーザーからのいいね数の表示）
+
+API
+- Google Map
+
+##### 未完了
+- ReorderableListView
