@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
-import 'package:flutter_ui/models/course_card_modal.dart';
+import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
 import 'package:flutter_ui/widgets/icon_logo_widget.dart';
 
 class Featured extends StatelessWidget {

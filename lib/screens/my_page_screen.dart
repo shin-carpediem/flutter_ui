@@ -6,7 +6,7 @@ import 'package:flutter_ui/screens/edit_profile_screen.dart';
 import 'package:flutter_ui/screens/google_map_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_ui/models/mypage_model.dart';
+import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
 
 class MyPageSheet extends StatelessWidget {
   @override

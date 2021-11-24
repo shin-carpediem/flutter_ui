@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/models/login_model.dart';
+import 'package:flutter_ui/models/login_model/login_model.dart';
 import 'package:flutter_ui/screens/signup_screen.dart';
 import 'package:flutter_ui/screens/reset_password_screen.dart';
 import 'package:provider/provider.dart';

@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
-import 'package:flutter_ui/models/course_card_modal.dart';
-import 'package:flutter_ui/models/edit_course_model.dart';
+import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
+import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
 import 'package:provider/provider.dart';
 
 void modalBottomSheet(

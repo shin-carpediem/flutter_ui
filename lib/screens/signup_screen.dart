@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/color.dart';
-import 'package:flutter_ui/models/signup_model.dart';
+import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
