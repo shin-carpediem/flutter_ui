@@ -8,39 +8,36 @@ import 'package:provider/provider.dart';
 class BrowsCourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CourseTitle()..fetchCourseTitle(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Search Items'),
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
-          child: Consumer<CourseTitle>(builder: (context, model, child) {
-            return Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(hintText: 'Enter keyword'),
-                  onChanged: (String text) {
-                    model.search(text);
-                  },
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: model.searchResults.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      title: HighlightedText(
-                        wholeString: model.searchResults[index],
-                      ),
-                    );
-                  },
-                ),
-              ],
-            );
-          }),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Search Items'),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
+        child: Consumer<CourseTitle>(builder: (context, model, child) {
+          return Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(hintText: 'Enter keyword'),
+                onChanged: (String text) {
+                  model.search(text);
+                },
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: model.searchResults.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: HighlightedText(
+                      wholeString: model.searchResults[index],
+                    ),
+                  );
+                },
+              ),
+            ],
+          );
+        }),
       ),
     );
   }

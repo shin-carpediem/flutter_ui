@@ -12,129 +12,126 @@ class Featured extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CourseCard>(
-      create: (_) => CourseCard()..fetchCourseCard(),
-      child: Column(
-        children: [
-          Consumer<CourseCard>(builder: (context, model, child) {
-            final List<CourseCardModel>? courseCards = model.courseCards;
+    return Column(
+      children: [
+        Consumer<CourseCard>(builder: (context, model, child) {
+          final List<CourseCardModel>? courseCards = model.courseCards;
 
-            if (courseCards == null) {
-              return CircularProgressIndicator();
-            }
+          if (courseCards == null) {
+            return CircularProgressIndicator();
+          }
 
-            final List<Widget> widgets = courseCards
-                .map((courseCard) => Container(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(top: 24),
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
+          final List<Widget> widgets = courseCards
+              .map((courseCard) => Container(
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 24),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 32,
                                   ),
                                   child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 32,
-                                    ),
-                                    child: Container(
-                                      width: 320,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        // ignore: prefer_const_literals_to_create_immutables
-                                        children: [
-                                          Text(
-                                            courseCard.title,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(height: 16),
-                                          Text(
-                                            courseCard.subtitle,
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ],
-                                      ),
+                                    width: 320,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      // ignore: prefer_const_literals_to_create_immutables
+                                      children: [
+                                        Text(
+                                          courseCard.title,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(height: 16),
+                                        Text(
+                                          courseCard.subtitle,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: IconLogo(
-                                  size: 48,
-                                  url: courseCard.logoUrl,
-                                ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: IconLogo(
+                                size: 48,
+                                url: courseCard.logoUrl,
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ))
-                .toList();
-            // TODO: いいね数1位から順に並べ替えしたいが、a、bが、containerで、
-            // favoriteNumが取得できない
-            //  .sort((a, b) => -a.favoriteNum(
-            //         b.favoriteNum,
-            //       ));
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ))
+              .toList();
+          // TODO: いいね数1位から順に並べ替えしたいが、a、bが、containerで、
+          // favoriteNumが取得できない
+          //  .sort((a, b) => -a.favoriteNum(
+          //         b.favoriteNum,
+          //       ));
 
-            return Column(children: [
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(
-                  top: 32,
-                  left: 8,
-                ),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Featured',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+          return Column(children: [
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.only(
+                top: 32,
+                left: 8,
+              ),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Featured',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
-              Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: IconButton(
-                      // TODO: error
-                      onPressed: () => buttonCarouselController.previousPage(
-                        duration: Duration(milliseconds: 300),
-                      ),
-                      icon: Icon(Icons.navigate_before),
+            ),
+            SizedBox(height: 10),
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: IconButton(
+                    // TODO: error
+                    onPressed: () => buttonCarouselController.previousPage(
+                      duration: Duration(milliseconds: 300),
                     ),
+                    icon: Icon(Icons.navigate_before),
                   ),
-                  CarouselSlider(
-                    items: widgets,
-                    carouselController: buttonCarouselController,
-                    options: CarouselOptions(
-                      enableInfiniteScroll: true,
-                      enlargeCenterPage: true,
+                ),
+                CarouselSlider(
+                  items: widgets,
+                  carouselController: buttonCarouselController,
+                  options: CarouselOptions(
+                    enableInfiniteScroll: true,
+                    enlargeCenterPage: true,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(
+                    // TODO: error
+                    onPressed: () => buttonCarouselController.nextPage(
+                      duration: Duration(milliseconds: 300),
                     ),
+                    icon: Icon(Icons.navigate_next),
                   ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: IconButton(
-                      // TODO: error
-                      onPressed: () => buttonCarouselController.nextPage(
-                        duration: Duration(milliseconds: 300),
-                      ),
-                      icon: Icon(Icons.navigate_next),
-                    ),
-                  ),
-                ],
-              ),
-            ]);
-          }),
-        ],
-      ),
+                ),
+              ],
+            ),
+          ]);
+        }),
+      ],
     );
   }
 }

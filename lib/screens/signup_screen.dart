@@ -8,85 +8,82 @@ import 'package:provider/provider.dart';
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SignUpModel>(
-      create: (_) => SignUpModel(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Sign Up'),
-        ),
-        body: SafeArea(
-          child: Consumer<SignUpModel>(builder: (context, model, child) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Email",
-                      ),
-                      onChanged: (text) {
-                        model.email = text;
-                      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sign Up'),
+      ),
+      body: SafeArea(
+        child: Consumer<SignUpModel>(builder: (context, model, child) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Email",
                     ),
-                    SizedBox(
-                      height: 8,
+                    onChanged: (text) {
+                      model.email = text;
+                    },
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Password",
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Password",
-                      ),
-                      onChanged: (text) {
-                        model.password = text;
-                      },
-                      obscureText: true,
+                    onChanged: (text) {
+                      model.password = text;
+                    },
+                    obscureText: true,
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await model.signUp();
+                        Navigator.of(context).pop(true);
+                      } catch (e) {
+                        final snackBar = SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text(e.toString()),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                    },
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(color: customBlack),
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        try {
-                          await model.signUp();
-                          Navigator.of(context).pop(true);
-                        } catch (e) {
-                          final snackBar = SnackBar(
-                            backgroundColor: Colors.red,
-                            content: Text(e.toString()),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-                      },
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(color: customBlack),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        "Have you already created your account?",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Have you already created your account?",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          }),
-        ),
+            ),
+          );
+        }),
       ),
     );
   }

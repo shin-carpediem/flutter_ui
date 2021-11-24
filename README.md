@@ -6,30 +6,39 @@
 - Firebase Auth
 - Cloud Firestore
 - Provider
+- Freezed
 - shared Preferences
 
 #### 実装練習内容
+
 Policy
-- ProviderによるBLoC
+
+- Provider × Freezed × StateNotifier による business logic と UI の分離と、immutable なinstance生成による堅牢かつ最小限の再描画
 
 Auth
-- userのsignup/login
-- login状態に応じたUI
+
+- user の signup/login
+- login 状態に応じた UI
 
 Theme
+
 - dark mode（端末保存）
 
 DB
+
 - NoSQL
 
 model
-- 基本的なCRUD
+
+- 基本的な CRUD
 - 検索と候補の表示
-- いいね（item毎に全ユーザーからのいいね数の表示）
+- いいね（item 毎に全ユーザーからのいいね数の表示）
 
 API
+
 - Google Map
 
 ##### 未完了
+
 - ReorderableListView
-- いいね数に基づいてitemの並び替え
+- いいね数に基づいて item の並び替え
