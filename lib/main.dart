@@ -8,6 +8,7 @@ import 'package:flutter_ui/models/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model.dart';
 import 'package:flutter_ui/models/course_card_modal.dart';
 import 'package:flutter_ui/models/course_title_modal.dart';
+import 'package:flutter_ui/models/edit_profile_model.dart';
 // import 'package:flutter_ui/models/edit_course_model.dart';
 // import 'package:flutter_ui/models/edit_profile_model.dart';
 import 'package:flutter_ui/models/login_model.dart';
@@ -41,14 +42,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<AddCourseModel>(create: (_) => AddCourseModel()),
         ChangeNotifierProvider<CourseTitle>(
             create: (_) => CourseTitle()..fetchCourseTitle()),
-        // ChangeNotifierProvider<EditCourseModel>(
-        //   create: (_) => EditCourseModel(CourseCardModel courseCard)
-        // ),
-        //     ChangeNotifierProvider<EditProfileModel>(
-        // create: (_) => EditProfileModel(
-        //   name,
-        //   desc,
-        // ),
+        // ChangeNotifierProvider<EditCourseModel>(create: (_) => EditCourseModel()),
+        // ChangeNotifierProvider<EditProfileModel>(create: (_) => EditProfileModel()),
         ChangeNotifierProvider<LogInModel>(create: (_) => LogInModel()),
         ChangeNotifierProvider<MyPageModel>(
             create: (_) => MyPageModel()..fetchUser()),
