@@ -13,6 +13,6 @@ class CourseCardModel {
   String title;
   String subtitle;
   String logoUrl;
-  List<String> favoriteList;
-  int favoriteNum;
+  List<String> favoriteList = [];
+  int favoriteNum = 0;
 }
