@@ -96,7 +96,7 @@ class Recommended extends StatelessWidget {
         Consumer<CourseCard>(builder: (context, model, child) {
           final List<CourseCardModel>? courseCards = model.courseCards;
           final dynamic user = FirebaseAuth.instance.currentUser;
-          final String uid = FirebaseAuth.instance.currentUser!.uid;
+          final dynamic uid = FirebaseAuth.instance.currentUser?.uid;
 
           if (courseCards == null) {
             return CircularProgressIndicator();

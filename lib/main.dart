@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 // import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:flutter_ui/screens/top_page.dart';
 // import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<LogInModel>(create: (_) => LogInModel()),
         ChangeNotifierProvider<MyPageModel>(
             create: (_) => MyPageModel()..fetchUser()),
-        ChangeNotifierProvider<SignUpModel>(create: (_) => SignUpModel()),
+        StateNotifierProvider<SignUpModel, SignUpState>(create: (context) => SignUpModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

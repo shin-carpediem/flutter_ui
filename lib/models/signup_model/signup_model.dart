@@ -1,56 +1,88 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:state_notifier/state_notifier.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-class SignUpModel extends ChangeNotifier {
-  String? email;
-  String? password;
+part 'signup_model.freezed.dart';
 
-  bool isLoading = false;
+@freezed
+class SignUpState with _$SignUpState {
+  const factory SignUpState({
+    String? email,
+    String? password,
+    @Default(false) bool isLoading,
+  }) = _SignUpState;
+}
 
-  void startLoading() {
-    isLoading = true;
-    notifyListeners();
-  }
+class SignUpModel extends StateNotifier<SignUpState> {
+  // final String email;
+  // final String password;
+  // bool isLoading = false;
 
-  void endLoading() {
-    isLoading = false;
-    notifyListeners();
-  }
+  SignUpModel() : super(const SignUpState());
 
-  void setEmail(String email) {
-    this.email = email;
-    notifyListeners();
-  }
+  void startLoading() => state = state.copyWith(isLoading: true);
+  void endLoading() => state = state.copyWith(isLoading: false);
 
-  void setPassword(String password) {
-    this.password = password;
-    notifyListeners();
-  }
+  void setEmail(String email) => state = state.copyWith(email: email);
+  void setPassword(String password) =>
+      state = state.copyWith(password: password);
 
-  Future signUp() async {
-    if (email == null || email!.isEmpty) {
-      throw 'email is not input.';
+  Future<void> signUp() async {
+    final String? email = state.email;
+    final String? password = state.password;
+
+    // if (email == null || email!.isEmpty) {
+    //   throw 'email is not input.';
+    // }
+
+    // if (password == null || password!.isEmpty) {
+    //   throw 'password is not input.';
+    // }
+
+    // if (email != null && password != null) {
+    final userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email!, password: password!);
+    final user = userCredential.user;
+
+    if (user != null) {
+      final uid = user.uid;
+      final doc = FirebaseFirestore.instance.collection('users').doc(uid);
+      await doc.set({
+        'uid': uid,
+        'email': email,
+      });
     }
-
-    if (password == null || password!.isEmpty) {
-      throw 'password is not input.';
-    }
-
-    if (email != null && password != null) {
-      final userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email!, password: password!);
-      final user = userCredential.user;
-
-      if (user != null) {
-        final uid = user.uid;
-
-        final doc = FirebaseFirestore.instance.collection('users').doc(uid);
-        await doc.set({
-          'uid': uid,
-          'email': email,
-        });
-      }
-    }
+    // }
   }
 }
+
+// class SignUpModel extends ChangeNotifier {
+//   Future signUp() async {
+//     if (email == null || email!.isEmpty) {
+//       throw 'email is not input.';
+//     }
+
+//     if (password == null || password!.isEmpty) {
+//       throw 'password is not input.';
+//     }
+
+//     if (email != null && password != null) {
+//       final userCredential = await FirebaseAuth.instance
+//           .createUserWithEmailAndPassword(email: email!, password: password!);
+//       final user = userCredential.user;
+
+//       if (user != null) {
+//         final uid = user.uid;
+
+//         final doc = FirebaseFirestore.instance.collection('users').doc(uid);
+//         await doc.set({
+//           'uid': uid,
+//           'email': email,
+//         });
+//       }
+//     }
+//   }
+// }

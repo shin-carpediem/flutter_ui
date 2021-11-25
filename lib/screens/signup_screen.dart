@@ -13,77 +13,76 @@ class SignUpPage extends StatelessWidget {
         title: Text('Sign Up'),
       ),
       body: SafeArea(
-        child: Consumer<SignUpModel>(builder: (context, model, child) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Email",
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Email",
+                  ),
+                  onChanged: (text) {
+                    context.read<SignUpModel>().setEmail(text);
+                  },
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Password",
+                  ),
+                  onChanged: (text) {
+                    context.read<SignUpModel>().setPassword(text);
+                  },
+                  obscureText: true,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await context.read<SignUpModel>().signUp();
+                      Navigator.of(context).pop(true);
+                    } catch (e) {
+                      final snackBar = SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text(e.toString()),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  },
+                  child: Text(
+                    "Sign Up",
+                    // TODO: 色が表示されてない
+                    style: TextStyle(color: customBlack),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    "Have you already created your account?",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
                     ),
-                    onChanged: (text) {
-                      model.email = text;
-                    },
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Password",
-                    ),
-                    onChanged: (text) {
-                      model.password = text;
-                    },
-                    obscureText: true,
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      try {
-                        await model.signUp();
-                        Navigator.of(context).pop(true);
-                      } catch (e) {
-                        final snackBar = SnackBar(
-                          backgroundColor: Colors.red,
-                          content: Text(e.toString()),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
-                    },
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(color: customBlack),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      "Have you already created your account?",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
