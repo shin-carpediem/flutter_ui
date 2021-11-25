@@ -9,7 +9,6 @@ import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
 import 'package:flutter_ui/models/course_title_modal/course_title_modal.dart';
-import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';
 // import 'package:flutter_ui/models/edit_course_model.dart';
 // import 'package:flutter_ui/models/edit_profile_model.dart';
 import 'package:flutter_ui/models/login_model/login_model.dart';
@@ -19,7 +18,6 @@ import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:flutter_ui/screens/top_page.dart';
 // import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
-import 'package:state_notifier/state_notifier.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -40,15 +38,15 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CourseCard>(
-            create: (_) => CourseCard()..fetchCourseCard()),
-        ChangeNotifierProvider<AddCourseModel>(create: (_) => AddCourseModel()),
+            create: (context) => CourseCard()..fetchCourseCard()),
+        ChangeNotifierProvider<AddCourseModel>(create: (context) => AddCourseModel()),
         ChangeNotifierProvider<CourseTitle>(
-            create: (_) => CourseTitle()..fetchCourseTitle()),
-        // ChangeNotifierProvider<EditCourseModel>(create: (_) => EditCourseModel()),
-        // ChangeNotifierProvider<EditProfileModel>(create: (_) => EditProfileModel()),
-        ChangeNotifierProvider<LogInModel>(create: (_) => LogInModel()),
+            create: (context) => CourseTitle()..fetchCourseTitle()),
+        // ChangeNotifierProvider<EditCourseModel>(create: (context) => EditCourseModel()),
+        // ChangeNotifierProvider<EditProfileModel>(create: (context) => EditProfileModel()),
+        StateNotifierProvider<LogInModel, LogInState>(create: (context) => LogInModel()),
         ChangeNotifierProvider<MyPageModel>(
-            create: (_) => MyPageModel()..fetchUser()),
+            create: (context) => MyPageModel()..fetchUser()),
         StateNotifierProvider<SignUpModel, SignUpState>(create: (context) => SignUpModel()),
       ],
       child: MaterialApp(

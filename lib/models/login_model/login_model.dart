@@ -1,44 +1,38 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:state_notifier/state_notifier.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-class LogInModel extends ChangeNotifier {
-  String? email;
-  String? password;
+part 'login_model.freezed.dart';
 
-  bool isLoading = false;
+@freezed
+class LogInState with _$LogInState {
+  const factory LogInState({
+    String? email,
+    String? password,
+    @Default(false) bool isLoading,
+  }) = _LogInState;
+}
 
-  void startLoading() {
-    isLoading = true;
-    notifyListeners();
-  }
+class LogInModel extends StateNotifier<LogInState> {
+  LogInModel() : super(const LogInState());
 
-  void endLoading() {
-    isLoading = false;
-    notifyListeners();
-  }
+  void startLoading() => state = state.copyWith(isLoading: true);
+  void endLoading() => state = state.copyWith(isLoading: false);
 
-  void setEmail(String email) {
-    this.email = email;
-    notifyListeners();
-  }
+  void setEmail(String email) => state = state.copyWith(email: email);
+  void setPassword(String password) =>
+      state = state.copyWith(password: password);
 
-  void setPassword(String password) {
-    this.password = password;
-    notifyListeners();
-  }
-
-  Future logIn() async {
-    if (email == null || email!.isEmpty) {
-      throw 'email is not input.';
-    }
-
-    if (password == null || password!.isEmpty) {
-      throw 'password is not input.';
-    }
+  Future<void> logIn() async {
+    final String? email = state.email;
+    final String? password = state.password;
 
     if (email != null && password != null) {
       await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email!, password: password!);
+          .signInWithEmailAndPassword(email: email, password: password);
     }
   }
 }
+

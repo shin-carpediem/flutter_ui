@@ -17,10 +17,6 @@ class SignUpState with _$SignUpState {
 }
 
 class SignUpModel extends StateNotifier<SignUpState> {
-  // final String email;
-  // final String password;
-  // bool isLoading = false;
-
   SignUpModel() : super(const SignUpState());
 
   void startLoading() => state = state.copyWith(isLoading: true);
@@ -34,15 +30,6 @@ class SignUpModel extends StateNotifier<SignUpState> {
     final String? email = state.email;
     final String? password = state.password;
 
-    // if (email == null || email!.isEmpty) {
-    //   throw 'email is not input.';
-    // }
-
-    // if (password == null || password!.isEmpty) {
-    //   throw 'password is not input.';
-    // }
-
-    // if (email != null && password != null) {
     final userCredential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email!, password: password!);
     final user = userCredential.user;
@@ -55,34 +42,5 @@ class SignUpModel extends StateNotifier<SignUpState> {
         'email': email,
       });
     }
-    // }
   }
 }
-
-// class SignUpModel extends ChangeNotifier {
-//   Future signUp() async {
-//     if (email == null || email!.isEmpty) {
-//       throw 'email is not input.';
-//     }
-
-//     if (password == null || password!.isEmpty) {
-//       throw 'password is not input.';
-//     }
-
-//     if (email != null && password != null) {
-//       final userCredential = await FirebaseAuth.instance
-//           .createUserWithEmailAndPassword(email: email!, password: password!);
-//       final user = userCredential.user;
-
-//       if (user != null) {
-//         final uid = user.uid;
-
-//         final doc = FirebaseFirestore.instance.collection('users').doc(uid);
-//         await doc.set({
-//           'uid': uid,
-//           'email': email,
-//         });
-//       }
-//     }
-//   }
-// }
