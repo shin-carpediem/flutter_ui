@@ -53,6 +53,9 @@ void editCoursesSheet(
   BuildContext context,
   CourseCardModel courseCard,
   CourseCard model,
+  String title,
+  String subtitle,
+  String logoUrl,
 ) {
   showModalBottomSheet<void>(
     context: context,
@@ -98,9 +101,9 @@ void editCoursesSheet(
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: context.read<EditCourseModel>().isUpdated(
-                        context,
-                        courseCard,
-                        model,
+                        title,
+                        subtitle,
+                        logoUrl,
                       )
                   ? () async {
                       try {

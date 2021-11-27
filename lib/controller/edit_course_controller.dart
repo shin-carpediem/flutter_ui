@@ -28,7 +28,7 @@ class EditCourseModel extends StateNotifier<EditCourseState> {
   void setlogoUrl(String logoUrl) =>
       state = state.copyWith(logoUrl: subtitleController.text);
 
-  bool isUpdated(title, subtitle, logoUrl) {
+  bool isUpdated(title, , logoUrl) {
     return title != null || subtitle != null || logoUrl != null;
   }
 
