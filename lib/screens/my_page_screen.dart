@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/core/util/launch.dart';
+import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';
 import 'package:flutter_ui/screens/edit_profile_screen.dart';
 import 'package:flutter_ui/screens/google_map_screen.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +23,13 @@ class MyPageSheet extends StatelessWidget {
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditProfilePage(),
+                  builder: (context) => EditProfilePage(
+                    context.read<EditProfileState>().name,
+                    context.read<EditProfileState>().desc,
+                  ),
                 ),
               );
+              context.read<MyPageModel>().fetchUser();
             },
             icon: Icon(Icons.edit),
           ),
@@ -39,11 +45,8 @@ class MyPageSheet extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      // TODO: データを表示させる
                       context.select<MyPageState, String>(
                           (state) => state.name ?? 'No name'),
-                      // context.select<MyPageState, String>(
-                      //     (state) => state.name ?? 'No name'),
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

@@ -1,10 +1,14 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:provider/provider.dart';
 
 class EditProfilePage extends StatelessWidget {
+  const EditProfilePage(this.name, this.desc);
+  final String? name;
+  final String? desc;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +29,7 @@ class EditProfilePage extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: "Name",
                   ),
-                  onChanged: (state) {
+                  onChanged: (text) {
                     context.read<EditProfileModel>().setName();
                   },
                 ),
