@@ -1,9 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/controller/edit_course_controller.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
-import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
 import 'package:provider/provider.dart';
 
 void modalBottomSheet(

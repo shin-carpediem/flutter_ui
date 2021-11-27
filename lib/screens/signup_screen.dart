@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/controller/signup_controller.dart';
 import 'package:flutter_ui/core/color.dart';
-import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
