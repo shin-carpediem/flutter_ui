@@ -39,8 +39,11 @@ class MyPageSheet extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
+                      // TODO: データを表示させる
                       context.select<MyPageState, String>(
                           (state) => state.name ?? 'No name'),
+                      // context.select<MyPageState, String>(
+                      //     (state) => state.name ?? 'No name'),
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

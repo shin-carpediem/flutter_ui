@@ -13,20 +13,20 @@ class EditCourseModel extends StateNotifier<EditCourseState> {
 
   void setTitle(String title) {
     if (title.length >= 15) {
-      // TODO: エラーメッセージを正しく表示させる
       throw 'Title can be less than 15 letters';
     }
-    state = state.copyWith(title: title);
+    state = state.copyWith(title: titleController.text);
   }
 
   void setSubTitle(String subtitle) {
     if (subtitle.length >= 30) {
       throw 'Subtitle can be less than 30 letters';
     }
-    state = state.copyWith(subtitle: subtitle);
+    state = state.copyWith(subtitle: subtitleController.text);
   }
 
-  void setlogoUrl(String logoUrl) => state = state.copyWith(logoUrl: logoUrl);
+  void setlogoUrl(String logoUrl) =>
+      state = state.copyWith(logoUrl: subtitleController.text);
 
   bool isUpdated(title, subtitle, logoUrl) {
     return title != null || subtitle != null || logoUrl != null;

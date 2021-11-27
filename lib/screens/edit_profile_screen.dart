@@ -25,7 +25,7 @@ class EditProfilePage extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: "Name",
                   ),
-                  onChanged: (text) {
+                  onChanged: (state) {
                     context.read<EditProfileModel>().setName();
                   },
                 ),
@@ -37,7 +37,7 @@ class EditProfilePage extends StatelessWidget {
                     hintText: "desc",
                   ),
                   onChanged: (text) {
-                    context.read<EditProfileModel>().setName();
+                    context.read<EditProfileModel>().setDesc();
                   },
                 ),
                 SizedBox(height: 16),
