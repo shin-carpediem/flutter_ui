@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/core/util/launch.dart';
 import 'package:flutter_ui/screens/edit_profile_screen.dart';
 import 'package:flutter_ui/screens/google_map_screen.dart';
@@ -23,7 +24,6 @@ class MyPageSheet extends StatelessWidget {
                   builder: (context) => EditProfilePage(),
                 ),
               );
-              // context.read<MyPageModel>().fetchUser();
             },
             icon: Icon(Icons.edit),
           ),
@@ -39,20 +39,19 @@ class MyPageSheet extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      // TODO: 表示されない
-                      context.select<MyPageModel, String>(
-                          (state) => state.nameController.text ?? 'No name'),
+                      context.select<MyPageState, String>(
+                          (state) => state.name ?? 'No name'),
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 8),
-                    Text(context.select<MyPageModel, String>(
-                        (state) => state.emailController.text ?? 'No email')),
+                    Text(context.select<MyPageState, String>(
+                        (state) => state.email ?? 'No email')),
                     SizedBox(height: 8),
-                    Text(context.select<MyPageModel, String>(
-                        (state) => state.descController.text ?? 'No desc')),
+                    Text(context.select<MyPageState, String>(
+                        (state) => state.desc ?? 'No desc')),
                     SizedBox(height: 8),
                     GestureDetector(
                       onTap: () => launchGitHub(),
@@ -107,14 +106,13 @@ class MyPageSheet extends StatelessWidget {
                 ),
               ),
             ),
-            // TODO: 構文ミス
-            // if (context.read<MyPageModel>().isLoading)
-            //   Container(
-            //     color: Colors.black54,
-            //     child: Center(
-            //       child: CircularProgressIndicator(),
-            //     ),
-            //   ),
+            if (context.read<MyPageState>().isLoading)
+              Container(
+                color: Colors.black54,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
           ],
         ),
       ),
