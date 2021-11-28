@@ -101,7 +101,6 @@ class Featured extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: IconButton(
-                    // TODO: error
                     onPressed: () => buttonCarouselController.previousPage(
                       duration: Duration(milliseconds: 300),
                     ),
@@ -119,7 +118,6 @@ class Featured extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: IconButton(
-                    // TODO: error
                     onPressed: () => buttonCarouselController.nextPage(
                       duration: Duration(milliseconds: 300),
                     ),

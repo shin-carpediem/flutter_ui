@@ -9,11 +9,18 @@ class TrendingCourses extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 32, bottom: 8, left: 8),
+            padding: EdgeInsets.only(
+              top: 32,
+              bottom: 8,
+              left: 8,
+            ),
             alignment: Alignment.centerLeft,
             child: Text(
               'Trending Courses',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Card(
@@ -27,7 +34,10 @@ class TrendingCourses extends StatelessWidget {
                   Container(
                     color: Colors.grey[100],
                     child: ListTile(
-                      leading: Icon(Icons.school, color: Colors.blue),
+                      leading: Icon(
+                        Icons.school,
+                        color: Colors.blue,
+                      ),
                       trailing: Text('Communication Skills'),
                     ),
                   ),
@@ -35,7 +45,10 @@ class TrendingCourses extends StatelessWidget {
                   Container(
                     color: Colors.grey[100],
                     child: ListTile(
-                      leading: Icon(Icons.school, color: Colors.blue),
+                      leading: Icon(
+                        Icons.school,
+                        color: Colors.blue,
+                      ),
                       trailing: Text('Digital Marketing 101'),
                     ),
                   ),
@@ -43,7 +56,10 @@ class TrendingCourses extends StatelessWidget {
                   Container(
                     color: Colors.grey[100],
                     child: ListTile(
-                      leading: Icon(Icons.school, color: Colors.blue),
+                      leading: Icon(
+                        Icons.school,
+                        color: Colors.blue,
+                      ),
                       trailing: Text('UX Research'),
                     ),
                   ),

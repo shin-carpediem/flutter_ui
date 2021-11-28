@@ -60,8 +60,7 @@ class SignUpPage extends StatelessWidget {
                   },
                   child: Text(
                     "Sign Up",
-                    // TODO: 色が表示されてない
-                    style: TextStyle(color: customBlack),
+                    style: TextStyle(color: customWhite),
                   ),
                 ),
                 SizedBox(

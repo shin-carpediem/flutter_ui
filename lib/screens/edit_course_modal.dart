@@ -4,15 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui/controller/edit_course_controller.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
+import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
 import 'package:provider/provider.dart';
 
 void modalBottomSheet(
   BuildContext context,
   CourseCardModel courseCard,
   CourseCard model,
-  title,
-  subtitle,
-  logoUrl,
 ) {
   showModalBottomSheet<void>(
     context: context,
@@ -30,9 +28,6 @@ void modalBottomSheet(
                     context,
                     courseCard,
                     model,
-                    title,
-                    subtitle,
-                    logoUrl,
                   );
                 },
               ),
@@ -63,9 +58,6 @@ void editCoursesSheet(
   BuildContext context,
   CourseCardModel courseCard,
   CourseCard model,
-  title,
-  subtitle,
-  logoUrl,
 ) {
   showModalBottomSheet<void>(
     context: context,
@@ -111,9 +103,9 @@ void editCoursesSheet(
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: context.read<EditCourseModel>().isUpdated(
-                        title,
-                        subtitle,
-                        logoUrl,
+                        context.read<EditCourseState>().title,
+                        context.read<EditCourseState>().subtitle,
+                        context.read<EditCourseState>().logoUrl,
                       )
                   ? () async {
                       try {

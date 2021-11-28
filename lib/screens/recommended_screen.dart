@@ -184,9 +184,9 @@ class Recommended extends StatelessWidget {
                                 context,
                                 courseCard,
                                 model,
-                                courseCard.title,
-                                courseCard.subtitle,
-                                courseCard.logoUrl,
+                                // courseCard.title,
+                                // courseCard.subtitle,
+                                // courseCard.logoUrl,
                               );
                             } else {
                               final snackBar = SnackBar(

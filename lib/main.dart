@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<CourseCard>(
             create: (context) => CourseCard()..fetchCourseCard()),
-        StateNotifierProvider<AddCourseModel, AddCourseState>(create: (context) => AddCourseModel()),
         ChangeNotifierProvider<CourseTitle>(
             create: (context) => CourseTitle()..fetchCourseTitle()),
+        StateNotifierProvider<AddCourseModel, AddCourseState>(create: (context) => AddCourseModel()),
         StateNotifierProvider<EditCourseModel, EditCourseState>(create: (context) => EditCourseModel()),
         StateNotifierProvider<LogInModel, LogInState>(create: (context) => LogInModel()),
         StateNotifierProvider<MyPageModel, MyPageState>(
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'flutter ui',
         theme: Provider.of<AppTheme>(context).buildTheme(),
         home: TopPage(),
       ),
