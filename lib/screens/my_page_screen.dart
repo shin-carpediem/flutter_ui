@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/core/util/launch.dart';
 import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';

@@ -74,8 +74,7 @@ class Featured extends StatelessWidget {
                     ),
                   ))
               .toList();
-          // TODO: いいね数1位から順に並べ替えしたいが、a、bが、containerで、
-          // favoriteNumが取得できない
+          // TODO: いいね数1位から順に並べ替えしたいが、a、bが、containerで、favoriteNumが取得できない
           //  .sort((a, b) => -a.favoriteNum(
           //         b.favoriteNum,
           //       ));

@@ -180,11 +180,17 @@ class Recommended extends StatelessWidget {
                         trailing: IconButton(
                           onPressed: () {
                             if (user != null) {
-                              modalBottomSheet(context, courseCard, model);
+                              modalBottomSheet(
+                                context,
+                                courseCard,
+                                model,
+                                courseCard.title,
+                                courseCard.subtitle,
+                                courseCard.logoUrl,
+                              );
                             } else {
                               final snackBar = SnackBar(
-                                content:
-                                    Text('This menu requires your login.'),
+                                content: Text('This menu requires your login.'),
                                 backgroundColor: Colors.grey,
                               );
                               ScaffoldMessenger.of(context)

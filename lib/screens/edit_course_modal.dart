@@ -10,6 +10,9 @@ void modalBottomSheet(
   BuildContext context,
   CourseCardModel courseCard,
   CourseCard model,
+  title,
+  subtitle,
+  logoUrl,
 ) {
   showModalBottomSheet<void>(
     context: context,
@@ -23,7 +26,14 @@ void modalBottomSheet(
                 leading: Icon(Icons.edit),
                 title: Text('Edit'),
                 onTap: () async {
-                  editCoursesSheet(context, courseCard, model);
+                  editCoursesSheet(
+                    context,
+                    courseCard,
+                    model,
+                    title,
+                    subtitle,
+                    logoUrl,
+                  );
                 },
               ),
             ],
@@ -53,9 +63,9 @@ void editCoursesSheet(
   BuildContext context,
   CourseCardModel courseCard,
   CourseCard model,
-  String title,
-  String subtitle,
-  String logoUrl,
+  title,
+  subtitle,
+  logoUrl,
 ) {
   showModalBottomSheet<void>(
     context: context,
