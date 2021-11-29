@@ -5,9 +5,8 @@
 - Flutter
 - Firebase Auth
 - Cloud Firestore
-- Riverpod
 - Freezed
-- Flutter Hooks
+- Hooks Riverpod
 - shared Preferences
 
 #### 実装練習内容
