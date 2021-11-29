@@ -5,15 +5,16 @@
 - Flutter
 - Firebase Auth
 - Cloud Firestore
-- Provider
+- Riverpod
 - Freezed
+- Flutter Hooks
 - shared Preferences
 
 #### 実装練習内容
 
 Policy
 
-- Provider × Freezed × StateNotifier による business logic と UI の分離と、immutable なinstance生成による堅牢かつ最小限の再描画
+- Riverpod × Freezed × StateNotifier による business logic と UI の分離と、immutable なinstance生成による堅牢かつ最小限の再描画
 
 Auth
 

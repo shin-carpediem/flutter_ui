@@ -1,12 +1,15 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/controller/add_course_controller.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_ui/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AddCoursePage extends StatelessWidget {
+class AddCoursePage extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final addCourseController = ref.read(AddCourseProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Course'),
@@ -25,7 +28,7 @@ class AddCoursePage extends StatelessWidget {
                     hintText: "Logo",
                   ),
                   onChanged: (text) {
-                    context.read<AddCourseModel>().logoUrl = text;
+                    addCourseController.logoUrl = text;
                   },
                 ),
                 SizedBox(height: 8),
@@ -35,7 +38,7 @@ class AddCoursePage extends StatelessWidget {
                     hintText: "Title",
                   ),
                   onChanged: (text) {
-                    context.read<AddCourseModel>().title = text;
+                    addCourseController.title = text;
                   },
                 ),
                 SizedBox(height: 8),
@@ -45,14 +48,14 @@ class AddCoursePage extends StatelessWidget {
                     hintText: "Subtitle",
                   ),
                   onChanged: (text) {
-                    context.read<AddCourseModel>().subtitle = text;
+                    addCourseController.subtitle = text;
                   },
                 ),
                 SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () async {
                     try {
-                      await context.read<AddCourseModel>().addCourse();
+                      await addCourseController.addCourse();
                       Navigator.of(context).pop(true);
                     } catch (e) {
                       final snackBar = SnackBar(

@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
-import 'package:provider/provider.dart';
+// import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
+// import 'package:provider/provider.dart';
 
 class Header extends StatelessWidget {
   final String title;
@@ -13,7 +13,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<AppTheme>(context);
+    // final theme = Provider.of<AppTheme>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -27,12 +27,12 @@ class Header extends StatelessWidget {
         SizedBox(
           height: 80,
         ),
-        Switch.adaptive(
-          value: theme.isDark,
-          onChanged: (_) {
-            theme.changeMode();
-          },
-        ),
+        // Switch.adaptive(
+        //   value: theme.isDark,
+        //   onChanged: (_) {
+        //     theme.changeMode();
+        //   },
+        // ),
       ],
     );
   }

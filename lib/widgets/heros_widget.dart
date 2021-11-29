@@ -34,10 +34,8 @@ class Heros extends StatelessWidget {
                 );
               },
               child: Text('Browse all courses'),
-              // gradient: LinearGradient,
               style: TextButton.styleFrom(
                   primary: Colors.white,
-                  // backgroundColor: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),

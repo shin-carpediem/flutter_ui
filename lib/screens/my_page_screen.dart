@@ -1,18 +1,20 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/core/util/launch.dart';
-import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';
+import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/screens/edit_profile_screen.dart';
 import 'package:flutter_ui/screens/google_map_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MyPageSheet extends StatelessWidget {
+class MyPageSheet extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final MypageState = ref.read(MyPageProvider);
+    final Mypagecontroller = ref.read(MyPageProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('My page'),
@@ -23,12 +25,12 @@ class MyPageSheet extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => EditProfilePage(
-                    context.read<EditProfileState>().name,
-                    context.read<EditProfileState>().desc,
+                    MypageState.name,
+                    MypageState.desc,
                   ),
                 ),
               );
-              context.read<MyPageModel>().fetchUser();
+              Mypagecontroller.fetchUser();
             },
             icon: Icon(Icons.edit),
           ),
@@ -44,19 +46,23 @@ class MyPageSheet extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      context.select<MyPageState, String>(
-                          (state) => state.name ?? 'No name'),
+                      ref.watch(MyPageProvider.select(
+                          (state) => state.name ?? 'No name')),
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 8),
-                    Text(context.select<MyPageState, String>(
-                        (state) => state.email ?? 'No email')),
+                    Text(
+                      ref.watch(MyPageProvider.select(
+                          (state) => state.email ?? 'No email')),
+                    ),
                     SizedBox(height: 8),
-                    Text(context.select<MyPageState, String>(
-                        (state) => state.desc ?? 'No desc')),
+                    Text(
+                      ref.watch(MyPageProvider.select(
+                          (state) => state.desc ?? 'No desc')),
+                    ),
                     SizedBox(height: 8),
                     GestureDetector(
                       onTap: () => launchGitHub(),
@@ -71,7 +77,7 @@ class MyPageSheet extends StatelessWidget {
                     SizedBox(height: 16),
                     TextButton(
                       onPressed: () async {
-                        await context.read<MyPageModel>().logout();
+                        await Mypagecontroller.logout();
                         Navigator.of(context).pop();
                       },
                       child: Text('Log out'),
@@ -111,7 +117,7 @@ class MyPageSheet extends StatelessWidget {
                 ),
               ),
             ),
-            if (context.read<MyPageState>().isLoading)
+            if (MypageState.isLoading)
               Container(
                 color: Colors.black54,
                 child: Center(

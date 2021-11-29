@@ -1,14 +1,17 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/controller/login_controller.dart';
+import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/screens/signup_screen.dart';
 import 'package:flutter_ui/screens/reset_password_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loginController = ref.read(LogInProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Log In'),
@@ -27,7 +30,7 @@ class LogInPage extends StatelessWidget {
                     hintText: "Email",
                   ),
                   onChanged: (text) {
-                    context.read<LogInModel>().setEmail(text);
+                    loginController.setEmail(text);
                   },
                 ),
                 SizedBox(height: 8),
@@ -37,7 +40,7 @@ class LogInPage extends StatelessWidget {
                     hintText: "Password",
                   ),
                   onChanged: (text) {
-                    context.read<LogInModel>().setPassword(text);
+                    loginController.setPassword(text);
                   },
                   obscureText: true,
                 ),
@@ -45,7 +48,7 @@ class LogInPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
                     try {
-                      await context.read<LogInModel>().logIn();
+                      await loginController.logIn();
                       Navigator.of(context).pop(true);
                     } catch (e) {
                       final snackBar = SnackBar(

@@ -1,13 +1,16 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/controller/signup_controller.dart';
+import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/core/color.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final signUpController = ref.read(SignUpProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign Up'),
@@ -26,7 +29,7 @@ class SignUpPage extends StatelessWidget {
                     hintText: "Email",
                   ),
                   onChanged: (text) {
-                    context.read<SignUpModel>().setEmail(text);
+                    signUpController.setEmail(text);
                   },
                 ),
                 SizedBox(
@@ -38,7 +41,7 @@ class SignUpPage extends StatelessWidget {
                     hintText: "Password",
                   ),
                   onChanged: (text) {
-                    context.read<SignUpModel>().setPassword(text);
+                    signUpController.setPassword(text);
                   },
                   obscureText: true,
                 ),
@@ -48,7 +51,7 @@ class SignUpPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
                     try {
-                      await context.read<SignUpModel>().signUp();
+                      await signUpController.signUp();
                       Navigator.of(context).pop(true);
                     } catch (e) {
                       final snackBar = SnackBar(

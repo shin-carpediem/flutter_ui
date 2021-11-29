@@ -73,7 +73,7 @@ class CourseCard extends ChangeNotifier {
     } else {
       favoriteList.add(uid);
     }
-    int favoriteNum = favoriteList.length - 1;
+    int favoriteNum = favoriteList.length;
 
     await FirebaseFirestore.instance
         .collection('courseCard')
