@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_ui/controller/add_course_controller.dart';
+import 'package:flutter_ui/controller/app_theme_controller.dart';
 import 'package:flutter_ui/controller/edit_course_controller.dart';
 import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:flutter_ui/controller/login_controller.dart';
@@ -19,10 +20,11 @@ import 'package:flutter_ui/models/login_model/login_model.dart';
 import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
 import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:flutter_ui/screens/top_page.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
 
+final ThemeProvider =
+    StateNotifierProvider<AppTheme, AppThemeState>((ref) => AppTheme());
 final AddCourseProvider = StateNotifierProvider<AddCourseModel, AddCourseState>(
     (ref) => AddCourseModel());
 final EditCourseProvider =
@@ -44,16 +46,18 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     ProviderScope(
-      // create: (_) => AppTheme(),
       child: MyApp(),
     ),
   );
 }
 
 // ignore: use_key_in_widget_constructors
-class MyApp extends StatelessWidget {
+class MyApp extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeState = ref.watch(ThemeProvider);
+    final ThemeController = ref.read(ThemeProvider.notifier);
+
     return provider.MultiProvider(
       providers: [
         provider.ChangeNotifierProvider<CourseCard>(
@@ -64,7 +68,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'flutter ui',
-        // theme: Provider.of<AppTheme>(context).buildTheme(),
+        theme: ThemeController.buildTheme(ThemeState.isDark),
         home: TopPage(),
       ),
     );

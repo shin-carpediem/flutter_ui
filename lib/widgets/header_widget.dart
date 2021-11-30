@@ -1,10 +1,10 @@
-// ignore_for_file: prefer_const_constructors, unused_element
+// ignore_for_file: prefer_const_constructors, unused_element, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
-// import 'package:provider/provider.dart';
+import 'package:flutter_ui/main.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Header extends StatelessWidget {
+class Header extends HookConsumerWidget {
   final String title;
   const Header({
     Key? key,
@@ -12,8 +12,10 @@ class Header extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // final theme = Provider.of<AppTheme>(context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeState = ref.read(ThemeProvider);
+    final ThemeController = ref.read(ThemeProvider.notifier);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -27,12 +29,12 @@ class Header extends StatelessWidget {
         SizedBox(
           height: 80,
         ),
-        // Switch.adaptive(
-        //   value: theme.isDark,
-        //   onChanged: (_) {
-        //     theme.changeMode();
-        //   },
-        // ),
+        Switch.adaptive(
+          value: ThemeState.isDark,
+          onChanged: (_) {
+            ThemeController.changeMode();
+          },
+        ),
       ],
     );
   }

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-class AppTheme extends ChangeNotifier {
-  AppTheme() : _isDark = false;
-  bool get isDark => _isDark;
-  bool _isDark;
+part 'app_theme_model.freezed.dart';
 
-  ThemeData buildTheme() => _isDark ? ThemeData.dark() : ThemeData.light();
-
-  void changeMode() async {
-    SharedPreferences themeMode = await SharedPreferences.getInstance();
-    _isDark = (themeMode.getBool('isDark') ?? false);
-    await themeMode.setBool('isDark', !_isDark);
-    notifyListeners();
-  }
+@freezed
+class AppThemeState with _$AppThemeState {
+  const factory AppThemeState({
+    @Default(false) bool isDark,
+  }) = _AppThemeState;
 }
