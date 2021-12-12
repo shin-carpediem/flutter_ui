@@ -143,6 +143,7 @@ class MyPageSheet extends HookConsumerWidget {
                           },
                           child: Text("Stop"),
                         ),
+                        // TODO: 音声を元に描画されない
                         Text('LastWords:  ' + TtsState.lastWords),
                         Text('States:  ' + TtsState.lastStatus),
                       ],

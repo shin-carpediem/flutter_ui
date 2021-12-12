@@ -10,21 +10,21 @@ class TtsController extends StateNotifier<TtsState> {
   stt.SpeechToText speech = stt.SpeechToText();
 
   Future<void> speak() async {
-    if (state.isListen) {
-      bool available = await speech.initialize(
-        onStatus: statusListener,
-        onError: errorListener,
-      );
-      if (available) {
-        speech.listen(onResult: resultListener);
-        print("listen");
-      } else {
-        throw "You has denied the use of speech recognition.";
-      }
+    // if (state.isListen) {
+    bool available = await speech.initialize(
+      onStatus: statusListener,
+      onError: errorListener,
+    );
+    if (available) {
+      speech.listen(onResult: resultListener);
+      print("listen");
     } else {
-      state = state.copyWith(isListen: false);
-      print("false");
+      throw "You has denied the use of speech recognition.";
     }
+    // } else {
+    //   state = state.copyWith(isListen: false);
+    //   print("false");
+    // }
   }
 
   Future<void> stop() async {
