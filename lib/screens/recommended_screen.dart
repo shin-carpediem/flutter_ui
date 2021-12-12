@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_ui/core/util/speak.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
@@ -121,15 +122,21 @@ class Recommended extends StatelessWidget {
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: Image.network(
-                            courseCard.logoUrl,
-                            fit: BoxFit.contain,
-                            errorBuilder: (c, o, s) {
-                              return Icon(
-                                Icons.error,
-                                color: Colors.red,
-                              );
+                          child: GestureDetector(
+                            onTap: () {
+                              speakSlowly(courseCard.title.toString());
+                              speak(courseCard.subtitle.toString());
                             },
+                            child: Image.network(
+                              courseCard.logoUrl,
+                              fit: BoxFit.contain,
+                              errorBuilder: (c, o, s) {
+                                return Icon(
+                                  Icons.error,
+                                  color: Colors.red,
+                                );
+                              },
+                            ),
                           ),
                         ),
                         title: Row(
