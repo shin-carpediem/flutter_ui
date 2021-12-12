@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_ui/core/util/speak.dart';
+import 'package:flutter_ui/core/util/tts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';

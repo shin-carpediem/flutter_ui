@@ -33,6 +33,7 @@ model
 - 基本的な CRUD
 - 検索と候補の表示
 - いいね（item 毎に全ユーザーからのいいね数の表示）
+- item の title, subtitle の読み上げ
 
 API
 
@@ -42,6 +43,9 @@ API
 
 - ReorderableListView
 - いいね数に基づいて item の並び替え
+- 位置情報の取得
+
+##### Tips
 
 ・when you want to make freezed file,
 

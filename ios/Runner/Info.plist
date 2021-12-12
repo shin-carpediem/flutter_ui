@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app requires to add file to your photo library your microphone</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This app requires to speech recognition/</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is required for this app</string>
 	<key>LSApplicationCategoryType</key>

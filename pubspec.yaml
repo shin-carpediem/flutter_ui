@@ -30,6 +30,7 @@ dependencies:
   hooks_riverpod: ^1.0.0
   geolocator: ^8.0.0
   flutter_tts: ^3.0.0
+  speech_to_text: ^5.3.0
 
 dev_dependencies:
   flutter_test:
