@@ -28,6 +28,7 @@ dependencies:
   freezed_annotation:
   flutter_riverpod: ^1.0.0
   hooks_riverpod: ^1.0.0
+  geolocator: ^8.0.0
 
 dev_dependencies:
   flutter_test:

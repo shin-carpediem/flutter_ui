@@ -17,6 +17,7 @@ class EditProfilePage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text('Edit profile'),
       ),
+      // TODO: something wrong
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(8.0),

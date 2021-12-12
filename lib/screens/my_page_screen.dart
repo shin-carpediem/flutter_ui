@@ -13,6 +13,8 @@ class MyPageSheet extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final MypageState = ref.read(MyPageProvider);
     final Mypagecontroller = ref.read(MyPageProvider.notifier);
+    final LocationState = ref.read(LocationProvider);
+    final LocationController = ref.read(LocationProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -100,6 +102,15 @@ class MyPageSheet extends HookConsumerWidget {
                       },
                       child: Text("Choose DateTime."),
                     ),
+                    ElevatedButton(
+                      onPressed: () {
+                        LocationController.getLocation();
+                      },
+                      child: Text("Get your location."),
+                    ),
+                    SizedBox(height: 8),
+                    Text("Your location is  " + LocationState.location),
+                    SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () async {
                         await Navigator.of(context).push(

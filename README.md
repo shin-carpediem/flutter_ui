@@ -13,7 +13,7 @@
 
 Policy
 
-- Riverpod × Freezed × StateNotifier による business logic と UI の分離と、immutable なinstance生成による堅牢かつ最小限の再描画
+- Riverpod × Freezed × StateNotifier による business logic と UI の分離と、immutable な instance 生成による堅牢かつ最低限の再描画
 
 Auth
 
@@ -42,3 +42,9 @@ API
 
 - ReorderableListView
 - いいね数に基づいて item の並び替え
+
+・when you want to make freezed file,
+
+```
+$ flutter pub run build_runner build --delete-conflicting-outputs
+```
