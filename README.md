@@ -39,6 +39,10 @@ API
 
 - Google Map
 
+他
+
+- 音声の文字化
+
 ##### 未完了
 
 - ReorderableListView

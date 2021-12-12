@@ -11,6 +11,7 @@ import 'package:flutter_ui/controller/location_controller.dart';
 import 'package:flutter_ui/controller/login_controller.dart';
 import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/controller/signup_controller.dart';
+import 'package:flutter_ui/controller/tts_controller.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
@@ -21,6 +22,7 @@ import 'package:flutter_ui/models/location_model/location_model.dart';
 import 'package:flutter_ui/models/login_model/login_model.dart';
 import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
 import 'package:flutter_ui/models/signup_model/signup_model.dart';
+import 'package:flutter_ui/models/tts_model/tts_model.dart';
 import 'package:flutter_ui/screens/top_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
@@ -44,6 +46,9 @@ final EditProfileProvider =
 final LocationProvider =
     StateNotifierProvider<LocationController, LocationState>(
         (ref) => LocationController());
+final TtsProvider =
+    StateNotifierProvider<TtsController, TtsState>(
+        (ref) => TtsController());
 
 void main() async {
   await dotenv.load(fileName: ".env");

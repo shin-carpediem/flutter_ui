@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, non_constant_identifier_names
 
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/util/launch.dart';
 import 'package:flutter_ui/main.dart';
@@ -15,6 +16,8 @@ class MyPageSheet extends HookConsumerWidget {
     final Mypagecontroller = ref.read(MyPageProvider.notifier);
     final LocationState = ref.read(LocationProvider);
     final LocationController = ref.read(LocationProvider.notifier);
+    final TtsState = ref.read(TtsProvider);
+    final TtsController = ref.read(TtsProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -123,6 +126,27 @@ class MyPageSheet extends HookConsumerWidget {
                       },
                       child: Text("Open Google map"),
                     ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 16),
+                        Text(
+                          "Speech to Text",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            TtsController.stop();
+                          },
+                          child: Text("Stop"),
+                        ),
+                        Text('LastWords:  ' + TtsState.lastWords),
+                        Text('States:  ' + TtsState.lastStatus),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -135,6 +159,20 @@ class MyPageSheet extends HookConsumerWidget {
                 ),
               ),
           ],
+        ),
+      ),
+      floatingActionButton: AvatarGlow(
+        animate: TtsState.isListen,
+        glowColor: Colors.blue,
+        endRadius: 65.0,
+        duration: Duration(milliseconds: 2000),
+        repeatPauseDuration: Duration(milliseconds: 100),
+        repeat: true,
+        child: FloatingActionButton(
+          child: Icon(TtsState.isListen ? Icons.mic : Icons.mic_none),
+          onPressed: () {
+            TtsController.speak();
+          },
         ),
       ),
     );
