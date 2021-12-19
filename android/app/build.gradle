@@ -45,7 +45,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.flutter_ui"
-        minSdkVersion 20
+        // TODO: AndroidSdkが21以上だが、flutter_ttsとコンフリクトを起こしてビルドできない
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

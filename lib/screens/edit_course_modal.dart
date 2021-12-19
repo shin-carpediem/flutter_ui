@@ -71,7 +71,7 @@ class ModalBottomSheetWidget extends HookConsumerWidget {
   const ModalBottomSheetWidget(this.courseCard);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final editCourseState = ref.read(EditCourseProvider);
+    final editCourseState = ref.watch(EditCourseProvider);
     final editCourseController = ref.read(EditCourseProvider.notifier);
 
     return Padding(
