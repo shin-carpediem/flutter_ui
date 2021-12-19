@@ -14,7 +14,7 @@ class TtsController extends StateNotifier<TtsState> {
       // TODO: 音声を取得してくれない
       await speechToText.listen(onResult: (SpeechRecognitionResult result) {
         state =
-            state.copyWith(lastWords: result.recognizedWords, isListen: true);
+            state.copyWith(lastWords: result.recognizedWords);
       });
       state = state.copyWith(isListen: true);
     } else {
