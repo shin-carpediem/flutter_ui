@@ -12,5 +12,6 @@ class TtsState with _$TtsState {
     @Default('') String lastStatus,
     @Default(false) bool isLoading,
     @Default(false) bool isListen,
+    @Default(false) bool available,
   }) = _TtsState;
 }

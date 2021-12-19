@@ -140,15 +140,8 @@ class MyPageSheet extends HookConsumerWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            TtsController.stop();
-                          },
-                          child: Text("Stop"),
-                        ),
-                        // TODO: 音声を元に描画されない
                         Text('LastWords:  ' + TtsState.lastWords),
-                        Text('States:  ' + TtsState.lastStatus),
+                        // Text('States:  ' + TtsState.lastStatus),
                       ],
                     ),
                   ],
@@ -173,11 +166,10 @@ class MyPageSheet extends HookConsumerWidget {
         repeatPauseDuration: Duration(milliseconds: 100),
         repeat: true,
         child: FloatingActionButton(
-          child: Icon(TtsState.isListen ? Icons.mic : Icons.mic_none),
-          onPressed: () {
-            TtsController.speak();
-          },
-        ),
+            child: Icon(TtsState.isListen ? Icons.mic : Icons.mic_none),
+            onPressed: () {
+              TtsState.isListen ? TtsController.stop() : TtsController.speak();
+            }),
       ),
     );
   }

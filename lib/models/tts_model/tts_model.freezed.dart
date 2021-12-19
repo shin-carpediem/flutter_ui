@@ -22,13 +22,15 @@ class _$TtsStateTearOff {
       String lastError = '',
       String lastStatus = '',
       bool isLoading = false,
-      bool isListen = false}) {
+      bool isListen = false,
+      bool available = false}) {
     return _TtsState(
       lastWords: lastWords,
       lastError: lastError,
       lastStatus: lastStatus,
       isLoading: isLoading,
       isListen: isListen,
+      available: available,
     );
   }
 }
@@ -43,6 +45,7 @@ mixin _$TtsState {
   String get lastStatus => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isListen => throw _privateConstructorUsedError;
+  bool get available => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TtsStateCopyWith<TtsState> get copyWith =>
@@ -58,7 +61,8 @@ abstract class $TtsStateCopyWith<$Res> {
       String lastError,
       String lastStatus,
       bool isLoading,
-      bool isListen});
+      bool isListen,
+      bool available});
 }
 
 /// @nodoc
@@ -76,6 +80,7 @@ class _$TtsStateCopyWithImpl<$Res> implements $TtsStateCopyWith<$Res> {
     Object? lastStatus = freezed,
     Object? isLoading = freezed,
     Object? isListen = freezed,
+    Object? available = freezed,
   }) {
     return _then(_value.copyWith(
       lastWords: lastWords == freezed
@@ -98,6 +103,10 @@ class _$TtsStateCopyWithImpl<$Res> implements $TtsStateCopyWith<$Res> {
           ? _value.isListen
           : isListen // ignore: cast_nullable_to_non_nullable
               as bool,
+      available: available == freezed
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -112,7 +121,8 @@ abstract class _$TtsStateCopyWith<$Res> implements $TtsStateCopyWith<$Res> {
       String lastError,
       String lastStatus,
       bool isLoading,
-      bool isListen});
+      bool isListen,
+      bool available});
 }
 
 /// @nodoc
@@ -131,6 +141,7 @@ class __$TtsStateCopyWithImpl<$Res> extends _$TtsStateCopyWithImpl<$Res>
     Object? lastStatus = freezed,
     Object? isLoading = freezed,
     Object? isListen = freezed,
+    Object? available = freezed,
   }) {
     return _then(_TtsState(
       lastWords: lastWords == freezed
@@ -153,6 +164,10 @@ class __$TtsStateCopyWithImpl<$Res> extends _$TtsStateCopyWithImpl<$Res>
           ? _value.isListen
           : isListen // ignore: cast_nullable_to_non_nullable
               as bool,
+      available: available == freezed
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -165,7 +180,8 @@ class _$_TtsState with DiagnosticableTreeMixin implements _TtsState {
       this.lastError = '',
       this.lastStatus = '',
       this.isLoading = false,
-      this.isListen = false});
+      this.isListen = false,
+      this.available = false});
 
   @JsonKey(defaultValue: "")
   @override
@@ -182,10 +198,13 @@ class _$_TtsState with DiagnosticableTreeMixin implements _TtsState {
   @JsonKey(defaultValue: false)
   @override
   final bool isListen;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool available;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TtsState(lastWords: $lastWords, lastError: $lastError, lastStatus: $lastStatus, isLoading: $isLoading, isListen: $isListen)';
+    return 'TtsState(lastWords: $lastWords, lastError: $lastError, lastStatus: $lastStatus, isLoading: $isLoading, isListen: $isListen, available: $available)';
   }
 
   @override
@@ -197,7 +216,8 @@ class _$_TtsState with DiagnosticableTreeMixin implements _TtsState {
       ..add(DiagnosticsProperty('lastError', lastError))
       ..add(DiagnosticsProperty('lastStatus', lastStatus))
       ..add(DiagnosticsProperty('isLoading', isLoading))
-      ..add(DiagnosticsProperty('isListen', isListen));
+      ..add(DiagnosticsProperty('isListen', isListen))
+      ..add(DiagnosticsProperty('available', available));
   }
 
   @override
@@ -214,12 +234,14 @@ class _$_TtsState with DiagnosticableTreeMixin implements _TtsState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isListen, isListen) ||
-                other.isListen == isListen));
+                other.isListen == isListen) &&
+            (identical(other.available, available) ||
+                other.available == available));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, lastWords, lastError, lastStatus, isLoading, isListen);
+  int get hashCode => Object.hash(runtimeType, lastWords, lastError, lastStatus,
+      isLoading, isListen, available);
 
   @JsonKey(ignore: true)
   @override
@@ -233,7 +255,8 @@ abstract class _TtsState implements TtsState {
       String lastError,
       String lastStatus,
       bool isLoading,
-      bool isListen}) = _$_TtsState;
+      bool isListen,
+      bool available}) = _$_TtsState;
 
   @override
   String get lastWords;
@@ -245,6 +268,8 @@ abstract class _TtsState implements TtsState {
   bool get isLoading;
   @override
   bool get isListen;
+  @override
+  bool get available;
   @override
   @JsonKey(ignore: true)
   _$TtsStateCopyWith<_TtsState> get copyWith =>
