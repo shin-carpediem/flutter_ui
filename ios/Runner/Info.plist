@@ -7,7 +7,7 @@
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>This app requires to speech recognition/</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is required for this app</string>
+	<string>This app needs access to location when open.</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>io.flutter.embedded_views_preview</key>

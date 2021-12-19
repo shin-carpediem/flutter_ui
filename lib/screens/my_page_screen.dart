@@ -12,11 +12,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class MyPageSheet extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final MypageState = ref.read(MyPageProvider);
+    final MypageState = ref.watch(MyPageProvider);
     final Mypagecontroller = ref.read(MyPageProvider.notifier);
-    final LocationState = ref.read(LocationProvider);
+    final LocationState = ref.watch(LocationProvider);
     final LocationController = ref.read(LocationProvider.notifier);
-    final TtsState = ref.read(TtsProvider);
+    final TtsState = ref.watch(TtsProvider);
     final TtsController = ref.read(TtsProvider.notifier);
 
     return Scaffold(
@@ -107,12 +107,15 @@ class MyPageSheet extends HookConsumerWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        LocationController.getLocation();
+                        LocationController.determinePosition();
                       },
                       child: Text("Get your location."),
                     ),
                     SizedBox(height: 8),
-                    Text("Your location is  " + LocationState.location),
+                    Text(
+                      "Your location is  " + LocationState.location,
+                      textAlign: TextAlign.center,
+                    ),
                     SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () async {

@@ -4,18 +4,32 @@ import 'package:state_notifier/state_notifier.dart';
 
 class LocationController extends StateNotifier<LocationState> {
   LocationController() : super(const LocationState());
-  String? location;
 
-  Future<void> getLocation() async {
-    // 現在の位置を返す
-    // TODO: iOS、Android共にうまくいかない
-    try {
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-      state = state.copyWith(location: position.toString());
-    } catch (e) {
-      throw "You have denied providing your location.";
+  Future<Position?> determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
     }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    state = state.copyWith(location: position.toString());
   }
 }

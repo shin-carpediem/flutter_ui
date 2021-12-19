@@ -17,8 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$LocationStateTearOff {
   const _$LocationStateTearOff();
 
-  _LocationState call({String location = "no data"}) {
+  _LocationState call(
+      {bool serviceEnabled = false,
+      LocationPermission? permission,
+      String location = "no data"}) {
     return _LocationState(
+      serviceEnabled: serviceEnabled,
+      permission: permission,
       location: location,
     );
   }
@@ -29,6 +34,8 @@ const $LocationState = _$LocationStateTearOff();
 
 /// @nodoc
 mixin _$LocationState {
+  bool get serviceEnabled => throw _privateConstructorUsedError;
+  LocationPermission? get permission => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -41,7 +48,8 @@ abstract class $LocationStateCopyWith<$Res> {
   factory $LocationStateCopyWith(
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res>;
-  $Res call({String location});
+  $Res call(
+      {bool serviceEnabled, LocationPermission? permission, String location});
 }
 
 /// @nodoc
@@ -55,9 +63,19 @@ class _$LocationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? serviceEnabled = freezed,
+    Object? permission = freezed,
     Object? location = freezed,
   }) {
     return _then(_value.copyWith(
+      serviceEnabled: serviceEnabled == freezed
+          ? _value.serviceEnabled
+          : serviceEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      permission: permission == freezed
+          ? _value.permission
+          : permission // ignore: cast_nullable_to_non_nullable
+              as LocationPermission?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -73,7 +91,8 @@ abstract class _$LocationStateCopyWith<$Res>
           _LocationState value, $Res Function(_LocationState) then) =
       __$LocationStateCopyWithImpl<$Res>;
   @override
-  $Res call({String location});
+  $Res call(
+      {bool serviceEnabled, LocationPermission? permission, String location});
 }
 
 /// @nodoc
@@ -89,9 +108,19 @@ class __$LocationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? serviceEnabled = freezed,
+    Object? permission = freezed,
     Object? location = freezed,
   }) {
     return _then(_LocationState(
+      serviceEnabled: serviceEnabled == freezed
+          ? _value.serviceEnabled
+          : serviceEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      permission: permission == freezed
+          ? _value.permission
+          : permission // ignore: cast_nullable_to_non_nullable
+              as LocationPermission?,
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -103,15 +132,23 @@ class __$LocationStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LocationState with DiagnosticableTreeMixin implements _LocationState {
-  const _$_LocationState({this.location = "no data"});
+  const _$_LocationState(
+      {this.serviceEnabled = false,
+      this.permission,
+      this.location = "no data"});
 
+  @JsonKey(defaultValue: false)
+  @override
+  final bool serviceEnabled;
+  @override
+  final LocationPermission? permission;
   @JsonKey(defaultValue: "no data")
   @override
   final String location;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LocationState(location: $location)';
+    return 'LocationState(serviceEnabled: $serviceEnabled, permission: $permission, location: $location)';
   }
 
   @override
@@ -119,6 +156,8 @@ class _$_LocationState with DiagnosticableTreeMixin implements _LocationState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'LocationState'))
+      ..add(DiagnosticsProperty('serviceEnabled', serviceEnabled))
+      ..add(DiagnosticsProperty('permission', permission))
       ..add(DiagnosticsProperty('location', location));
   }
 
@@ -127,12 +166,17 @@ class _$_LocationState with DiagnosticableTreeMixin implements _LocationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LocationState &&
+            (identical(other.serviceEnabled, serviceEnabled) ||
+                other.serviceEnabled == serviceEnabled) &&
+            (identical(other.permission, permission) ||
+                other.permission == permission) &&
             (identical(other.location, location) ||
                 other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, location);
+  int get hashCode =>
+      Object.hash(runtimeType, serviceEnabled, permission, location);
 
   @JsonKey(ignore: true)
   @override
@@ -141,8 +185,15 @@ class _$_LocationState with DiagnosticableTreeMixin implements _LocationState {
 }
 
 abstract class _LocationState implements LocationState {
-  const factory _LocationState({String location}) = _$_LocationState;
+  const factory _LocationState(
+      {bool serviceEnabled,
+      LocationPermission? permission,
+      String location}) = _$_LocationState;
 
+  @override
+  bool get serviceEnabled;
+  @override
+  LocationPermission? get permission;
   @override
   String get location;
   @override
