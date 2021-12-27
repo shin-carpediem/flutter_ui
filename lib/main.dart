@@ -24,6 +24,7 @@ import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
 import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:flutter_ui/models/tts_model/tts_model.dart';
 import 'package:flutter_ui/screens/top_page.dart';
+import 'package:flutter_ui/widgets/footer_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
 
@@ -47,8 +48,7 @@ final LocationProvider =
     StateNotifierProvider<LocationController, LocationState>(
         (ref) => LocationController());
 final TtsProvider =
-    StateNotifierProvider<TtsController, TtsState>(
-        (ref) => TtsController());
+    StateNotifierProvider<TtsController, TtsState>((ref) => TtsController());
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -79,7 +79,10 @@ class MyApp extends HookConsumerWidget {
         debugShowCheckedModeBanner: false,
         title: 'flutter ui',
         theme: ThemeController.buildTheme(ThemeState.isDark),
-        home: TopPage(),
+        home: Scaffold(
+          body: TopPage(),
+          bottomNavigationBar: Footer(),
+        ),
       ),
     );
   }
