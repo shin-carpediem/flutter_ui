@@ -1,9 +1,16 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_ui/routes/chat_route.dart';
 
 class TalkTileWidget extends StatelessWidget {
+  TalkTileWidget({this.icon, this.username, this.message});
+
+  final IconData? icon;
+  final String? username;
+  final String? message;
+
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -13,12 +20,20 @@ class TalkTileWidget extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: CircleAvatar(
-            child: Icon(Icons.people),
+            child: Icon(icon),
             backgroundColor: Colors.blue[300],
           ),
-          title: Text("title"),
-          subtitle: Text("subtitle"),
-          onTap: () => {},
+          title: Text(username ?? 'No title'),
+          subtitle: Text(message ?? 'No subtitle'),
+          onTap: () => {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatScreen(
+                    username: this.username,
+                  ),
+                ))
+          },
         ),
       ),
       actions: <Widget>[
