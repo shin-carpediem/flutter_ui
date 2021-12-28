@@ -42,9 +42,7 @@ class TalkTileWidget extends HookConsumerWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ChatScreen(
-                    name: MypageState.name,
-                  ),
+                  builder: (context) => ChatScreen(),
                 ))
           },
         ),

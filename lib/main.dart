@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_ui/controller/add_course_controller.dart';
 import 'package:flutter_ui/controller/app_theme_controller.dart';
+import 'package:flutter_ui/controller/chat_controller.dart';
 import 'package:flutter_ui/controller/edit_course_controller.dart';
 import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:flutter_ui/controller/location_controller.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_ui/controller/signup_controller.dart';
 import 'package:flutter_ui/controller/tts_controller.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
+import 'package:flutter_ui/models/chat_model/chat_model.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
 import 'package:flutter_ui/models/course_title_modal/course_title_modal.dart';
 import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
@@ -48,6 +50,8 @@ final LocationProvider =
         (ref) => LocationController());
 final TtsProvider =
     StateNotifierProvider<TtsController, TtsState>((ref) => TtsController());
+final ChatProvider =
+    StateNotifierProvider<ChatController, ChatState>((ref) => ChatController());
 
 void main() async {
   await dotenv.load(fileName: ".env");
