@@ -2,10 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_ui/routes/news_route.dart';
-import 'package:flutter_ui/routes/talk_route.dart';
-import 'package:flutter_ui/routes/timeline_route.dart';
-import 'package:flutter_ui/routes/wallet_route.dart';
+import 'package:flutter_ui/screens/routes/news_screen.dart';
+import 'package:flutter_ui/screens/routes/talk_screen.dart';
+import 'package:flutter_ui/screens/routes/notice_screen.dart';
+import 'package:flutter_ui/screens/routes/wallet_screen.dart';
 import 'package:flutter_ui/screens/top_page.dart';
 
 class RootWidget extends StatefulWidget {
@@ -23,7 +23,7 @@ class _Footer extends State<RootWidget> {
   static const _footerIcons = [
     Icons.home,
     Icons.textsms,
-    Icons.access_time,
+    Icons.notifications,
     Icons.content_paste,
     Icons.work,
   ];
@@ -32,7 +32,7 @@ class _Footer extends State<RootWidget> {
   static const _footerItemNames = [
     'Home',
     'Talk',
-    'Timeline',
+    'Notice',
     'News',
     'Wallet',
   ];
@@ -40,7 +40,7 @@ class _Footer extends State<RootWidget> {
   var _routes = [
     TopPage(),
     Talk(),
-    TimeLine(),
+    Notice(),
     News(),
     Wallet(),
   ];

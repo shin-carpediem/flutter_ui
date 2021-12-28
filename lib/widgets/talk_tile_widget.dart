@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_ui/routes/chat_route.dart';
+import 'package:flutter_ui/screens/chat_screen.dart';
 
 class TalkTileWidget extends StatelessWidget {
   TalkTileWidget({this.icon, this.name, this.message});
