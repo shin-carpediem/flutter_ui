@@ -60,13 +60,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   // dataが取れていない時の処理
-                  if (!snapshot.hasData) return Text("Loading...");
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  }
                   return ListView.builder(
                     padding: EdgeInsets.all(8.0),
                     reverse: true,
                     itemBuilder: (_, int index) {
-                      // return Text(snapshot.toString());
-                      DocumentSnapshot doc = snapshot.data.docs;
+                      DocumentSnapshot doc = snapshot.data!.docs[index];
 
                       bool isOwnMessage = false;
                       if (doc['name'] == widget.name) {
@@ -76,8 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ? _ownMessage(doc['message'], doc['name'])
                           : _message(doc['message'], doc['name']);
                     },
-                    itemCount: snapshot.data.docs.length,
-                    // itemCount: 10,
+                    itemCount: snapshot.data!.docs.length,
                   );
                 },
               ),
@@ -132,9 +132,9 @@ class _ChatScreenState extends State<ChatScreen> {
       'message': message,
       'created_at': DateTime.now(),
     }).then((val) {
-      print("succeed");
+      // for test
     }).catchError((err) {
-      print(err);
+      throw "error";
     });
   }
 
