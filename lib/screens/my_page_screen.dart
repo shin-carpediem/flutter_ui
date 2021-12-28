@@ -60,19 +60,19 @@ class MyPageSheet extends HookConsumerWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        CircleAvatar(
-                          child: Image.network(
-                            ref.watch(MyPageProvider.select(
-                                (state) => state.iconUrl ?? '')),
-                            fit: BoxFit.contain,
-                            errorBuilder: (c, o, s) {
-                              return Icon(
-                                Icons.error,
-                                color: Colors.grey,
-                              );
-                            },
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                ref.watch(MyPageProvider.select(
+                                    (state) => state.iconUrl ?? '')),
+                              ),
+                              fit: BoxFit.contain,
+                            ),
                           ),
-                          backgroundColor: Colors.blue[100],
                         ),
                       ],
                     ),

@@ -150,6 +150,9 @@ class _ChatScreenState extends State<ChatScreen> {
             Text(message),
           ],
         ),
+        Padding(
+            padding:
+                EdgeInsets.only(left: 4.0, right: 4.0, top: 8.0, bottom: 8.0)),
         Icon(Icons.person),
       ],
     );
@@ -158,6 +161,10 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget _message(String message, String name) {
     return Row(
       children: <Widget>[
+        Icon(Icons.person),
+        Padding(
+            padding:
+                EdgeInsets.only(left: 4.0, right: 4.0, top: 8.0, bottom: 8.0)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -166,7 +173,6 @@ class _ChatScreenState extends State<ChatScreen> {
             Text(message),
           ],
         ),
-        Icon(Icons.person),
       ],
     );
   }

@@ -23,7 +23,7 @@ import 'package:flutter_ui/models/login_model/login_model.dart';
 import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
 import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:flutter_ui/models/tts_model/tts_model.dart';
-import 'package:flutter_ui/root.dart';
+import 'package:flutter_ui/widgets/footer_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
 
@@ -78,7 +78,7 @@ class MyApp extends HookConsumerWidget {
         debugShowCheckedModeBanner: false,
         title: 'flutter ui',
         theme: ThemeController.buildTheme(ThemeState.isDark),
-        home: RootWidget(),
+        home: Footer(),
       ),
     );
   }

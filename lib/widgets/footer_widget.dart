@@ -8,14 +8,14 @@ import 'package:flutter_ui/screens/routes/notice_screen.dart';
 import 'package:flutter_ui/screens/routes/wallet_screen.dart';
 import 'package:flutter_ui/screens/top_page.dart';
 
-class RootWidget extends StatefulWidget {
-  const RootWidget({Key? key}) : super(key: key);
+class Footer extends StatefulWidget {
+  const Footer({Key? key}) : super(key: key);
 
   @override
   _Footer createState() => _Footer();
 }
 
-class _Footer extends State<RootWidget> {
+class _Footer extends State<Footer> {
   int _selectedIndex = 0;
   final _bottomNavigationBarItems = <BottomNavigationBarItem>[];
 
