@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_ui/screens/routes/news_screen.dart';
-import 'package:flutter_ui/screens/routes/talk_screen.dart';
+import 'package:flutter_ui/screens/talk_list_screen.dart';
 import 'package:flutter_ui/screens/routes/notice_screen.dart';
 import 'package:flutter_ui/screens/routes/wallet_screen.dart';
 import 'package:flutter_ui/screens/top_page.dart';

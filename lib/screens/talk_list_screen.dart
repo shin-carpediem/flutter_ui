@@ -14,24 +14,8 @@ class Talk extends StatelessWidget {
         padding: EdgeInsets.all(8),
         // ignore: prefer_const_literals_to_create_immutables
         children: <Widget>[
+          // TODO: ログインユーザー 一覧を出す
           TalkTileWidget(
-            icon: Icons.person,
-            name: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            name: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            name: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            name: "hoge",
             message: "hogemaru",
           ),
         ],

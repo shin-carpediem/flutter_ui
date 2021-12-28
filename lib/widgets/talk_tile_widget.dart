@@ -7,10 +7,8 @@ import 'package:flutter_ui/screens/chat_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TalkTileWidget extends HookConsumerWidget {
-  TalkTileWidget({this.icon, this.name, this.message});
+  TalkTileWidget({this.message});
 
-  final IconData? icon;
-  final String? name;
   final String? message;
 
   @override
