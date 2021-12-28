@@ -20,6 +20,7 @@ class MyPageModel extends StateNotifier<MyPageState> {
       email: user?.email,
       name: data?['name'],
       desc: data?['desc'],
+      iconUrl: data?['icon'],
     );
   }
 

@@ -49,13 +49,32 @@ class MyPageSheet extends HookConsumerWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      ref.watch(MyPageProvider.select(
-                          (state) => state.name ?? 'No name')),
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          ref.watch(MyPageProvider.select(
+                              (state) => state.name ?? 'No name')),
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        CircleAvatar(
+                          child: Image.network(
+                            ref.watch(MyPageProvider.select(
+                                (state) => state.iconUrl ?? '')),
+                            fit: BoxFit.contain,
+                            errorBuilder: (c, o, s) {
+                              return Icon(
+                                Icons.error,
+                                color: Colors.grey,
+                              );
+                            },
+                          ),
+                          backgroundColor: Colors.blue[100],
+                        ),
+                      ],
                     ),
                     SizedBox(height: 8),
                     Text(

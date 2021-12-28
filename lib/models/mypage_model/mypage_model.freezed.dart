@@ -18,11 +18,16 @@ class _$MyPageStateTearOff {
   const _$MyPageStateTearOff();
 
   _MyPageState call(
-      {String? name, String? email, String? desc, bool isLoading = false}) {
+      {String? name,
+      String? email,
+      String? desc,
+      String? iconUrl,
+      bool isLoading = false}) {
     return _MyPageState(
       name: name,
       email: email,
       desc: desc,
+      iconUrl: iconUrl,
       isLoading: isLoading,
     );
   }
@@ -36,6 +41,7 @@ mixin _$MyPageState {
   String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get desc => throw _privateConstructorUsedError;
+  String? get iconUrl => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,7 +54,12 @@ abstract class $MyPageStateCopyWith<$Res> {
   factory $MyPageStateCopyWith(
           MyPageState value, $Res Function(MyPageState) then) =
       _$MyPageStateCopyWithImpl<$Res>;
-  $Res call({String? name, String? email, String? desc, bool isLoading});
+  $Res call(
+      {String? name,
+      String? email,
+      String? desc,
+      String? iconUrl,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -64,6 +75,7 @@ class _$MyPageStateCopyWithImpl<$Res> implements $MyPageStateCopyWith<$Res> {
     Object? name = freezed,
     Object? email = freezed,
     Object? desc = freezed,
+    Object? iconUrl = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
@@ -78,6 +90,10 @@ class _$MyPageStateCopyWithImpl<$Res> implements $MyPageStateCopyWith<$Res> {
       desc: desc == freezed
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iconUrl: iconUrl == freezed
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       isLoading: isLoading == freezed
           ? _value.isLoading
@@ -94,7 +110,12 @@ abstract class _$MyPageStateCopyWith<$Res>
           _MyPageState value, $Res Function(_MyPageState) then) =
       __$MyPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, String? email, String? desc, bool isLoading});
+  $Res call(
+      {String? name,
+      String? email,
+      String? desc,
+      String? iconUrl,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -112,6 +133,7 @@ class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
     Object? name = freezed,
     Object? email = freezed,
     Object? desc = freezed,
+    Object? iconUrl = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_MyPageState(
@@ -127,6 +149,10 @@ class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
               as String?,
+      iconUrl: iconUrl == freezed
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -139,7 +165,7 @@ class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
 
 class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
   const _$_MyPageState(
-      {this.name, this.email, this.desc, this.isLoading = false});
+      {this.name, this.email, this.desc, this.iconUrl, this.isLoading = false});
 
   @override
   final String? name;
@@ -147,13 +173,15 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
   final String? email;
   @override
   final String? desc;
+  @override
+  final String? iconUrl;
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MyPageState(name: $name, email: $email, desc: $desc, isLoading: $isLoading)';
+    return 'MyPageState(name: $name, email: $email, desc: $desc, iconUrl: $iconUrl, isLoading: $isLoading)';
   }
 
   @override
@@ -164,6 +192,7 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('desc', desc))
+      ..add(DiagnosticsProperty('iconUrl', iconUrl))
       ..add(DiagnosticsProperty('isLoading', isLoading));
   }
 
@@ -175,12 +204,14 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.desc, desc) || other.desc == desc) &&
+            (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, desc, isLoading);
+  int get hashCode =>
+      Object.hash(runtimeType, name, email, desc, iconUrl, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -193,6 +224,7 @@ abstract class _MyPageState implements MyPageState {
       {String? name,
       String? email,
       String? desc,
+      String? iconUrl,
       bool isLoading}) = _$_MyPageState;
 
   @override
@@ -201,6 +233,8 @@ abstract class _MyPageState implements MyPageState {
   String? get email;
   @override
   String? get desc;
+  @override
+  String? get iconUrl;
   @override
   bool get isLoading;
   @override

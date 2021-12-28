@@ -5,10 +5,10 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_ui/routes/chat_route.dart';
 
 class TalkTileWidget extends StatelessWidget {
-  TalkTileWidget({this.icon, this.username, this.message});
+  TalkTileWidget({this.icon, this.name, this.message});
 
   final IconData? icon;
-  final String? username;
+  final String? name;
   final String? message;
 
   @override
@@ -23,14 +23,14 @@ class TalkTileWidget extends StatelessWidget {
             child: Icon(icon),
             backgroundColor: Colors.blue[300],
           ),
-          title: Text(username ?? 'No title'),
+          title: Text(name ?? 'No title'),
           subtitle: Text(message ?? 'No subtitle'),
           onTap: () => {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ChatScreen(
-                    username: this.username,
+                    name: name,
                   ),
                 ))
           },

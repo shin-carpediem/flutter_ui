@@ -12,10 +12,10 @@ class CourseCard extends ChangeNotifier {
         await FirebaseFirestore.instance.collection('courseCard').get();
 
     final List<CourseCardModel> courseCards =
-        snapshot.docs.map((DocumentSnapshot document) {
-      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+        snapshot.docs.map((DocumentSnapshot doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
-      final String id = document.id;
+      final String id = doc.id;
       final String key = id.toString();
       final String title = data['title'];
       final String subtitle = data['subtitle'];

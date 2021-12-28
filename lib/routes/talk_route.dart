@@ -16,42 +16,22 @@ class Talk extends StatelessWidget {
         children: <Widget>[
           TalkTileWidget(
             icon: Icons.person,
-            username: "hoge",
+            name: "hoge",
             message: "hogemaru",
           ),
           TalkTileWidget(
             icon: Icons.person,
-            username: "hoge",
+            name: "hoge",
             message: "hogemaru",
           ),
           TalkTileWidget(
             icon: Icons.person,
-            username: "hoge",
+            name: "hoge",
             message: "hogemaru",
           ),
           TalkTileWidget(
             icon: Icons.person,
-            username: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            username: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            username: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            username: "hoge",
-            message: "hogemaru",
-          ),
-          TalkTileWidget(
-            icon: Icons.person,
-            username: "hoge",
+            name: "hoge",
             message: "hogemaru",
           ),
         ],

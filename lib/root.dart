@@ -1,12 +1,12 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_ui/routes/home_route.dart';
 import 'package:flutter_ui/routes/news_route.dart';
 import 'package:flutter_ui/routes/talk_route.dart';
 import 'package:flutter_ui/routes/timeline_route.dart';
 import 'package:flutter_ui/routes/wallet_route.dart';
+import 'package:flutter_ui/screens/top_page.dart';
 
 class RootWidget extends StatefulWidget {
   const RootWidget({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _Footer extends State<RootWidget> {
   ];
 
   var _routes = [
-    Home(),
+    TopPage(),
     Talk(),
     TimeLine(),
     News(),

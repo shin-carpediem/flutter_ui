@@ -10,6 +10,7 @@ class MyPageState with _$MyPageState {
     String? name,
     String? email,
     String? desc,
+    String? iconUrl,
     @Default(false) bool isLoading,
   }) = _MyPageState;
 }

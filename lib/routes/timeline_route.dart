@@ -7,7 +7,7 @@ class TimeLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TimeLIne'),
+        title: Text('TimeLine'),
       ),
       body: ListView(
         padding: EdgeInsets.all(8),
