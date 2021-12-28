@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+// TODO: ハイライトされてない
 class HighlightedText extends StatelessWidget {
   HighlightedText({
     this.wholeString,
