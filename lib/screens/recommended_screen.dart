@@ -19,12 +19,12 @@ class Recommended extends StatelessWidget {
         Consumer<CourseCard>(builder: (context, model, child) {
           final dynamic user = FirebaseAuth.instance.currentUser;
           return Container(
-            padding: EdgeInsets.only(top: 32, bottom: 8, left: 8),
+            padding: const EdgeInsets.only(top: 32, bottom: 8, left: 8),
             alignment: Alignment.centerLeft,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Recommended',
                   style: TextStyle(
                     fontSize: 20,
@@ -47,7 +47,7 @@ class Recommended extends StatelessWidget {
                           if (added != null && added) {
                             final snackBar = SnackBar(
                               backgroundColor: Colors.blue,
-                              content: Text('New course is added!'),
+                              content: const Text('New course is added!'),
                             );
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
@@ -64,7 +64,7 @@ class Recommended extends StatelessWidget {
                           );
                         }
                       },
-                      icon: Icon(Icons.add),
+                      icon: const Icon(Icons.add),
                     ),
                     IconButton(
                       onPressed: () async {
@@ -86,7 +86,7 @@ class Recommended extends StatelessWidget {
                           );
                         }
                       },
-                      icon: Icon(Icons.person),
+                      icon: const Icon(Icons.person),
                     ),
                   ],
                 ),
@@ -112,12 +112,12 @@ class Recommended extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 4),
+                      padding: const EdgeInsets.symmetric(vertical: 4),
                       child: ListTile(
                         leading: Container(
                           width: 48,
                           height: 48,
-                          padding: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(8),
@@ -157,7 +157,7 @@ class Recommended extends StatelessWidget {
                                       );
                                       model.fetchCourseCard();
                                     },
-                                    icon: Icon(Icons.favorite),
+                                    icon: const Icon(Icons.favorite),
                                     color: Colors.red,
                                     iconSize: 20,
                                   )
@@ -171,13 +171,13 @@ class Recommended extends StatelessWidget {
                                       );
                                       model.fetchCourseCard();
                                     },
-                                    icon: Icon(Icons.favorite_border),
+                                    icon: const Icon(Icons.favorite_border),
                                     color: Colors.grey,
                                     iconSize: 20,
                                   ),
                                 Text(
                                   courseCard.favoriteNum.toString(),
-                                  style: TextStyle(fontSize: 14),
+                                  style: const TextStyle(fontSize: 14),
                                 ),
                               ],
                             ),
@@ -204,7 +204,7 @@ class Recommended extends StatelessWidget {
                                   .showSnackBar(snackBar);
                             }
                           },
-                          icon: Icon(Icons.more_horiz),
+                          icon: const Icon(Icons.more_horiz),
                         ),
                       ),
                     ),

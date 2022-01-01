@@ -8,10 +8,10 @@ class Talk extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Talk'),
+        title: const Text('Talk'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         // ignore: prefer_const_literals_to_create_immutables
         children: <Widget>[
           // TODO: ログインユーザー 一覧を出す

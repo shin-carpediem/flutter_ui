@@ -9,13 +9,13 @@ class TrendingCourses extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: 32,
               bottom: 8,
               left: 8,
             ),
             alignment: Alignment.centerLeft,
-            child: Text(
+            child: const Text(
               'Trending Courses',
               style: TextStyle(
                 fontSize: 20,
@@ -28,12 +28,12 @@ class TrendingCourses extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
                   Container(
                     color: Colors.grey[100],
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.school,
                         color: Colors.blue,
@@ -41,10 +41,10 @@ class TrendingCourses extends StatelessWidget {
                       trailing: Text('Communication Skills'),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Container(
                     color: Colors.grey[100],
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.school,
                         color: Colors.blue,
@@ -52,10 +52,10 @@ class TrendingCourses extends StatelessWidget {
                       trailing: Text('Digital Marketing 101'),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Container(
                     color: Colors.grey[100],
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.school,
                         color: Colors.blue,
@@ -63,11 +63,11 @@ class TrendingCourses extends StatelessWidget {
                       trailing: Text('UX Research'),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Container(
                     width: double.infinity,
                     child: TextButton(
-                        child: Text('View trending list'),
+                        child: const Text('View trending list'),
                         onPressed: () {},
                         style: TextButton.styleFrom(
                           primary: Colors.white,
@@ -75,7 +75,7 @@ class TrendingCourses extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 20),
                         )),
                   ),
                 ],

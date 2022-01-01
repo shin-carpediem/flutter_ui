@@ -60,7 +60,7 @@ class TalkTileWidget extends HookConsumerWidget {
       secondaryActions: <Widget>[
         IconSlideAction(
           color: Colors.black45,
-          iconWidget: Text(
+          iconWidget: const Text(
             "Hide",
             style: TextStyle(color: Colors.white),
           ),
@@ -68,7 +68,7 @@ class TalkTileWidget extends HookConsumerWidget {
         ),
         IconSlideAction(
           color: Colors.red,
-          iconWidget: Text(
+          iconWidget: const Text(
             "Delete",
             style: TextStyle(color: Colors.white),
           ),

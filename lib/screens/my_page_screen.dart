@@ -21,7 +21,7 @@ class MyPageSheet extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My page'),
+        title: const Text('My page'),
         actions: [
           IconButton(
             onPressed: () async {
@@ -36,7 +36,7 @@ class MyPageSheet extends HookConsumerWidget {
               );
               Mypagecontroller.fetchUser();
             },
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
           ),
         ],
       ),
@@ -44,7 +44,7 @@ class MyPageSheet extends HookConsumerWidget {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -55,7 +55,7 @@ class MyPageSheet extends HookConsumerWidget {
                         Text(
                           ref.watch(MyPageProvider.select(
                               (state) => state.name ?? 'No name')),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -76,20 +76,20 @@ class MyPageSheet extends HookConsumerWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       ref.watch(MyPageProvider.select(
                           (state) => state.email ?? 'No email')),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       ref.watch(MyPageProvider.select(
                           (state) => state.desc ?? 'No desc')),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     GestureDetector(
                       onTap: () => launchGitHub(),
-                      child: Text(
+                      child: const Text(
                         'See the source code of this app',
                         style: TextStyle(
                           color: Colors.blue,
@@ -97,13 +97,13 @@ class MyPageSheet extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextButton(
                       onPressed: () async {
                         await Mypagecontroller.logout();
                         Navigator.of(context).pop();
                       },
-                      child: Text('Log out'),
+                      child: const Text('Log out'),
                     ),
                     TextButton(
                       onPressed: () {
@@ -122,20 +122,20 @@ class MyPageSheet extends HookConsumerWidget {
                           locale: LocaleType.zh,
                         );
                       },
-                      child: Text("Choose DateTime."),
+                      child: const Text("Choose DateTime."),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         LocationController.determinePosition();
                       },
-                      child: Text("Get your location."),
+                      child: const Text("Get your location."),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       "Your location is  " + LocationState.location,
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () async {
                         await Navigator.of(context).push(
@@ -146,13 +146,13 @@ class MyPageSheet extends HookConsumerWidget {
                           ),
                         );
                       },
-                      child: Text("Open Google map"),
+                      child: const Text("Open Google map"),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(height: 16),
-                        Text(
+                        const SizedBox(height: 16),
+                        const Text(
                           "Speech to Text",
                           style: TextStyle(
                             fontSize: 20,

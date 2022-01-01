@@ -15,12 +15,12 @@ class EditProfilePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit profile'),
+        title: const Text('Edit profile'),
       ),
       // TODO: something wrong
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -36,7 +36,7 @@ class EditProfilePage extends HookConsumerWidget {
                     editProfilecontroller.setName();
                   },
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: editProfilecontroller.descController,
                   decoration: InputDecoration(
@@ -47,7 +47,7 @@ class EditProfilePage extends HookConsumerWidget {
                     editProfilecontroller.setDesc();
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () async {
                     try {
@@ -61,7 +61,7 @@ class EditProfilePage extends HookConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text("Update"),
+                  child: const Text("Update"),
                 ),
               ],
             ),

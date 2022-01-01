@@ -12,11 +12,11 @@ class SignUpPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: const Text('Sign Up'),
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -31,7 +31,7 @@ class SignUpPage extends HookConsumerWidget {
                     signUpController.setEmail(text);
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 TextField(
@@ -44,7 +44,7 @@ class SignUpPage extends HookConsumerWidget {
                   },
                   obscureText: true,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 ElevatedButton(
@@ -65,14 +65,14 @@ class SignUpPage extends HookConsumerWidget {
                     style: TextStyle(color: customWhite),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(
+                  child: const Text(
                     "Have you already created your account?",
                     style: TextStyle(
                       color: Colors.blue,

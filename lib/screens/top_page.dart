@@ -63,12 +63,12 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 SlideTransition(
                   position: _animation1,
-                  child: Header(title: 'flutter_ui'),
+                  child: const Header(title: 'flutter_ui'),
                 ),
                 SlideTransition(
                   position: _animation2,
@@ -97,7 +97,7 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
                 .then((_) => _controller.reverse());
           });
         },
-        child: Icon(Icons.list),
+        child: const Icon(Icons.list),
       ),
     );
   }

@@ -20,7 +20,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -35,7 +35,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     email = text;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () async {
                     if (email != null) {
@@ -57,7 +57,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text("Reset password"),
+                  child: const Text("Reset password"),
                 ),
               ],
             ),

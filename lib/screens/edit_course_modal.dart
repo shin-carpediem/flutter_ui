@@ -20,8 +20,8 @@ void modalBottomSheet(
           Column(
             children: [
               ListTile(
-                leading: Icon(Icons.edit),
-                title: Text('Edit'),
+                leading: const Icon(Icons.edit),
+                title: const Text('Edit'),
                 onTap: () {
                   editCoursesSheet(
                     context,
@@ -33,8 +33,8 @@ void modalBottomSheet(
             ],
           ),
           ListTile(
-            leading: Icon(Icons.delete),
-            title: Text('Delete'),
+            leading: const Icon(Icons.delete),
+            title: const Text('Delete'),
             onTap: () async {
               await model.deleteCourse(courseCard);
               Navigator.pop(context);

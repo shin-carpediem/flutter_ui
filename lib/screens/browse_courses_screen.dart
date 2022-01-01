@@ -10,10 +10,10 @@ class BrowsCourseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Items'),
+        title: const Text('Search Items'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Consumer<CourseTitle>(builder: (context, model, child) {
           return Column(
             children: [

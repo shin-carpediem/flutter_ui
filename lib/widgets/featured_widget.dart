@@ -28,13 +28,13 @@ class Featured extends StatelessWidget {
                         Stack(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: 24),
+                              margin: const EdgeInsets.only(top: 24),
                               child: Card(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 8,
                                     vertical: 32,
                                   ),
@@ -47,10 +47,10 @@ class Featured extends StatelessWidget {
                                       children: [
                                         Text(
                                           courseCard.title,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        SizedBox(height: 16),
+                                        const SizedBox(height: 16),
                                         Text(
                                           courseCard.subtitle,
                                           textAlign: TextAlign.center,
@@ -87,7 +87,7 @@ class Featured extends StatelessWidget {
                 left: 8,
               ),
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: const Text(
                 'Featured',
                 style: TextStyle(
                   fontSize: 20,
@@ -95,7 +95,7 @@ class Featured extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Stack(
               children: [
                 Align(
@@ -104,7 +104,7 @@ class Featured extends StatelessWidget {
                     onPressed: () => buttonCarouselController.previousPage(
                       duration: Duration(milliseconds: 300),
                     ),
-                    icon: Icon(Icons.navigate_before),
+                    icon: const Icon(Icons.navigate_before),
                   ),
                 ),
                 CarouselSlider(
@@ -121,7 +121,7 @@ class Featured extends StatelessWidget {
                     onPressed: () => buttonCarouselController.nextPage(
                       duration: Duration(milliseconds: 300),
                     ),
-                    icon: Icon(Icons.navigate_next),
+                    icon: const Icon(Icons.navigate_next),
                   ),
                 ),
               ],

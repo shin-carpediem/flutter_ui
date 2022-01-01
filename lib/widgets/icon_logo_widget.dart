@@ -18,7 +18,7 @@ class IconLogo extends StatelessWidget {
       child: Container(
         width: size,
         height: size,
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         color: Colors.black,
         child: Image.network(
           url,

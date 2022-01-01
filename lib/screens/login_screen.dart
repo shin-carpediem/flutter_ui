@@ -13,11 +13,11 @@ class LogInPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Log In'),
+        title: const Text('Log In'),
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -32,7 +32,7 @@ class LogInPage extends HookConsumerWidget {
                     loginController.setEmail(text);
                   },
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -43,7 +43,7 @@ class LogInPage extends HookConsumerWidget {
                   },
                   obscureText: true,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () async {
                     try {
@@ -57,9 +57,9 @@ class LogInPage extends HookConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text("Log In"),
+                  child: const Text("Log In"),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 GestureDetector(
                   onTap: () async {
                     await Navigator.of(context).push(
@@ -70,7 +70,7 @@ class LogInPage extends HookConsumerWidget {
                       ),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     "Didn't you registered yet?",
                     style: TextStyle(
                       color: Colors.blue,
@@ -78,7 +78,7 @@ class LogInPage extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 GestureDetector(
                   onTap: () async {
                     await Navigator.of(context).push(
@@ -89,7 +89,7 @@ class LogInPage extends HookConsumerWidget {
                       ),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     "Reset password",
                     style: TextStyle(
                       color: Colors.blue,

@@ -11,11 +11,11 @@ class AddCoursePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Course'),
+        title: const Text('Add Course'),
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -30,7 +30,7 @@ class AddCoursePage extends HookConsumerWidget {
                     addCourseController.logoUrl = text;
                   },
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -40,7 +40,7 @@ class AddCoursePage extends HookConsumerWidget {
                     addCourseController.title = text;
                   },
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -50,7 +50,7 @@ class AddCoursePage extends HookConsumerWidget {
                     addCourseController.subtitle = text;
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () async {
                     try {
@@ -64,7 +64,7 @@ class AddCoursePage extends HookConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text("Save"),
+                  child: const Text("Save"),
                 ),
               ],
             ),

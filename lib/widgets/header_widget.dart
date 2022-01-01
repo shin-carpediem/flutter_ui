@@ -21,12 +21,12 @@ class Header extends HookConsumerWidget {
       children: <Widget>[
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 80,
         ),
         Switch.adaptive(

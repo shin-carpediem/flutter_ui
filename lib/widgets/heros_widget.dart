@@ -14,7 +14,7 @@ class Heros extends StatelessWidget {
       color: Colors.blue[50],
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -22,7 +22,7 @@ class Heros extends StatelessWidget {
               width: 150,
               child: Text('Choose from over 100,000 online video courses'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -33,13 +33,13 @@ class Heros extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('Browse all courses'),
+              child: const Text('Browse all courses'),
               style: TextButton.styleFrom(
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 20,
                     horizontal: 32,
                   )),

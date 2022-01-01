@@ -56,12 +56,12 @@ class _CoursesPageState extends State<CoursesPage>
           height: double.infinity,
           child: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
                   SlideTransition(
                     position: _animationHorizontal,
-                    child: Header(title: 'Courses'),
+                    child: const Header(title: 'Courses'),
                   ),
                   SlideTransition(
                     position: _animationVertical,
@@ -79,7 +79,7 @@ class _CoursesPageState extends State<CoursesPage>
             Navigator.of(context).pop();
           });
         },
-        child: Icon(Icons.keyboard_backspace),
+        child: const Icon(Icons.keyboard_backspace),
       ),
     );
   }
