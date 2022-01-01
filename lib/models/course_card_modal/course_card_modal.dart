@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, unused_element
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';

@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
@@ -75,13 +75,13 @@ class ModalBottomSheetWidget extends HookConsumerWidget {
     final editCourseController = ref.read(EditCourseProvider.notifier);
 
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: editCourseController.logoUrlController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: "Logo",
             ),
@@ -90,10 +90,10 @@ class ModalBottomSheetWidget extends HookConsumerWidget {
               editCourseController.setlogoUrl(text);
             },
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           TextField(
             controller: editCourseController.titleController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: "Title",
             ),
@@ -101,10 +101,10 @@ class ModalBottomSheetWidget extends HookConsumerWidget {
               editCourseController.setTitle(text);
             },
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           TextField(
             controller: editCourseController.subtitleController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: "Subtitle",
             ),
@@ -112,7 +112,7 @@ class ModalBottomSheetWidget extends HookConsumerWidget {
               editCourseController.setSubTitle(text);
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: editCourseController.isUpdated(
               editCourseState.title,
@@ -135,7 +135,7 @@ class ModalBottomSheetWidget extends HookConsumerWidget {
                     }
                   }
                 : null,
-            child: Text("Update"),
+            child: const Text("Update"),
           ),
         ],
       ),

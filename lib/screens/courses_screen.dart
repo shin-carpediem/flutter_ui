@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
+// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/widgets/header_widget.dart';
@@ -21,18 +21,18 @@ class _CoursesPageState extends State<CoursesPage>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
     _animationHorizontal = Tween<Offset>(
-      begin: Offset(-1.0, 0.0),
+      begin: const Offset(-1.0, 0.0),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOutBack,
     ));
     _animationVertical = Tween<Offset>(
-      begin: Offset(0.0, 1.5),
+      begin: const Offset(0.0, 1.5),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _controller,

@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables, non_constant_identifier_names
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, non_constant_identifier_names
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/main.dart';
@@ -21,21 +21,21 @@ class ChatScreen extends HookConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () => {},
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: IconButton(
-              icon: Icon(Icons.call),
+              icon: const Icon(Icons.call),
               onPressed: () => {},
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: IconButton(
-              icon: Icon(Icons.dehaze),
+              icon: const Icon(Icons.dehaze),
               onPressed: () => {},
             ),
           ),
@@ -56,10 +56,10 @@ class ChatScreen extends HookConsumerWidget {
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   // dataが取れていない時の処理
                   if (!snapshot.hasData) {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   }
                   return ListView.builder(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     reverse: true,
                     itemBuilder: (_, int index) {
                       DocumentSnapshot doc = snapshot.data!.docs[index];
@@ -85,28 +85,28 @@ class ChatScreen extends HookConsumerWidget {
           children: <Widget>[
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.camera_alt),
+              icon: const Icon(Icons.camera_alt),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.photo),
+              icon: const Icon(Icons.photo),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.mic),
+              icon: const Icon(Icons.mic),
             ),
             // Expanded は余った余白を全て使う
             Expanded(
               child: TextField(
                 controller: ChatController.chatController,
                 onSubmitted: ChatController.handleSubmit,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Input message',
                 ),
               ),
             ),
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.send,
                 color: Colors.blue,
               ),

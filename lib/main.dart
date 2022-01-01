@@ -16,6 +16,7 @@ import 'package:flutter_ui/controller/tts_controller.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/chat_model/chat_model.dart';
+import 'package:flutter_ui/models/chat_uesr_model/chat_user_model.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
 import 'package:flutter_ui/models/course_title_modal/course_title_modal.dart';
 import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
@@ -77,6 +78,8 @@ class MyApp extends HookConsumerWidget {
             create: (ref) => CourseCard()..fetchCourseCard()),
         provider.ChangeNotifierProvider<CourseTitle>(
             create: (ref) => CourseTitle()..fetchCourseTitle()),
+        provider.ChangeNotifierProvider<ChatUser>(
+            create: (ref) => ChatUser()..fetchChatUser()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
