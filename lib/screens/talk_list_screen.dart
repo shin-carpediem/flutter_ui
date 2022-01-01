@@ -34,17 +34,7 @@ class Talk extends StatelessWidget {
                         child: ListTile(
                           key: key,
                           leading: CircleAvatar(
-                            child: Image.network(
-                              // TODO: 表示されない
-                              chatUser.iconUrl,
-                              fit: BoxFit.contain,
-                              errorBuilder: (c, o, s) {
-                                return const Icon(
-                                  Icons.error,
-                                  color: Colors.black45,
-                                );
-                              },
-                            ),
+                            backgroundImage: NetworkImage(chatUser.iconUrl),
                           ),
                           title: Text(chatUser.name),
                           subtitle: Text(chatUser.desc),

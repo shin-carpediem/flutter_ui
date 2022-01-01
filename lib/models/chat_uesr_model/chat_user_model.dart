@@ -17,14 +17,14 @@ class ChatUser extends ChangeNotifier {
       final String name = data['name'];
       final String email = data['email'];
       final String desc = data['desc'];
-      final String logoUrl = data['logoUrl'] ?? "";
+      final String iconUrl = data['iconUrl'] ?? "https://picsum.photos/200";
 
       return ChatUserModel(
         id,
         name,
         email,
         desc,
-        logoUrl,
+        iconUrl,
       );
     }).toList();
 
