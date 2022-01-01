@@ -1,10 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, non_constant_identifier_names
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/widgets/chat/message_widget.dart';
 import 'package:flutter_ui/widgets/chat/own_message_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+// import 'package:provider/provider.dart';
 
 class ChatScreen extends HookConsumerWidget {
   @override
@@ -12,11 +14,22 @@ class ChatScreen extends HookConsumerWidget {
     final ChatState = ref.watch(ChatProvider);
     final ChatController = ref.read(ChatProvider.notifier);
 
+    // final dynamic uid = FirebaseAuth.instance.currentUser!.uid;
+    // final snapshot =
+    //     FirebaseFirestore.instance.collection('users').doc(uid).get();
+    // print(snapshot);
+    // final data = snapshot.data();
+    // final dynamic partnerId = data?['partnerId'];
+    // print(partnerId);
+    // final partnerSnapshot =
+    //     FirebaseFirestore.instance.collection('users').doc(partnerId).get();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          ChatState.name ?? 'No name',
-        ),
+        // title: Text(
+        //   partnerSnapshot.name ?? 'No name',
+        // ),
+        title: const Text('No name'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(4.0),
@@ -49,6 +62,7 @@ class ChatScreen extends HookConsumerWidget {
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('chat')
+                    // .where('partnerUid', isEqualTo: partnerSnapshot.partnerUid)
                     .orderBy('created_at', descending: true)
                     .snapshots(),
                 // builderはstreamが更新される度に呼ばれる
@@ -65,12 +79,12 @@ class ChatScreen extends HookConsumerWidget {
                       DocumentSnapshot doc = snapshot.data!.docs[index];
 
                       bool isOwnMessage = false;
-                      if (doc['name'] == ChatState.name) {
+                      if (doc['uid'] == ChatState.uid) {
                         isOwnMessage = true;
                       }
                       return isOwnMessage
-                          ? ownMessage(doc['message'], doc['name'])
-                          : message(doc['message'], doc['name']);
+                          ? ownMessage(doc['message'], doc['uid'])
+                          : message(doc['message'], doc['uid']);
                     },
                     itemCount: snapshot.data!.docs.length,
                   );

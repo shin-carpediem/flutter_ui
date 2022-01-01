@@ -10,13 +10,15 @@ class ChatController extends StateNotifier<ChatState> {
   final chatController = TextEditingController();
 
   void handleSubmit(String message) async {
+  // void handleSubmit(String message, dynamic partnerUid) async {
     chatController.text = "";
     final dynamic uid = FirebaseAuth.instance.currentUser!.uid;
     final snapshot =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
     final data = snapshot.data();
     await FirebaseFirestore.instance.collection('chat').add({
-      'name': data?['name'],
+      'uid': data?['uid'],
+      // 'partnerUid': partnerUid,
       'message': message,
       'created_at': DateTime.now(),
     }).then((value) {
@@ -26,7 +28,8 @@ class ChatController extends StateNotifier<ChatState> {
     });
 
     state = state.copyWith(
-      name: data?['name'],
+      uid: uid,
+      // partnerUid: partnerUid,
       message: data?['message'],
       createdAt: data?['created_at'],
     );

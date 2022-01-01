@@ -1,5 +1,3 @@
-// ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_ui/core/util/tts.dart';
@@ -12,6 +10,8 @@ import 'package:flutter_ui/screens/edit_course_modal.dart';
 import 'package:flutter_ui/screens/my_page_screen.dart';
 
 class Recommended extends StatelessWidget {
+  const Recommended({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,9 +45,9 @@ class Recommended extends StatelessWidget {
                           );
 
                           if (added != null && added) {
-                            final snackBar = SnackBar(
+                            const snackBar = SnackBar(
                               backgroundColor: Colors.blue,
-                              content: const Text('New course is added!'),
+                              content: Text('New course is added!'),
                             );
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
@@ -100,7 +100,7 @@ class Recommended extends StatelessWidget {
           final dynamic uid = FirebaseAuth.instance.currentUser?.uid;
 
           if (courseCards == null) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
 
           final List<Widget> widgets = courseCards
@@ -131,7 +131,7 @@ class Recommended extends StatelessWidget {
                               courseCard.logoUrl,
                               fit: BoxFit.contain,
                               errorBuilder: (c, o, s) {
-                                return Icon(
+                                return const Icon(
                                   Icons.error,
                                   color: Colors.red,
                                 );
@@ -196,7 +196,7 @@ class Recommended extends StatelessWidget {
                                 // courseCard.logoUrl,
                               );
                             } else {
-                              final snackBar = SnackBar(
+                              const snackBar = SnackBar(
                                 content: Text('This menu requires your login.'),
                                 backgroundColor: Colors.grey,
                               );

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore, sized_box_for_whitespace, avoid_unnecessary_containers, use_key_in_widget_constructors, unused_field, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -59,14 +59,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    ProviderScope(
+    const ProviderScope(
       child: MyApp(),
     ),
   );
 }
 
-// ignore: use_key_in_widget_constructors
 class MyApp extends HookConsumerWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeState = ref.watch(ThemeProvider);
@@ -85,7 +86,7 @@ class MyApp extends HookConsumerWidget {
         debugShowCheckedModeBanner: false,
         title: 'flutter ui',
         theme: ThemeController.buildTheme(ThemeState.isDark),
-        home: Footer(),
+        home: const Footer(),
       ),
     );
   }

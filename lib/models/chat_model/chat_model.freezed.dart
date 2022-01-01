@@ -17,9 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ChatStateTearOff {
   const _$ChatStateTearOff();
 
-  _ChatState call({String? name, String? message, Timestamp? createdAt}) {
+  _ChatState call(
+      {dynamic uid,
+      dynamic partnerUid,
+      String? message,
+      Timestamp? createdAt}) {
     return _ChatState(
-      name: name,
+      uid: uid,
+      partnerUid: partnerUid,
       message: message,
       createdAt: createdAt,
     );
@@ -31,7 +36,8 @@ const $ChatState = _$ChatStateTearOff();
 
 /// @nodoc
 mixin _$ChatState {
-  String? get name => throw _privateConstructorUsedError;
+  dynamic get uid => throw _privateConstructorUsedError;
+  dynamic get partnerUid => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Timestamp? get createdAt => throw _privateConstructorUsedError;
 
@@ -44,7 +50,8 @@ mixin _$ChatState {
 abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res>;
-  $Res call({String? name, String? message, Timestamp? createdAt});
+  $Res call(
+      {dynamic uid, dynamic partnerUid, String? message, Timestamp? createdAt});
 }
 
 /// @nodoc
@@ -57,15 +64,20 @@ class _$ChatStateCopyWithImpl<$Res> implements $ChatStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? uid = freezed,
+    Object? partnerUid = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      partnerUid: partnerUid == freezed
+          ? _value.partnerUid
+          : partnerUid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -84,7 +96,8 @@ abstract class _$ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
           _ChatState value, $Res Function(_ChatState) then) =
       __$ChatStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, String? message, Timestamp? createdAt});
+  $Res call(
+      {dynamic uid, dynamic partnerUid, String? message, Timestamp? createdAt});
 }
 
 /// @nodoc
@@ -98,15 +111,20 @@ class __$ChatStateCopyWithImpl<$Res> extends _$ChatStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? uid = freezed,
+    Object? partnerUid = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_ChatState(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      partnerUid: partnerUid == freezed
+          ? _value.partnerUid
+          : partnerUid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -122,10 +140,12 @@ class __$ChatStateCopyWithImpl<$Res> extends _$ChatStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
-  const _$_ChatState({this.name, this.message, this.createdAt});
+  const _$_ChatState({this.uid, this.partnerUid, this.message, this.createdAt});
 
   @override
-  final String? name;
+  final dynamic uid;
+  @override
+  final dynamic partnerUid;
   @override
   final String? message;
   @override
@@ -133,7 +153,7 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatState(name: $name, message: $message, createdAt: $createdAt)';
+    return 'ChatState(uid: $uid, partnerUid: $partnerUid, message: $message, createdAt: $createdAt)';
   }
 
   @override
@@ -141,7 +161,8 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ChatState'))
-      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('uid', uid))
+      ..add(DiagnosticsProperty('partnerUid', partnerUid))
       ..add(DiagnosticsProperty('message', message))
       ..add(DiagnosticsProperty('createdAt', createdAt));
   }
@@ -151,14 +172,21 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ChatState &&
-            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality()
+                .equals(other.partnerUid, partnerUid) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(partnerUid),
+      message,
+      createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -168,10 +196,15 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
 
 abstract class _ChatState implements ChatState {
   const factory _ChatState(
-      {String? name, String? message, Timestamp? createdAt}) = _$_ChatState;
+      {dynamic uid,
+      dynamic partnerUid,
+      String? message,
+      Timestamp? createdAt}) = _$_ChatState;
 
   @override
-  String? get name;
+  dynamic get uid;
+  @override
+  dynamic get partnerUid;
   @override
   String? get message;
   @override

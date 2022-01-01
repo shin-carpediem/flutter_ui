@@ -39,7 +39,7 @@ class _Footer extends State<Footer> {
 
   var _routes = [
     TopPage(),
-    Talk(),
+    const Talk(),
     Notice(),
     News(),
     Wallet(),

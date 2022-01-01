@@ -8,7 +8,8 @@ part 'chat_model.freezed.dart';
 @freezed
 class ChatState with _$ChatState {
   const factory ChatState({
-    String? name,
+    dynamic uid,
+    dynamic partnerUid,
     String? message,
     Timestamp? createdAt, 
   }) = _ChatState;

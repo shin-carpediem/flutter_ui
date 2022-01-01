@@ -14,15 +14,13 @@ class ChatUser extends ChangeNotifier {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
       final String id = doc.id;
-      final String key = id.toString();
       final String name = data['name'];
       final String email = data['email'];
       final String desc = data['desc'];
-      final String logoUrl = data['logoUrl'];
+      final String logoUrl = data['logoUrl'] ?? "";
 
       return ChatUserModel(
         id,
-        key,
         name,
         email,
         desc,
