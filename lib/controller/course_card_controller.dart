@@ -21,6 +21,13 @@ class CourseCardController extends StateNotifier<CourseCardState> {
     courseCards.insert(newIndex, reorderedCourseCard);
   }
 
+  Future deleteCourse(doc) {
+    return FirebaseFirestore.instance
+        .collection('courseCard')
+        .doc(doc.id)
+        .delete();
+  }
+
   Future changefavorite(
     String id, // courseCardのID
     String uid,

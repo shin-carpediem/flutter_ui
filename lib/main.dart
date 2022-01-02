@@ -14,7 +14,6 @@ import 'package:flutter_ui/controller/login_controller.dart';
 import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/controller/signup_controller.dart';
 import 'package:flutter_ui/controller/tts_controller.dart';
-import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/chat_model/chat_model.dart';

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/util/tts.dart';
+import 'package:flutter_ui/screens/edit_course_modal.dart';
 
 Widget recommendedWidget(
   CourseCardState,
@@ -91,14 +92,12 @@ Widget recommendedWidget(
         trailing: IconButton(
           onPressed: () {
             if (user != null) {
-              // modalBottomSheet(
-              //   context,
-              //   courseCard,
-              //   model,
-              // // courseCard.title,
-              // // courseCard.subtitle,
-              // // courseCard.logoUrl,
-              // );
+              modalBottomSheet(
+                CourseCardState,
+                CourseCardController,
+                context,
+                doc,
+              );
             } else {
               const snackBar = SnackBar(
                 content: Text('This menu requires your login.'),

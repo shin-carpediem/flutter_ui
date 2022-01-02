@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/course_card_domain.dart';
@@ -7,9 +7,10 @@ import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void modalBottomSheet(
+  CourseCardState,
+  CourseCardController,
   BuildContext context,
-  CourseCardModel courseCard,
-  CourseCard model,
+  doc,
 ) {
   showModalBottomSheet<void>(
     context: context,
@@ -25,8 +26,8 @@ void modalBottomSheet(
                 onTap: () {
                   editCoursesSheet(
                     context,
-                    courseCard,
-                    model,
+                    doc,
+                    doc,
                   );
                 },
               ),
@@ -36,14 +37,13 @@ void modalBottomSheet(
             leading: const Icon(Icons.delete),
             title: const Text('Delete'),
             onTap: () async {
-              await model.deleteCourse(courseCard);
+              await CourseCardController.deleteCourse(doc);
               Navigator.pop(context);
 
               final snackBar = SnackBar(
                 backgroundColor: Colors.red,
-                content: Text('${courseCard.title} is deleted.'),
+                content: Text('${doc['title']} is deleted.'),
               );
-              model.fetchCourseCard();
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
           ),
