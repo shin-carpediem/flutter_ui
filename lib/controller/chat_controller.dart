@@ -10,7 +10,7 @@ class ChatController extends StateNotifier<ChatState> {
   final chatController = TextEditingController();
 
   void handleSubmit(String message) async {
-  // void handleSubmit(String message, dynamic partnerUid) async {
+    // void handleSubmit(String message, dynamic partnerUid) async {
     chatController.text = "";
     final dynamic uid = FirebaseAuth.instance.currentUser!.uid;
     final snapshot =
@@ -27,13 +27,5 @@ class ChatController extends StateNotifier<ChatState> {
     }).catchError((e) {
       throw "error";
     });
-
-    state = state.copyWith(
-      uid: uid,
-      // partnerUid: partnerUid,
-      partnerUid: data?['partnerUid'],
-      message: data?['message'],
-      createdAt: data?['created_at'],
-    );
   }
 }

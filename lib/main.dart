@@ -6,6 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_ui/controller/add_course_controller.dart';
 import 'package:flutter_ui/controller/app_theme_controller.dart';
 import 'package:flutter_ui/controller/chat_controller.dart';
+import 'package:flutter_ui/controller/course_card_controller.dart';
 import 'package:flutter_ui/controller/edit_course_controller.dart';
 import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:flutter_ui/controller/location_controller.dart';
@@ -13,11 +14,13 @@ import 'package:flutter_ui/controller/login_controller.dart';
 import 'package:flutter_ui/controller/mypage_controller.dart';
 import 'package:flutter_ui/controller/signup_controller.dart';
 import 'package:flutter_ui/controller/tts_controller.dart';
+import 'package:flutter_ui/core/course_card_domain.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/chat_model/chat_model.dart';
 import 'package:flutter_ui/models/chat_uesr_model/chat_user_model.dart';
 import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
+import 'package:flutter_ui/models/course_card_model/course_card_model.dart';
 import 'package:flutter_ui/models/course_title_modal/course_title_modal.dart';
 import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
 import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';
@@ -32,6 +35,9 @@ import 'package:provider/provider.dart' as provider;
 
 final ThemeProvider =
     StateNotifierProvider<AppTheme, AppThemeState>((ref) => AppTheme());
+final CourseCardProvider =
+    StateNotifierProvider<CourseCardController, CourseCardState>(
+        (ref) => CourseCardController());
 final AddCourseProvider = StateNotifierProvider<AddCourseModel, AddCourseState>(
     (ref) => AddCourseModel());
 final EditCourseProvider =
