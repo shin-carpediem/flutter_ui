@@ -18,10 +18,7 @@ import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/chat_model/chat_model.dart';
 import 'package:flutter_ui/models/chat_uesr_model/chat_user_model.dart';
-import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
 import 'package:flutter_ui/models/course_card_model/course_card_model.dart';
-import 'package:flutter_ui/models/course_title_modal/course_title_modal.dart';
-import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
 import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';
 import 'package:flutter_ui/models/location_model/location_model.dart';
 import 'package:flutter_ui/models/login_model/login_model.dart';
@@ -40,8 +37,8 @@ final CourseCardProvider =
 final AddCourseProvider = StateNotifierProvider<AddCourseModel, AddCourseState>(
     (ref) => AddCourseModel());
 final EditCourseProvider =
-    StateNotifierProvider<EditCourseModel, EditCourseState>(
-        (ref) => EditCourseModel());
+    StateNotifierProvider<EditCourseController, CourseCardState>(
+        (ref) => EditCourseController());
 final LogInProvider =
     StateNotifierProvider<LogInModel, LogInState>((ref) => LogInModel());
 final MyPageProvider = StateNotifierProvider<MyPageModel, MyPageState>(
@@ -80,10 +77,6 @@ class MyApp extends HookConsumerWidget {
 
     return provider.MultiProvider(
       providers: [
-        provider.ChangeNotifierProvider<CourseCard>(
-            create: (ref) => CourseCard()..fetchCourseCard()),
-        provider.ChangeNotifierProvider<CourseTitle>(
-            create: (ref) => CourseTitle()..fetchCourseTitle()),
         provider.ChangeNotifierProvider<ChatUser>(
             create: (ref) => ChatUser()..fetchChatUser()),
       ],

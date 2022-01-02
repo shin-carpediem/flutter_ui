@@ -1,14 +1,14 @@
-// ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/core/course_card_domain.dart';
-import 'package:flutter_ui/main.dart';
-import 'package:flutter_ui/models/course_card_modal/course_card_modal.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+// import 'package:flutter_ui/controller/course_card_controller.dart';
+// import 'package:flutter_ui/main.dart';
+// import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void modalBottomSheet(
   CourseCardState,
-  CourseCardController,
+  courseCardController,
+  editCourseController,
   BuildContext context,
   doc,
 ) {
@@ -26,7 +26,9 @@ void modalBottomSheet(
                 onTap: () {
                   editCoursesSheet(
                     context,
-                    doc,
+                    CourseCardState,
+                    courseCardController,
+                    editCourseController,
                     doc,
                   );
                 },
@@ -37,7 +39,7 @@ void modalBottomSheet(
             leading: const Icon(Icons.delete),
             title: const Text('Delete'),
             onTap: () async {
-              await CourseCardController.deleteCourse(doc);
+              await courseCardController.deleteCourse(doc);
               Navigator.pop(context);
 
               final snackBar = SnackBar(
@@ -54,91 +56,103 @@ void modalBottomSheet(
 }
 
 void editCoursesSheet(
-  BuildContext context,
-  CourseCardModel courseCard,
-  CourseCard model,
+  context,
+  CourseCardState,
+  courseCardController,
+  editCourseController,
+  doc,
 ) {
   showModalBottomSheet<void>(
     context: context,
     builder: (BuildContext context) {
-      return ModalBottomSheetWidget(courseCard);
+      return modalBottomSheetWidget(
+        context,
+        editCourseController,
+        CourseCardState,
+        doc,
+      );
     },
   );
 }
 
-class ModalBottomSheetWidget extends HookConsumerWidget {
-  final CourseCardModel courseCard;
-  const ModalBottomSheetWidget(this.courseCard);
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final editCourseState = ref.watch(EditCourseProvider);
-    final editCourseController = ref.read(EditCourseProvider.notifier);
+Widget modalBottomSheetWidget(
+  BuildContext context,
+  editCourseController,
+  CourseCardState,
+  doc,
+) {
+  // const ModalBottomSheetWidget({Key? key}) : super(key: key);
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(
-            controller: editCourseController.logoUrlController,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              hintText: "Logo",
-            ),
-            onChanged: (text) {
-              // TODO: データを表示させる
-              editCourseController.setlogoUrl(text);
-            },
+  // @override
+  // Widget build(BuildContext context, WidgetRef ref) {
+  // final editCourseState = ref.watch(EditCourseProvider);
+  // final editCourseController = ref.read(EditCourseProvider.notifier);
+
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TextField(
+          controller: editCourseController.logoUrlController,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: "Logo",
           ),
-          const SizedBox(height: 8),
-          TextField(
-            controller: editCourseController.titleController,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              hintText: "Title",
-            ),
-            onChanged: (text) {
-              editCourseController.setTitle(text);
-            },
+          onChanged: (text) {
+            // TODO: データを表示させる
+            editCourseController.setlogoUrl(text);
+          },
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: editCourseController.titleController,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: "Title",
           ),
-          const SizedBox(height: 8),
-          TextField(
-            controller: editCourseController.subtitleController,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              hintText: "Subtitle",
-            ),
-            onChanged: (text) {
-              editCourseController.setSubTitle(text);
-            },
+          onChanged: (text) {
+            editCourseController.setTitle(text);
+          },
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: editCourseController.subtitleController,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: "Subtitle",
           ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: editCourseController.isUpdated(
-              editCourseState.title,
-              editCourseState.subtitle,
-              editCourseState.logoUrl,
-            )
-                ? () async {
-                    try {
-                      await editCourseController.update(courseCard);
-                      Navigator.of(context)
-                        ..pop(context)
-                        ..pop(context);
-                      // context.read<CourseCard>().fetchCourseCard();
-                    } catch (e) {
-                      final snackBar = SnackBar(
-                        backgroundColor: Colors.red,
-                        content: Text(e.toString()),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
+          onChanged: (text) {
+            editCourseController.setSubTitle(text);
+          },
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: editCourseController.isUpdated(
+            CourseCardState.title,
+            CourseCardState.subtitle,
+            CourseCardState.logoUrl,
+          )
+              ? () async {
+                  try {
+                    await editCourseController.update(doc);
+                    Navigator.of(context)
+                      ..pop(context)
+                      ..pop(context);
+                    // context.read<CourseCard>().fetchCourseCard();
+                  } catch (e) {
+                    final snackBar = SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text(e.toString()),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
-                : null,
-            child: const Text("Update"),
-          ),
-        ],
-      ),
-    );
-  }
+                }
+              : null,
+          child: const Text("Update"),
+        ),
+      ],
+    ),
+  );
 }
+// }

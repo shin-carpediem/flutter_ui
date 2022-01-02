@@ -17,6 +17,7 @@ class Recommended extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final CourseCardState = ref.watch(CourseCardProvider);
     final CourseCardController = ref.read(CourseCardProvider.notifier);
+    final editCourseController = ref.read(EditCourseProvider.notifier);
     final dynamic user = FirebaseAuth.instance.currentUser;
 
     return StreamBuilder<QuerySnapshot>(
@@ -111,6 +112,7 @@ class Recommended extends HookConsumerWidget {
                 return recommendedWidget(
                   CourseCardState,
                   CourseCardController,
+                  editCourseController,
                   user,
                   uid,
                   context,

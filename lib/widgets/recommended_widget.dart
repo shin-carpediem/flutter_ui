@@ -7,6 +7,7 @@ import 'package:flutter_ui/screens/edit_course_modal.dart';
 Widget recommendedWidget(
   CourseCardState,
   CourseCardController,
+  editCourseController,
   user,
   uid,
   context,
@@ -95,6 +96,7 @@ Widget recommendedWidget(
               modalBottomSheet(
                 CourseCardState,
                 CourseCardController,
+                editCourseController,
                 context,
                 doc,
               );

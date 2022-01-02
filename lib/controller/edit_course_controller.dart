@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/core/course_card_domain.dart';
-import 'package:flutter_ui/models/edit_course_model/edit_course_model.dart';
+import 'package:flutter_ui/models/course_card_model/course_card_model.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-class EditCourseModel extends StateNotifier<EditCourseState> {
-  EditCourseModel() : super(const EditCourseState());
+class EditCourseController extends StateNotifier<CourseCardState> {
+  EditCourseController() : super(const CourseCardState());
 
   final titleController = TextEditingController();
   final subtitleController = TextEditingController();
@@ -32,7 +31,7 @@ class EditCourseModel extends StateNotifier<EditCourseState> {
     return title != null || subtitle != null || logoUrl != null;
   }
 
-  Future update(final CourseCardModel course) async {
+  Future update(final course) async {
     String title = titleController.text;
     String subtitle = subtitleController.text;
     String logoUrl = logoUrlController.text;
