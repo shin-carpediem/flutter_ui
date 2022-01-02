@@ -1,15 +1,12 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_ui/controller/course_card_controller.dart';
-// import 'package:flutter_ui/main.dart';
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void modalBottomSheet(
   CourseCardState,
   courseCardController,
   editCourseController,
-  BuildContext context,
+  context,
   doc,
 ) {
   showModalBottomSheet<void>(
@@ -75,19 +72,14 @@ void editCoursesSheet(
   );
 }
 
+// TODO: 入力前の最初の状態では初期値の保持がない。
+// どのcourseCardでもcontrollerが同じ値を保持している。
 Widget modalBottomSheetWidget(
   BuildContext context,
   editCourseController,
   CourseCardState,
   doc,
 ) {
-  // const ModalBottomSheetWidget({Key? key}) : super(key: key);
-
-  // @override
-  // Widget build(BuildContext context, WidgetRef ref) {
-  // final editCourseState = ref.watch(EditCourseProvider);
-  // final editCourseController = ref.read(EditCourseProvider.notifier);
-
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
@@ -101,7 +93,7 @@ Widget modalBottomSheetWidget(
           ),
           onChanged: (text) {
             // TODO: データを表示させる
-            editCourseController.setlogoUrl(text);
+            // editCourseController.setlogoUrl(text);
           },
         ),
         const SizedBox(height: 8),
@@ -129,9 +121,9 @@ Widget modalBottomSheetWidget(
         const SizedBox(height: 16),
         ElevatedButton(
           onPressed: editCourseController.isUpdated(
-            CourseCardState.title,
-            CourseCardState.subtitle,
-            CourseCardState.logoUrl,
+            doc['title'],
+            doc['subtitle'],
+            doc['logoUrl'],
           )
               ? () async {
                   try {
@@ -139,7 +131,6 @@ Widget modalBottomSheetWidget(
                     Navigator.of(context)
                       ..pop(context)
                       ..pop(context);
-                    // context.read<CourseCard>().fetchCourseCard();
                   } catch (e) {
                     final snackBar = SnackBar(
                       backgroundColor: Colors.red,
@@ -155,4 +146,3 @@ Widget modalBottomSheetWidget(
     ),
   );
 }
-// }

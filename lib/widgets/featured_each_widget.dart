@@ -48,10 +48,6 @@ Widget featuredEach(snapshot) {
           ),
         ],
       );
-      // TODO: いいね数1位から順に並べ替えしたいが、a、bが、containerで、favoriteNumが取得できない
-      //  .sort((a, b) => -a.favoriteNum(
-      //         b.favoriteNum,
-      //       ));
     },
   );
 }

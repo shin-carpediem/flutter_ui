@@ -14,18 +14,19 @@ class EditCourseController extends StateNotifier<CourseCardState> {
     if (title.length >= 15) {
       throw 'Title can be less than 15 letters';
     }
-    state = state.copyWith(title: titleController.text);
   }
 
   void setSubTitle(String subtitle) {
     if (subtitle.length >= 30) {
       throw 'Subtitle can be less than 30 letters';
     }
-    state = state.copyWith(subtitle: subtitleController.text);
   }
 
-  void setlogoUrl(String logoUrl) =>
-      state = state.copyWith(logoUrl: subtitleController.text);
+  void setlogoUrl(String? logoUrl) {
+    if (logoUrl == null) {
+      throw 'logoUrl cannot be null';
+    }
+  }
 
   bool isUpdated(title, subtitle, logoUrl) {
     return title != null || subtitle != null || logoUrl != null;

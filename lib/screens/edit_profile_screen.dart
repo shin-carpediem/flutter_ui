@@ -5,10 +5,6 @@ import 'package:flutter_ui/main.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class EditProfilePage extends HookConsumerWidget {
-  const EditProfilePage(this.name, this.desc);
-  final String? name;
-  final String? desc;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final editProfilecontroller = ref.read(EditProfileProvider.notifier);

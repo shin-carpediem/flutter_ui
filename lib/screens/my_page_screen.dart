@@ -28,10 +28,7 @@ class MyPageSheet extends HookConsumerWidget {
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditProfilePage(
-                    MypageState.name,
-                    MypageState.desc,
-                  ),
+                  builder: (context) => EditProfilePage(),
                 ),
               );
               Mypagecontroller.fetchUser();
@@ -112,12 +109,6 @@ class MyPageSheet extends HookConsumerWidget {
                           showTitleActions: true,
                           minTime: DateTime(2021, 4, 1),
                           maxTime: DateTime(2025, 3, 31),
-                          // onChanged: (date) {
-                          //   print('change $date');
-                          // },
-                          // onConfirm: (date) {
-                          //   print('confirm $date');
-                          // },
                           currentTime: DateTime.now(),
                           locale: LocaleType.zh,
                         );
@@ -160,7 +151,6 @@ class MyPageSheet extends HookConsumerWidget {
                           ),
                         ),
                         Text('LastWords:  ' + TtsState.lastWords),
-                        // Text('States:  ' + TtsState.lastStatus),
                       ],
                     ),
                   ],

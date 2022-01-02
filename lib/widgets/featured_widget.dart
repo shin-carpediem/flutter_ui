@@ -14,7 +14,10 @@ class Featured extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('courseCard').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('courseCard')
+            .orderBy('favoriteNum', descending: true)
+            .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
             return const CircularProgressIndicator();
@@ -46,7 +49,7 @@ class Featured extends HookConsumerWidget {
                     ),
                   ),
                   CarouselSlider(
-                    // TODO:
+                    // TODO: Widget型からList<Widget>型に変換
                     // items: featuredEach(snapshot),
                     items: const [Text('hoge'), Text('hoge')],
                     carouselController: buttonCarouselController,
