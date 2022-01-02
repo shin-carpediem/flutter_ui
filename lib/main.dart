@@ -17,7 +17,6 @@ import 'package:flutter_ui/controller/tts_controller.dart';
 import 'package:flutter_ui/models/add_course_model/add_course_model.dart';
 import 'package:flutter_ui/models/app_theme_model/app_theme_model.dart';
 import 'package:flutter_ui/models/chat_model/chat_model.dart';
-import 'package:flutter_ui/models/chat_uesr_model/chat_user_model.dart';
 import 'package:flutter_ui/models/course_card_model/course_card_model.dart';
 import 'package:flutter_ui/models/edit_profile_model/edit_profile_model.dart';
 import 'package:flutter_ui/models/location_model/location_model.dart';
@@ -27,7 +26,6 @@ import 'package:flutter_ui/models/signup_model/signup_model.dart';
 import 'package:flutter_ui/models/tts_model/tts_model.dart';
 import 'package:flutter_ui/widgets/footer_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:provider/provider.dart' as provider;
 
 final ThemeProvider =
     StateNotifierProvider<AppTheme, AppThemeState>((ref) => AppTheme());
@@ -41,8 +39,8 @@ final EditCourseProvider =
         (ref) => EditCourseController());
 final LogInProvider =
     StateNotifierProvider<LogInModel, LogInState>((ref) => LogInModel());
-final MyPageProvider = StateNotifierProvider<MyPageModel, MyPageState>(
-    (ref) => MyPageModel()..fetchUser());
+final MyPageProvider = StateNotifierProvider<UserController, MyPageState>(
+    (ref) => UserController()..fetchUser());
 final SignUpProvider =
     StateNotifierProvider<SignUpModel, SignUpState>((ref) => SignUpModel());
 final EditProfileProvider =
@@ -55,6 +53,8 @@ final TtsProvider =
     StateNotifierProvider<TtsController, TtsState>((ref) => TtsController());
 final ChatProvider =
     StateNotifierProvider<ChatController, ChatState>((ref) => ChatController());
+final ChatUserProvider = StateNotifierProvider<UserController, MyPageState>(
+    (ref) => UserController());
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -75,17 +75,11 @@ class MyApp extends HookConsumerWidget {
     final ThemeState = ref.watch(ThemeProvider);
     final ThemeController = ref.read(ThemeProvider.notifier);
 
-    return provider.MultiProvider(
-      providers: [
-        provider.ChangeNotifierProvider<ChatUser>(
-            create: (ref) => ChatUser()..fetchChatUser()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'flutter ui',
-        theme: ThemeController.buildTheme(ThemeState.isDark),
-        home: const Footer(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'flutter ui',
+      theme: ThemeController.buildTheme(ThemeState.isDark),
+      home: const Footer(),
     );
   }
 }

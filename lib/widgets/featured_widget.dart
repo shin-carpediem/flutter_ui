@@ -48,7 +48,7 @@ class Featured extends HookConsumerWidget {
                   CarouselSlider(
                     // TODO:
                     // items: featuredEach(snapshot),
-                    items: [Text('hoge'), Text('hoge')],
+                    items: const [Text('hoge'), Text('hoge')],
                     carouselController: buttonCarouselController,
                     options: CarouselOptions(
                       enableInfiniteScroll: true,

@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-class MyPageModel extends StateNotifier<MyPageState> {
-  MyPageModel() : super(const MyPageState());
+class UserController extends StateNotifier<MyPageState> {
+  UserController() : super(const MyPageState());
 
   void startLoading() => state = state.copyWith(isLoading: true);
   void endLoading() => state = state.copyWith(isLoading: false);
