@@ -19,6 +19,7 @@ class ChatController extends StateNotifier<ChatState> {
     await FirebaseFirestore.instance.collection('chat').add({
       'uid': data?['uid'],
       // 'partnerUid': partnerUid,
+      'partnerUid': "",
       'message': message,
       'created_at': DateTime.now(),
     }).then((value) {
@@ -30,6 +31,7 @@ class ChatController extends StateNotifier<ChatState> {
     state = state.copyWith(
       uid: uid,
       // partnerUid: partnerUid,
+      partnerUid: data?['partnerUid'],
       message: data?['message'],
       createdAt: data?['created_at'],
     );
