@@ -1,8 +1,8 @@
-import 'package:flutter_ui/models/mypage_model/mypage_model.dart';
+import 'package:flutter_ui/models/user_model/user_model.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-class ChatUserController extends StateNotifier<MyPageState> {
-  ChatUserController() : super(const MyPageState());
+class ChatUserController extends StateNotifier<UserState> {
+  ChatUserController() : super(const UserState());
 
   void dragAndDrop(
     int oldIndex,
@@ -16,7 +16,7 @@ class ChatUserController extends StateNotifier<MyPageState> {
       newIndex -= 1;
     }
 
-    final MyPageState reorderedChatUsers = chatUsers.removeAt(oldIndex);
+    final UserState reorderedChatUsers = chatUsers.removeAt(oldIndex);
     chatUsers.insert(newIndex, reorderedChatUsers);
   }
 }
