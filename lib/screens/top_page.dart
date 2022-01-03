@@ -1,13 +1,13 @@
-// ignore_for_file: prefer_const_constructors, unused_field, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/screens/post_screen.dart';
 import 'package:flutter_ui/widgets/header_widget.dart';
 import 'package:flutter_ui/widgets/heros_widget.dart';
 import 'package:flutter_ui/widgets/featured_widget.dart';
-import 'package:flutter_ui/widgets/trending_courses_widget.dart';
 import 'package:flutter_ui/screens/courses_screen.dart';
 
 class TopPage extends StatefulWidget {
+  const TopPage({Key? key}) : super(key: key);
+
   @override
   TopPageState createState() => TopPageState();
 }
@@ -25,29 +25,29 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
     final tween = Tween<Offset>(
       begin: Offset.zero,
-      end: Offset(-1.0, 0.0),
+      end: const Offset(-1.0, 0.0),
     );
 
     _animation1 = tween.animate(CurvedAnimation(
       parent: _controller,
-      curve: Interval(0.0, 0.7, curve: Curves.easeInOutBack),
+      curve: const Interval(0.0, 0.7, curve: Curves.easeInOutBack),
     ));
     _animation2 = tween.animate(CurvedAnimation(
       parent: _controller,
-      curve: Interval(0.1, 0.8, curve: Curves.easeInOutBack),
+      curve: const Interval(0.1, 0.8, curve: Curves.easeInOutBack),
     ));
     _animation3 = tween.animate(CurvedAnimation(
       parent: _controller,
-      curve: Interval(0.2, 0.9, curve: Curves.easeInOutBack),
+      curve: const Interval(0.2, 0.9, curve: Curves.easeInOutBack),
     ));
     _animation4 = tween.animate(CurvedAnimation(
       parent: _controller,
-      curve: Interval(0.3, 1.0, curve: Curves.easeInOutBack),
+      curve: const Interval(0.3, 1.0, curve: Curves.easeInOutBack),
     ));
   }
 
@@ -80,7 +80,7 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
                 ),
                 SlideTransition(
                   position: _animation4,
-                  child: TrendingCourses(),
+                  child: const PostScreen("Courses List"),
                 ),
               ],
             ),
@@ -92,7 +92,8 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
           _controller.forward().then((_) async {
             await Navigator.of(context)
                 .push(
-                  PageRouteBuilder(pageBuilder: (_, __, ___) => CoursesPage()),
+                  PageRouteBuilder(
+                      pageBuilder: (_, __, ___) => const CoursesPage()),
                 )
                 .then((_) => _controller.reverse());
           });

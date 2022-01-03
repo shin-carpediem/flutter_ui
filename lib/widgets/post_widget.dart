@@ -12,6 +12,7 @@ Widget PostWidget(
   uid,
   context,
   doc,
+  title,
 ) {
   return Card(
     // draggableにするためには要素を
@@ -90,26 +91,29 @@ Widget PostWidget(
           ],
         ),
         subtitle: Text(doc['subtitle']),
-        trailing: IconButton(
-          onPressed: () {
-            if (user != null) {
-              modalBottomSheet(
-                CourseCardState,
-                CourseCardController,
-                editCourseController,
-                context,
-                doc,
-              );
-            } else {
-              const snackBar = SnackBar(
-                content: Text('This menu requires your login.'),
-                backgroundColor: Colors.grey,
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            }
-          },
-          icon: const Icon(Icons.more_horiz),
-        ),
+        trailing: title == "Your Posted Courses"
+            // TODO: ハードコートしてる。ロジック混ざってる。もっとうまく描きたい。
+            ? IconButton(
+                onPressed: () {
+                  if (user != null) {
+                    modalBottomSheet(
+                      CourseCardState,
+                      CourseCardController,
+                      editCourseController,
+                      context,
+                      doc,
+                    );
+                  } else {
+                    const snackBar = SnackBar(
+                      content: Text('This menu requires your login.'),
+                      backgroundColor: Colors.grey,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                },
+                icon: const Icon(Icons.more_horiz),
+              )
+            : null,
       ),
     ),
   );

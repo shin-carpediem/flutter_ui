@@ -45,7 +45,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return PostScreen();
+                            return PostScreen("Your Posted Contents");
                           },
                         ),
                       );

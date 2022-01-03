@@ -11,7 +11,9 @@ import 'package:flutter_ui/screens/add_course_screen.dart';
 import 'package:flutter_ui/screens/mypage_screen.dart';
 
 class PostScreen extends HookConsumerWidget {
-  const PostScreen({Key? key}) : super(key: key);
+  // ignore: use_key_in_widget_constructors
+  const PostScreen(this.title); // widgetにtitleの初期値を持たせる
+  final String? title;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,9 +21,16 @@ class PostScreen extends HookConsumerWidget {
     final CourseCardController = ref.read(CourseCardProvider.notifier);
     final editCourseController = ref.read(EditCourseProvider.notifier);
     final dynamic user = FirebaseAuth.instance.currentUser;
+    final reference =
+        FirebaseFirestore.instance.collection('users').doc(user.uid);
 
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('courseCard').snapshots(),
+      stream: title == 'Your Posted Courses'
+          ? FirebaseFirestore.instance
+              .collection('courseCard')
+              .where('userRef', isEqualTo: reference)
+              .snapshots()
+          : FirebaseFirestore.instance.collection('courseCard').snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         final dynamic uid = user?.uid;
         if (!snapshot.hasData) {
@@ -35,9 +44,9 @@ class PostScreen extends HookConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Your Posted Contents',
-                    style: TextStyle(
+                  Text(
+                    title!,
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -81,7 +90,7 @@ class PostScreen extends HookConsumerWidget {
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MyPageSheet(),
+                                builder: (context) => const MyPageSheet(),
                                 fullscreenDialog: true,
                               ),
                             );
@@ -117,6 +126,7 @@ class PostScreen extends HookConsumerWidget {
                   uid,
                   context,
                   doc,
+                  title,
                 );
               },
               itemCount: snapshot.data!.docs.length,

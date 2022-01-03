@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,8 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MyPageSheet extends HookConsumerWidget {
+  const MyPageSheet({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final UserState = ref.watch(UserProvider);
@@ -164,7 +166,7 @@ class MyPageSheet extends HookConsumerWidget {
             if (UserState.isLoading)
               Container(
                 color: Colors.black54,
-                child: Center(
+                child: const Center(
                   child: CircularProgressIndicator(),
                 ),
               ),
@@ -175,8 +177,8 @@ class MyPageSheet extends HookConsumerWidget {
         animate: TtsState.isListen,
         glowColor: Colors.blue,
         endRadius: 65.0,
-        duration: Duration(milliseconds: 2000),
-        repeatPauseDuration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 2000),
+        repeatPauseDuration: const Duration(milliseconds: 100),
         repeat: true,
         child: FloatingActionButton(
             child: Icon(TtsState.isListen ? Icons.mic : Icons.mic_none),

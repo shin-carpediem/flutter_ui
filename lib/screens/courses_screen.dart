@@ -63,7 +63,7 @@ class _CoursesPageState extends State<CoursesPage>
                 ),
                 SlideTransition(
                   position: _animationVertical,
-                  child: const PostScreen(),
+                  child: const PostScreen("Your Posted Courses"),
                 ),
               ],
             ),
