@@ -33,6 +33,7 @@ class AddCourseModel extends StateNotifier<AddCourseState> {
       'title': title,
       'subtitle': subtitle,
       'logoUrl': logoUrl,
+      'movieUrl': "",
       'favoriteList': [],
       'favoriteNum': 0,
     });

@@ -22,6 +22,7 @@ class _$CourseCardStateTearOff {
       String? title,
       String? subtitle,
       String? logoUrl,
+      String? movieUrl,
       List<String> favoriteList = const [],
       int favoriteNum = 0,
       DocumentReference<Object?>? companyRef,
@@ -31,6 +32,7 @@ class _$CourseCardStateTearOff {
       title: title,
       subtitle: subtitle,
       logoUrl: logoUrl,
+      movieUrl: movieUrl,
       favoriteList: favoriteList,
       favoriteNum: favoriteNum,
       companyRef: companyRef,
@@ -48,6 +50,7 @@ mixin _$CourseCardState {
   String? get title => throw _privateConstructorUsedError;
   String? get subtitle => throw _privateConstructorUsedError;
   String? get logoUrl => throw _privateConstructorUsedError;
+  String? get movieUrl => throw _privateConstructorUsedError;
   List<String> get favoriteList => throw _privateConstructorUsedError;
   int get favoriteNum => throw _privateConstructorUsedError;
   DocumentReference<Object?>? get companyRef =>
@@ -69,6 +72,7 @@ abstract class $CourseCardStateCopyWith<$Res> {
       String? title,
       String? subtitle,
       String? logoUrl,
+      String? movieUrl,
       List<String> favoriteList,
       int favoriteNum,
       DocumentReference<Object?>? companyRef,
@@ -90,6 +94,7 @@ class _$CourseCardStateCopyWithImpl<$Res>
     Object? title = freezed,
     Object? subtitle = freezed,
     Object? logoUrl = freezed,
+    Object? movieUrl = freezed,
     Object? favoriteList = freezed,
     Object? favoriteNum = freezed,
     Object? companyRef = freezed,
@@ -111,6 +116,10 @@ class _$CourseCardStateCopyWithImpl<$Res>
       logoUrl: logoUrl == freezed
           ? _value.logoUrl
           : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      movieUrl: movieUrl == freezed
+          ? _value.movieUrl
+          : movieUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       favoriteList: favoriteList == freezed
           ? _value.favoriteList
@@ -144,6 +153,7 @@ abstract class _$CourseCardStateCopyWith<$Res>
       String? title,
       String? subtitle,
       String? logoUrl,
+      String? movieUrl,
       List<String> favoriteList,
       int favoriteNum,
       DocumentReference<Object?>? companyRef,
@@ -167,6 +177,7 @@ class __$CourseCardStateCopyWithImpl<$Res>
     Object? title = freezed,
     Object? subtitle = freezed,
     Object? logoUrl = freezed,
+    Object? movieUrl = freezed,
     Object? favoriteList = freezed,
     Object? favoriteNum = freezed,
     Object? companyRef = freezed,
@@ -188,6 +199,10 @@ class __$CourseCardStateCopyWithImpl<$Res>
       logoUrl: logoUrl == freezed
           ? _value.logoUrl
           : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      movieUrl: movieUrl == freezed
+          ? _value.movieUrl
+          : movieUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       favoriteList: favoriteList == freezed
           ? _value.favoriteList
@@ -219,6 +234,7 @@ class _$_CourseCardState
       this.title,
       this.subtitle,
       this.logoUrl,
+      this.movieUrl,
       this.favoriteList = const [],
       this.favoriteNum = 0,
       this.companyRef,
@@ -232,6 +248,8 @@ class _$_CourseCardState
   final String? subtitle;
   @override
   final String? logoUrl;
+  @override
+  final String? movieUrl;
   @JsonKey(defaultValue: const [])
   @override
   final List<String> favoriteList;
@@ -245,7 +263,7 @@ class _$_CourseCardState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CourseCardState(id: $id, title: $title, subtitle: $subtitle, logoUrl: $logoUrl, favoriteList: $favoriteList, favoriteNum: $favoriteNum, companyRef: $companyRef, userRef: $userRef)';
+    return 'CourseCardState(id: $id, title: $title, subtitle: $subtitle, logoUrl: $logoUrl, movieUrl: $movieUrl, favoriteList: $favoriteList, favoriteNum: $favoriteNum, companyRef: $companyRef, userRef: $userRef)';
   }
 
   @override
@@ -257,6 +275,7 @@ class _$_CourseCardState
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('subtitle', subtitle))
       ..add(DiagnosticsProperty('logoUrl', logoUrl))
+      ..add(DiagnosticsProperty('movieUrl', movieUrl))
       ..add(DiagnosticsProperty('favoriteList', favoriteList))
       ..add(DiagnosticsProperty('favoriteNum', favoriteNum))
       ..add(DiagnosticsProperty('companyRef', companyRef))
@@ -273,6 +292,8 @@ class _$_CourseCardState
             (identical(other.subtitle, subtitle) ||
                 other.subtitle == subtitle) &&
             (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.movieUrl, movieUrl) ||
+                other.movieUrl == movieUrl) &&
             const DeepCollectionEquality()
                 .equals(other.favoriteList, favoriteList) &&
             (identical(other.favoriteNum, favoriteNum) ||
@@ -289,6 +310,7 @@ class _$_CourseCardState
       title,
       subtitle,
       logoUrl,
+      movieUrl,
       const DeepCollectionEquality().hash(favoriteList),
       favoriteNum,
       companyRef,
@@ -306,6 +328,7 @@ abstract class _CourseCardState implements CourseCardState {
       String? title,
       String? subtitle,
       String? logoUrl,
+      String? movieUrl,
       List<String> favoriteList,
       int favoriteNum,
       DocumentReference<Object?>? companyRef,
@@ -319,6 +342,8 @@ abstract class _CourseCardState implements CourseCardState {
   String? get subtitle;
   @override
   String? get logoUrl;
+  @override
+  String? get movieUrl;
   @override
   List<String> get favoriteList;
   @override

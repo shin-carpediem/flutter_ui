@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/util/tts.dart';
+import 'package:flutter_ui/screens/course_content_screen.dart';
 import 'package:flutter_ui/screens/edit_course_modal.dart';
 
 Widget PostWidget(
@@ -52,7 +53,18 @@ Widget PostWidget(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(doc['title']),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MoviePlayerScreen(doc['movieUrl']),
+                    // builder: (context) => MoviePlayerScreen(),
+                  ),
+                );
+              },
+              child: Text(doc['title']),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

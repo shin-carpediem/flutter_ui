@@ -12,6 +12,7 @@ class CourseCardState with _$CourseCardState {
   String? title,
   String? subtitle,
   String? logoUrl,
+  String? movieUrl,
   @Default([]) List<String> favoriteList,
   @Default(0) int favoriteNum,
   DocumentReference? companyRef,

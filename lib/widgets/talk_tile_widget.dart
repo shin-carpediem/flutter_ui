@@ -18,10 +18,11 @@ Widget talkTileWidget(doc, context) {
         // subtitle: const Text('No subtitle'),
         onTap: () => {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ChatScreen(),
-              ))
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ChatScreen(),
+            ),
+          )
         },
       ),
     ),

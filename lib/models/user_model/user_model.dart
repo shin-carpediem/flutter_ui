@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 
 part 'user_model.freezed.dart';
 
+// TODO: companyIdで管理するよりreferenceで管理したい。companyNameで管理はもっと嫌。
 @freezed
 class UserState with _$UserState {
   const factory UserState({
@@ -13,7 +14,6 @@ class UserState with _$UserState {
     String? desc,
     String? iconUrl,
     DocumentReference? companyRef,
-    // TODO: companyIdで管理するよりreferenceで管理したい。companyNameで管理はもっと嫌。
     String? companyId,
     String? companyName,
     @Default(false) bool isLoading,

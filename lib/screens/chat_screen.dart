@@ -5,7 +5,6 @@ import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/widgets/chat/message_widget.dart';
 import 'package:flutter_ui/widgets/chat/own_message_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-// import 'package:provider/provider.dart';
 
 class ChatScreen extends HookConsumerWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -69,7 +68,6 @@ class ChatScreen extends HookConsumerWidget {
                 // builderはstreamが更新される度に呼ばれる
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
-                  // dataが取れていない時の処理
                   if (!snapshot.hasData) {
                     return const CircularProgressIndicator();
                   }
