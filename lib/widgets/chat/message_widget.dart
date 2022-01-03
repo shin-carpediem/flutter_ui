@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget message(String message, dynamic uid) {
+Widget message(String message) {
   return Row(
     children: <Widget>[
       const Icon(Icons.person),

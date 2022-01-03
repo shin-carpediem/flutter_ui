@@ -18,12 +18,12 @@ class _$ChatStateTearOff {
   const _$ChatStateTearOff();
 
   _ChatState call(
-      {dynamic uid,
+      {DocumentReference<Object?>? userRef,
       dynamic partnerUid,
       String? message,
       Timestamp? createdAt}) {
     return _ChatState(
-      uid: uid,
+      userRef: userRef,
       partnerUid: partnerUid,
       message: message,
       createdAt: createdAt,
@@ -36,7 +36,7 @@ const $ChatState = _$ChatStateTearOff();
 
 /// @nodoc
 mixin _$ChatState {
-  dynamic get uid => throw _privateConstructorUsedError;
+  DocumentReference<Object?>? get userRef => throw _privateConstructorUsedError;
   dynamic get partnerUid => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   Timestamp? get createdAt => throw _privateConstructorUsedError;
@@ -51,7 +51,10 @@ abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res>;
   $Res call(
-      {dynamic uid, dynamic partnerUid, String? message, Timestamp? createdAt});
+      {DocumentReference<Object?>? userRef,
+      dynamic partnerUid,
+      String? message,
+      Timestamp? createdAt});
 }
 
 /// @nodoc
@@ -64,16 +67,16 @@ class _$ChatStateCopyWithImpl<$Res> implements $ChatStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? uid = freezed,
+    Object? userRef = freezed,
     Object? partnerUid = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      uid: uid == freezed
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      userRef: userRef == freezed
+          ? _value.userRef
+          : userRef // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
       partnerUid: partnerUid == freezed
           ? _value.partnerUid
           : partnerUid // ignore: cast_nullable_to_non_nullable
@@ -97,7 +100,10 @@ abstract class _$ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
       __$ChatStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {dynamic uid, dynamic partnerUid, String? message, Timestamp? createdAt});
+      {DocumentReference<Object?>? userRef,
+      dynamic partnerUid,
+      String? message,
+      Timestamp? createdAt});
 }
 
 /// @nodoc
@@ -111,16 +117,16 @@ class __$ChatStateCopyWithImpl<$Res> extends _$ChatStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? uid = freezed,
+    Object? userRef = freezed,
     Object? partnerUid = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_ChatState(
-      uid: uid == freezed
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      userRef: userRef == freezed
+          ? _value.userRef
+          : userRef // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
       partnerUid: partnerUid == freezed
           ? _value.partnerUid
           : partnerUid // ignore: cast_nullable_to_non_nullable
@@ -140,10 +146,11 @@ class __$ChatStateCopyWithImpl<$Res> extends _$ChatStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
-  const _$_ChatState({this.uid, this.partnerUid, this.message, this.createdAt});
+  const _$_ChatState(
+      {this.userRef, this.partnerUid, this.message, this.createdAt});
 
   @override
-  final dynamic uid;
+  final DocumentReference<Object?>? userRef;
   @override
   final dynamic partnerUid;
   @override
@@ -153,7 +160,7 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatState(uid: $uid, partnerUid: $partnerUid, message: $message, createdAt: $createdAt)';
+    return 'ChatState(userRef: $userRef, partnerUid: $partnerUid, message: $message, createdAt: $createdAt)';
   }
 
   @override
@@ -161,7 +168,7 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ChatState'))
-      ..add(DiagnosticsProperty('uid', uid))
+      ..add(DiagnosticsProperty('userRef', userRef))
       ..add(DiagnosticsProperty('partnerUid', partnerUid))
       ..add(DiagnosticsProperty('message', message))
       ..add(DiagnosticsProperty('createdAt', createdAt));
@@ -172,7 +179,7 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ChatState &&
-            const DeepCollectionEquality().equals(other.uid, uid) &&
+            (identical(other.userRef, userRef) || other.userRef == userRef) &&
             const DeepCollectionEquality()
                 .equals(other.partnerUid, partnerUid) &&
             (identical(other.message, message) || other.message == message) &&
@@ -181,12 +188,8 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(uid),
-      const DeepCollectionEquality().hash(partnerUid),
-      message,
-      createdAt);
+  int get hashCode => Object.hash(runtimeType, userRef,
+      const DeepCollectionEquality().hash(partnerUid), message, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -196,13 +199,13 @@ class _$_ChatState with DiagnosticableTreeMixin implements _ChatState {
 
 abstract class _ChatState implements ChatState {
   const factory _ChatState(
-      {dynamic uid,
+      {DocumentReference<Object?>? userRef,
       dynamic partnerUid,
       String? message,
       Timestamp? createdAt}) = _$_ChatState;
 
   @override
-  dynamic get uid;
+  DocumentReference<Object?>? get userRef;
   @override
   dynamic get partnerUid;
   @override

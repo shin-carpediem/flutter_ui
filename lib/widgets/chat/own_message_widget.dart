@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget ownMessage(String message, dynamic uid) {
+Widget ownMessage(String message) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>[

@@ -20,7 +20,7 @@ Widget talkTileWidget(doc, context) {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ChatScreen(),
+                builder: (context) => const ChatScreen(),
               ))
         },
       ),

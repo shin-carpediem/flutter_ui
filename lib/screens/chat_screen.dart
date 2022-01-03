@@ -1,6 +1,5 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/widgets/chat/message_widget.dart';
@@ -9,6 +8,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:provider/provider.dart';
 
 class ChatScreen extends HookConsumerWidget {
+  const ChatScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ChatState = ref.watch(ChatProvider);
@@ -79,12 +80,12 @@ class ChatScreen extends HookConsumerWidget {
                       DocumentSnapshot doc = snapshot.data!.docs[index];
 
                       bool isOwnMessage = false;
-                      if (doc['uid'] == ChatState.uid) {
+                      if (doc['userRef'] == ChatState.userRef) {
                         isOwnMessage = true;
                       }
                       return isOwnMessage
-                          ? ownMessage(doc['message'], doc['uid'])
-                          : message(doc['message'], doc['uid']);
+                          ? ownMessage(doc['message'])
+                          : message(doc['message']);
                     },
                     itemCount: snapshot.data!.docs.length,
                   );

@@ -1,5 +1,7 @@
 # flutter_ui
 
+## サービス内容:
+
 ## Technology:
 
 - Flutter
@@ -26,7 +28,7 @@ Theme
 
 DB
 
-- NoSQL
+- NoSQL（Cloud Firestore）
 
 model
 
@@ -46,7 +48,6 @@ API
 ##### 未完了
 
 - ReorderableListView
-- いいね数に基づいて item の並び替え
 - 位置情報の取得
 
 ##### Tips
