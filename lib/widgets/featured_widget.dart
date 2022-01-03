@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_ui/widgets/featured_each_widget.dart';
+import 'package:flutter_ui/widgets/featured_each_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -26,7 +24,7 @@ class Featured extends HookConsumerWidget {
             children: [
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.only(top: 32, left: 8),
+                padding: const EdgeInsets.only(top: 32, left: 8),
                 alignment: Alignment.centerLeft,
                 child: const Text(
                   'Featured',
@@ -43,15 +41,13 @@ class Featured extends HookConsumerWidget {
                     alignment: Alignment.bottomLeft,
                     child: IconButton(
                       onPressed: () => buttonCarouselController.previousPage(
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                       ),
                       icon: const Icon(Icons.navigate_before),
                     ),
                   ),
                   CarouselSlider(
-                    // TODO: Widget型からList<Widget>型に変換
-                    // items: featuredEach(snapshot),
-                    items: const [Text('hoge'), Text('hoge')],
+                    items: featuredEachWidget(snapshot),
                     carouselController: buttonCarouselController,
                     options: CarouselOptions(
                       enableInfiniteScroll: true,
@@ -62,7 +58,7 @@ class Featured extends HookConsumerWidget {
                     alignment: Alignment.bottomRight,
                     child: IconButton(
                       onPressed: () => buttonCarouselController.nextPage(
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                       ),
                       icon: const Icon(Icons.navigate_next),
                     ),
