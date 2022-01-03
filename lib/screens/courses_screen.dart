@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/widgets/header_widget.dart';
-import 'package:flutter_ui/screens/recommended_screen.dart';
+import 'package:flutter_ui/screens/post_screen.dart';
 
 class CoursesPage extends StatefulWidget {
   const CoursesPage({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class _CoursesPageState extends State<CoursesPage>
                 ),
                 SlideTransition(
                   position: _animationVertical,
-                  child: const Recommended(),
+                  child: const PostScreen(),
                 ),
               ],
             ),

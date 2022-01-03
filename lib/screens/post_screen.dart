@@ -4,14 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_ui/main.dart';
-import 'package:flutter_ui/widgets/recommended_widget.dart';
+import 'package:flutter_ui/widgets/post_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_ui/screens/login_screen.dart';
 import 'package:flutter_ui/screens/add_course_screen.dart';
 import 'package:flutter_ui/screens/my_page_screen.dart';
 
-class Recommended extends HookConsumerWidget {
-  const Recommended({Key? key}) : super(key: key);
+class PostScreen extends HookConsumerWidget {
+  const PostScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +36,7 @@ class Recommended extends HookConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Recommended',
+                    'Your Posted Contents',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -109,7 +109,7 @@ class Recommended extends HookConsumerWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (_, int index) {
                 DocumentSnapshot doc = snapshot.data!.docs[index];
-                return recommendedWidget(
+                return PostWidget(
                   CourseCardState,
                   CourseCardController,
                   editCourseController,

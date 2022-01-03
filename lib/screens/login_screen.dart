@@ -48,7 +48,9 @@ class LogInPage extends HookConsumerWidget {
                   onPressed: () async {
                     try {
                       await loginController.logIn();
-                      Navigator.of(context).pop(true);
+                      Navigator.of(context)
+                        ..pop(true)
+                        ..pop(true);
                     } catch (e) {
                       final snackBar = SnackBar(
                         backgroundColor: Colors.red,

@@ -68,7 +68,7 @@ class TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
               children: [
                 SlideTransition(
                   position: _animation1,
-                  child: const Header(title: 'flutter_ui'),
+                  child: const Header(title: 'Learn Diligently'),
                 ),
                 SlideTransition(
                   position: _animation2,

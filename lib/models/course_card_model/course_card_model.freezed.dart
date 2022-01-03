@@ -23,7 +23,9 @@ class _$CourseCardStateTearOff {
       String? subtitle,
       String? logoUrl,
       List<String> favoriteList = const [],
-      int favoriteNum = 0}) {
+      int favoriteNum = 0,
+      DocumentReference<Object?>? companyRef,
+      DocumentReference<Object?>? userRef}) {
     return _CourseCardState(
       id: id,
       title: title,
@@ -31,6 +33,8 @@ class _$CourseCardStateTearOff {
       logoUrl: logoUrl,
       favoriteList: favoriteList,
       favoriteNum: favoriteNum,
+      companyRef: companyRef,
+      userRef: userRef,
     );
   }
 }
@@ -46,6 +50,9 @@ mixin _$CourseCardState {
   String? get logoUrl => throw _privateConstructorUsedError;
   List<String> get favoriteList => throw _privateConstructorUsedError;
   int get favoriteNum => throw _privateConstructorUsedError;
+  DocumentReference<Object?>? get companyRef =>
+      throw _privateConstructorUsedError;
+  DocumentReference<Object?>? get userRef => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CourseCardStateCopyWith<CourseCardState> get copyWith =>
@@ -63,7 +70,9 @@ abstract class $CourseCardStateCopyWith<$Res> {
       String? subtitle,
       String? logoUrl,
       List<String> favoriteList,
-      int favoriteNum});
+      int favoriteNum,
+      DocumentReference<Object?>? companyRef,
+      DocumentReference<Object?>? userRef});
 }
 
 /// @nodoc
@@ -83,6 +92,8 @@ class _$CourseCardStateCopyWithImpl<$Res>
     Object? logoUrl = freezed,
     Object? favoriteList = freezed,
     Object? favoriteNum = freezed,
+    Object? companyRef = freezed,
+    Object? userRef = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -109,6 +120,14 @@ class _$CourseCardStateCopyWithImpl<$Res>
           ? _value.favoriteNum
           : favoriteNum // ignore: cast_nullable_to_non_nullable
               as int,
+      companyRef: companyRef == freezed
+          ? _value.companyRef
+          : companyRef // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
+      userRef: userRef == freezed
+          ? _value.userRef
+          : userRef // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ));
   }
 }
@@ -126,7 +145,9 @@ abstract class _$CourseCardStateCopyWith<$Res>
       String? subtitle,
       String? logoUrl,
       List<String> favoriteList,
-      int favoriteNum});
+      int favoriteNum,
+      DocumentReference<Object?>? companyRef,
+      DocumentReference<Object?>? userRef});
 }
 
 /// @nodoc
@@ -148,6 +169,8 @@ class __$CourseCardStateCopyWithImpl<$Res>
     Object? logoUrl = freezed,
     Object? favoriteList = freezed,
     Object? favoriteNum = freezed,
+    Object? companyRef = freezed,
+    Object? userRef = freezed,
   }) {
     return _then(_CourseCardState(
       id: id == freezed
@@ -174,6 +197,14 @@ class __$CourseCardStateCopyWithImpl<$Res>
           ? _value.favoriteNum
           : favoriteNum // ignore: cast_nullable_to_non_nullable
               as int,
+      companyRef: companyRef == freezed
+          ? _value.companyRef
+          : companyRef // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
+      userRef: userRef == freezed
+          ? _value.userRef
+          : userRef // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ));
   }
 }
@@ -189,7 +220,9 @@ class _$_CourseCardState
       this.subtitle,
       this.logoUrl,
       this.favoriteList = const [],
-      this.favoriteNum = 0});
+      this.favoriteNum = 0,
+      this.companyRef,
+      this.userRef});
 
   @override
   final String? id;
@@ -205,10 +238,14 @@ class _$_CourseCardState
   @JsonKey(defaultValue: 0)
   @override
   final int favoriteNum;
+  @override
+  final DocumentReference<Object?>? companyRef;
+  @override
+  final DocumentReference<Object?>? userRef;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CourseCardState(id: $id, title: $title, subtitle: $subtitle, logoUrl: $logoUrl, favoriteList: $favoriteList, favoriteNum: $favoriteNum)';
+    return 'CourseCardState(id: $id, title: $title, subtitle: $subtitle, logoUrl: $logoUrl, favoriteList: $favoriteList, favoriteNum: $favoriteNum, companyRef: $companyRef, userRef: $userRef)';
   }
 
   @override
@@ -221,7 +258,9 @@ class _$_CourseCardState
       ..add(DiagnosticsProperty('subtitle', subtitle))
       ..add(DiagnosticsProperty('logoUrl', logoUrl))
       ..add(DiagnosticsProperty('favoriteList', favoriteList))
-      ..add(DiagnosticsProperty('favoriteNum', favoriteNum));
+      ..add(DiagnosticsProperty('favoriteNum', favoriteNum))
+      ..add(DiagnosticsProperty('companyRef', companyRef))
+      ..add(DiagnosticsProperty('userRef', userRef));
   }
 
   @override
@@ -237,12 +276,23 @@ class _$_CourseCardState
             const DeepCollectionEquality()
                 .equals(other.favoriteList, favoriteList) &&
             (identical(other.favoriteNum, favoriteNum) ||
-                other.favoriteNum == favoriteNum));
+                other.favoriteNum == favoriteNum) &&
+            (identical(other.companyRef, companyRef) ||
+                other.companyRef == companyRef) &&
+            (identical(other.userRef, userRef) || other.userRef == userRef));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, subtitle, logoUrl,
-      const DeepCollectionEquality().hash(favoriteList), favoriteNum);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      subtitle,
+      logoUrl,
+      const DeepCollectionEquality().hash(favoriteList),
+      favoriteNum,
+      companyRef,
+      userRef);
 
   @JsonKey(ignore: true)
   @override
@@ -257,7 +307,9 @@ abstract class _CourseCardState implements CourseCardState {
       String? subtitle,
       String? logoUrl,
       List<String> favoriteList,
-      int favoriteNum}) = _$_CourseCardState;
+      int favoriteNum,
+      DocumentReference<Object?>? companyRef,
+      DocumentReference<Object?>? userRef}) = _$_CourseCardState;
 
   @override
   String? get id;
@@ -271,6 +323,10 @@ abstract class _CourseCardState implements CourseCardState {
   List<String> get favoriteList;
   @override
   int get favoriteNum;
+  @override
+  DocumentReference<Object?>? get companyRef;
+  @override
+  DocumentReference<Object?>? get userRef;
   @override
   @JsonKey(ignore: true)
   _$CourseCardStateCopyWith<_CourseCardState> get copyWith =>

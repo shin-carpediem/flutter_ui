@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -13,5 +14,7 @@ class CourseCardState with _$CourseCardState {
   String? logoUrl,
   @Default([]) List<String> favoriteList,
   @Default(0) int favoriteNum,
+  DocumentReference? companyRef,
+  DocumentReference? userRef,
   }) = _CourseCardState;
 }

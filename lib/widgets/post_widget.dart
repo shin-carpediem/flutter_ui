@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui/core/util/tts.dart';
 import 'package:flutter_ui/screens/edit_course_modal.dart';
 
-Widget recommendedWidget(
+Widget PostWidget(
   CourseCardState,
   CourseCardController,
   editCourseController,

@@ -12,8 +12,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class MyPageSheet extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final MypageState = ref.watch(MyPageProvider);
-    final Mypagecontroller = ref.read(MyPageProvider.notifier);
+    final UserState = ref.watch(UserProvider);
+    final Usercontroller = ref.read(UserProvider.notifier);
     final LocationState = ref.watch(LocationProvider);
     final LocationController = ref.read(LocationProvider.notifier);
     final TtsState = ref.watch(TtsProvider);
@@ -31,7 +31,7 @@ class MyPageSheet extends HookConsumerWidget {
                   builder: (context) => EditProfilePage(),
                 ),
               );
-              Mypagecontroller.fetchUser();
+              Usercontroller.fetchUser();
             },
             icon: const Icon(Icons.edit),
           ),
@@ -50,7 +50,7 @@ class MyPageSheet extends HookConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          ref.watch(MyPageProvider.select(
+                          ref.watch(UserProvider.select(
                               (state) => state.name ?? 'No name')),
                           style: const TextStyle(
                             fontSize: 24,
@@ -64,7 +64,7 @@ class MyPageSheet extends HookConsumerWidget {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               image: NetworkImage(
-                                ref.watch(MyPageProvider.select(
+                                ref.watch(UserProvider.select(
                                     (state) => state.iconUrl ?? '')),
                               ),
                               fit: BoxFit.contain,
@@ -75,12 +75,12 @@ class MyPageSheet extends HookConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      ref.watch(MyPageProvider.select(
+                      ref.watch(UserProvider.select(
                           (state) => state.email ?? 'No email')),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      ref.watch(MyPageProvider.select(
+                      ref.watch(UserProvider.select(
                           (state) => state.desc ?? 'No desc')),
                     ),
                     const SizedBox(height: 8),
@@ -97,7 +97,7 @@ class MyPageSheet extends HookConsumerWidget {
                     const SizedBox(height: 16),
                     TextButton(
                       onPressed: () async {
-                        await Mypagecontroller.logout();
+                        await Usercontroller.logout();
                         Navigator.of(context).pop();
                       },
                       child: const Text('Log out'),
@@ -157,7 +157,7 @@ class MyPageSheet extends HookConsumerWidget {
                 ),
               ),
             ),
-            if (MypageState.isLoading)
+            if (UserState.isLoading)
               Container(
                 color: Colors.black54,
                 child: Center(

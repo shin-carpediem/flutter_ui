@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/screens/recommended_screen.dart';
+import 'package:flutter_ui/screens/post_screen.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   @override
@@ -45,7 +45,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return Recommended();
+                            return PostScreen();
                           },
                         ),
                       );
