@@ -21,7 +21,7 @@ class MyPageSheet extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My page'),
+        title: Text(UserState.companyName.toString()),
         actions: [
           IconButton(
             onPressed: () async {
@@ -50,8 +50,9 @@ class MyPageSheet extends HookConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          ref.watch(UserProvider.select(
-                              (state) => state.name ?? 'No name')),
+                          UserState.name ?? 'No name',
+                          // ref.watch(UserProvider.select(
+                          //     (state) => state.name ?? 'No name')),
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -64,8 +65,9 @@ class MyPageSheet extends HookConsumerWidget {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               image: NetworkImage(
-                                ref.watch(UserProvider.select(
-                                    (state) => state.iconUrl ?? '')),
+                                UserState.iconUrl ?? '',
+                                // ref.watch(UserProvider.select(
+                                //     (state) => state.iconUrl ?? '')),
                               ),
                               fit: BoxFit.contain,
                             ),
@@ -75,13 +77,15 @@ class MyPageSheet extends HookConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      ref.watch(UserProvider.select(
-                          (state) => state.email ?? 'No email')),
+                      UserState.email ?? 'No email',
+                      // ref.watch(UserProvider.select(
+                      //     (state) => state.email ?? 'No email')),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      ref.watch(UserProvider.select(
-                          (state) => state.desc ?? 'No desc')),
+                      UserState.desc ?? 'No desc',
+                      // ref.watch(UserProvider.select(
+                      //     (state) => state.desc ?? 'No desc')),
                     ),
                     const SizedBox(height: 8),
                     GestureDetector(

@@ -8,7 +8,7 @@ import 'package:flutter_ui/widgets/post_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_ui/screens/login_screen.dart';
 import 'package:flutter_ui/screens/add_course_screen.dart';
-import 'package:flutter_ui/screens/my_page_screen.dart';
+import 'package:flutter_ui/screens/mypage_screen.dart';
 
 class PostScreen extends HookConsumerWidget {
   const PostScreen({Key? key}) : super(key: key);

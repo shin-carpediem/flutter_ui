@@ -21,6 +21,9 @@ class UserController extends StateNotifier<UserState> {
       name: data?['name'],
       desc: data?['desc'],
       iconUrl: data?['iconUrl'],
+      companyRef: data?['companyRef'],
+      companyId: data?['companyId'],
+      companyName: data?['companyName'],
     );
   }
 

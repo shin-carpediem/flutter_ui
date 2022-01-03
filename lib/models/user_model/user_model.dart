@@ -13,6 +13,9 @@ class UserState with _$UserState {
     String? desc,
     String? iconUrl,
     DocumentReference? companyRef,
+    // TODO: companyIdで管理するよりreferenceで管理したい。companyNameで管理はもっと嫌。
+    String? companyId,
+    String? companyName,
     @Default(false) bool isLoading,
   }) = _UserState;
 }

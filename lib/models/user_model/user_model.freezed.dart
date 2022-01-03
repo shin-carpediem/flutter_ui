@@ -23,6 +23,8 @@ class _$UserStateTearOff {
       String? desc,
       String? iconUrl,
       DocumentReference<Object?>? companyRef,
+      String? companyId,
+      String? companyName,
       bool isLoading = false}) {
     return _UserState(
       name: name,
@@ -30,6 +32,8 @@ class _$UserStateTearOff {
       desc: desc,
       iconUrl: iconUrl,
       companyRef: companyRef,
+      companyId: companyId,
+      companyName: companyName,
       isLoading: isLoading,
     );
   }
@@ -46,6 +50,8 @@ mixin _$UserState {
   String? get iconUrl => throw _privateConstructorUsedError;
   DocumentReference<Object?>? get companyRef =>
       throw _privateConstructorUsedError;
+  String? get companyId => throw _privateConstructorUsedError;
+  String? get companyName => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -63,6 +69,8 @@ abstract class $UserStateCopyWith<$Res> {
       String? desc,
       String? iconUrl,
       DocumentReference<Object?>? companyRef,
+      String? companyId,
+      String? companyName,
       bool isLoading});
 }
 
@@ -81,6 +89,8 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
     Object? desc = freezed,
     Object? iconUrl = freezed,
     Object? companyRef = freezed,
+    Object? companyId = freezed,
+    Object? companyName = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
@@ -104,6 +114,14 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
           ? _value.companyRef
           : companyRef // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>?,
+      companyId: companyId == freezed
+          ? _value.companyId
+          : companyId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      companyName: companyName == freezed
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -124,6 +142,8 @@ abstract class _$UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
       String? desc,
       String? iconUrl,
       DocumentReference<Object?>? companyRef,
+      String? companyId,
+      String? companyName,
       bool isLoading});
 }
 
@@ -143,6 +163,8 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
     Object? desc = freezed,
     Object? iconUrl = freezed,
     Object? companyRef = freezed,
+    Object? companyId = freezed,
+    Object? companyName = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_UserState(
@@ -166,6 +188,14 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
           ? _value.companyRef
           : companyRef // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>?,
+      companyId: companyId == freezed
+          ? _value.companyId
+          : companyId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      companyName: companyName == freezed
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -183,6 +213,8 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
       this.desc,
       this.iconUrl,
       this.companyRef,
+      this.companyId,
+      this.companyName,
       this.isLoading = false});
 
   @override
@@ -195,13 +227,17 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
   final String? iconUrl;
   @override
   final DocumentReference<Object?>? companyRef;
+  @override
+  final String? companyId;
+  @override
+  final String? companyName;
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserState(name: $name, email: $email, desc: $desc, iconUrl: $iconUrl, companyRef: $companyRef, isLoading: $isLoading)';
+    return 'UserState(name: $name, email: $email, desc: $desc, iconUrl: $iconUrl, companyRef: $companyRef, companyId: $companyId, companyName: $companyName, isLoading: $isLoading)';
   }
 
   @override
@@ -214,6 +250,8 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
       ..add(DiagnosticsProperty('desc', desc))
       ..add(DiagnosticsProperty('iconUrl', iconUrl))
       ..add(DiagnosticsProperty('companyRef', companyRef))
+      ..add(DiagnosticsProperty('companyId', companyId))
+      ..add(DiagnosticsProperty('companyName', companyName))
       ..add(DiagnosticsProperty('isLoading', isLoading));
   }
 
@@ -228,13 +266,17 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
             (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.companyRef, companyRef) ||
                 other.companyRef == companyRef) &&
+            (identical(other.companyId, companyId) ||
+                other.companyId == companyId) &&
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, email, desc, iconUrl, companyRef, isLoading);
+  int get hashCode => Object.hash(runtimeType, name, email, desc, iconUrl,
+      companyRef, companyId, companyName, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -249,6 +291,8 @@ abstract class _UserState implements UserState {
       String? desc,
       String? iconUrl,
       DocumentReference<Object?>? companyRef,
+      String? companyId,
+      String? companyName,
       bool isLoading}) = _$_UserState;
 
   @override
@@ -261,6 +305,10 @@ abstract class _UserState implements UserState {
   String? get iconUrl;
   @override
   DocumentReference<Object?>? get companyRef;
+  @override
+  String? get companyId;
+  @override
+  String? get companyName;
   @override
   bool get isLoading;
   @override
