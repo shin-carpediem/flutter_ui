@@ -1,9 +1,9 @@
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 
-//TODO: 個別の動画データを取得するようにする
+//TODO: 個別の動画データを取得して視聴できるようにする
 class MoviePlayerScreen extends StatefulWidget {
   // const MoviePlayerScreen({Key? key, this.movieUrl}) : super(key: key);
   // ignore: use_key_in_widget_constructors
@@ -30,7 +30,8 @@ class _MoviePlayerScreen extends State<MoviePlayerScreen> {
     //     .getDownloadURL();
     _videoPlayerController = VideoPlayerController.network(
         'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
-    // _videoPlayerController = VideoPlayerController.network(moviePath);
+    // _videoPlayerController =
+    //     VideoPlayerController.network('PostVideo/Road - 84970.mp4');
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
       aspectRatio: 3 / 2, //アスペクト比

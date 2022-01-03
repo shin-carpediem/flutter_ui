@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/main.dart';
+import 'package:flutter_ui/screens/add_movie_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AddCoursePage extends HookConsumerWidget {
+  const AddCoursePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final addCourseController = ref.read(AddCourseProvider.notifier);
@@ -22,7 +23,7 @@ class AddCoursePage extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: "Logo",
                   ),
@@ -32,7 +33,7 @@ class AddCoursePage extends HookConsumerWidget {
                 ),
                 const SizedBox(height: 8),
                 TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: "Title",
                   ),
@@ -42,7 +43,7 @@ class AddCoursePage extends HookConsumerWidget {
                 ),
                 const SizedBox(height: 8),
                 TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: "Subtitle",
                   ),
@@ -55,7 +56,13 @@ class AddCoursePage extends HookConsumerWidget {
                   onPressed: () async {
                     try {
                       await addCourseController.addCourse();
-                      Navigator.of(context).pop(true);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddMovieScreen(),
+                          fullscreenDialog: true,
+                        ),
+                      );
                     } catch (e) {
                       final snackBar = SnackBar(
                         backgroundColor: Colors.red,

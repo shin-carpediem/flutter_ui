@@ -59,7 +59,7 @@ class PostScreen extends HookConsumerWidget {
                             final bool? added = await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AddCoursePage(),
+                                builder: (context) => const AddCoursePage(),
                                 fullscreenDialog: true,
                               ),
                             );
