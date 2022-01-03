@@ -22,7 +22,7 @@ class _MoviePlayerScreen extends State<MoviePlayerScreen> {
 
 //初期化
   @override
-  void initState() async {
+  void initState() {
     super.initState();
     // final moviePath = await FirebaseStorage.instance
     //     .ref()
@@ -58,18 +58,23 @@ class _MoviePlayerScreen extends State<MoviePlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Center(
-                child: Chewie(
-                  controller: _chewieController,
+      appBar: AppBar(
+        title: const Text("movie"),
+      ),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Center(
+                  child: Chewie(
+                    controller: _chewieController,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
