@@ -10,23 +10,24 @@ class EditCourseController extends StateNotifier<CourseCardState> {
   final subtitleController = TextEditingController();
   final logoUrlController = TextEditingController();
 
-  void setTitle(String title) {
-    if (title.length >= 15) {
-      throw 'Title can be less than 15 letters';
-    }
-  }
+  // modal上にsnacbar等のUIを設置していないので、throwの吐き出し場所がなくエラーになる
+  // void setTitle(String? title) {
+  //   if (title == null) {
+  //     throw 'hoge';
+  //   }
+  // }
 
-  void setSubTitle(String subtitle) {
-    if (subtitle.length >= 30) {
-      throw 'Subtitle can be less than 30 letters';
-    }
-  }
+  // void setSubTitle(String? subTitle) {
+  //   if (subTitle == null) {
+  //     throw 'hoge';
+  //   }
+  // }
 
-  void setlogoUrl(String? logoUrl) {
-    if (logoUrl == null) {
-      throw 'logoUrl cannot be null';
-    }
-  }
+  // void setlogoUrl(String? logoUrl) {
+  //   if (logoUrl == null) {
+  //     throw 'logoUrl cannot be null';
+  //   }
+  // }
 
   bool isUpdated(title, subtitle, logoUrl) {
     return title != null || subtitle != null || logoUrl != null;

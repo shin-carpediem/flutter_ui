@@ -17,6 +17,7 @@ class UserController extends StateNotifier<UserState> {
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
     final data = snapshot.data();
     state = state.copyWith(
+      uid: data?['uid'],
       email: user?.email,
       name: data?['name'],
       desc: data?['desc'],

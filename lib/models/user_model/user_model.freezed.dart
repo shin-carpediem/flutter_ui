@@ -18,7 +18,8 @@ class _$UserStateTearOff {
   const _$UserStateTearOff();
 
   _UserState call(
-      {String? name,
+      {dynamic uid,
+      String? name,
       String? email,
       String? desc,
       String? iconUrl,
@@ -27,6 +28,7 @@ class _$UserStateTearOff {
       String? companyName,
       bool isLoading = false}) {
     return _UserState(
+      uid: uid,
       name: name,
       email: email,
       desc: desc,
@@ -44,6 +46,7 @@ const $UserState = _$UserStateTearOff();
 
 /// @nodoc
 mixin _$UserState {
+  dynamic get uid => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get desc => throw _privateConstructorUsedError;
@@ -64,7 +67,8 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res>;
   $Res call(
-      {String? name,
+      {dynamic uid,
+      String? name,
       String? email,
       String? desc,
       String? iconUrl,
@@ -84,6 +88,7 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? uid = freezed,
     Object? name = freezed,
     Object? email = freezed,
     Object? desc = freezed,
@@ -94,6 +99,10 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -137,7 +146,8 @@ abstract class _$UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
       __$UserStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? name,
+      {dynamic uid,
+      String? name,
       String? email,
       String? desc,
       String? iconUrl,
@@ -158,6 +168,7 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? uid = freezed,
     Object? name = freezed,
     Object? email = freezed,
     Object? desc = freezed,
@@ -168,6 +179,10 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
   }) {
     return _then(_UserState(
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -208,7 +223,8 @@ class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
 class _$_UserState with DiagnosticableTreeMixin implements _UserState {
   const _$_UserState(
-      {this.name,
+      {this.uid,
+      this.name,
       this.email,
       this.desc,
       this.iconUrl,
@@ -217,6 +233,8 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
       this.companyName,
       this.isLoading = false});
 
+  @override
+  final dynamic uid;
   @override
   final String? name;
   @override
@@ -237,7 +255,7 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserState(name: $name, email: $email, desc: $desc, iconUrl: $iconUrl, companyRef: $companyRef, companyId: $companyId, companyName: $companyName, isLoading: $isLoading)';
+    return 'UserState(uid: $uid, name: $name, email: $email, desc: $desc, iconUrl: $iconUrl, companyRef: $companyRef, companyId: $companyId, companyName: $companyName, isLoading: $isLoading)';
   }
 
   @override
@@ -245,6 +263,7 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'UserState'))
+      ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('desc', desc))
@@ -260,6 +279,7 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserState &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.desc, desc) || other.desc == desc) &&
@@ -275,8 +295,17 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, desc, iconUrl,
-      companyRef, companyId, companyName, isLoading);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(uid),
+      name,
+      email,
+      desc,
+      iconUrl,
+      companyRef,
+      companyId,
+      companyName,
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -286,7 +315,8 @@ class _$_UserState with DiagnosticableTreeMixin implements _UserState {
 
 abstract class _UserState implements UserState {
   const factory _UserState(
-      {String? name,
+      {dynamic uid,
+      String? name,
       String? email,
       String? desc,
       String? iconUrl,
@@ -295,6 +325,8 @@ abstract class _UserState implements UserState {
       String? companyName,
       bool isLoading}) = _$_UserState;
 
+  @override
+  dynamic get uid;
   @override
   String? get name;
   @override

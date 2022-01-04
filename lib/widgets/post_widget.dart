@@ -104,7 +104,6 @@ Widget PostWidget(
         ),
         subtitle: Text(doc['subtitle']),
         trailing: title == "Your Posted Courses"
-            // TODO: ハードコートしてる。ロジック混ざってる。もっとうまく描きたい。
             ? IconButton(
                 onPressed: () {
                   if (user != null) {

@@ -80,46 +80,85 @@ Widget modalBottomSheetWidget(
   CourseCardState,
   doc,
 ) {
+  print(CourseCardState);
+  print(doc['logoUrl']);
+  final _titleFocusNode = FocusNode();
+  final _subTitleFocusNode = FocusNode();
+
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        TextField(
+        TextFormField(
+          // initialValue: doc['logoUrl'].toString(),
           controller: editCourseController.logoUrlController,
           decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: "Logo",
           ),
-          onChanged: (text) {
-            // TODO: データを表示させる
-            // editCourseController.setlogoUrl(text);
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return 'logoUrl cannot be null';
+            }
+            return null;
           },
+          textInputAction: TextInputAction.next,
+          onFieldSubmitted: (_) {
+            FocusScope.of(context).requestFocus(_titleFocusNode);
+          },
+          // onChanged: (text) {
+          //   // TODO: データを表示させる
+          //   editCourseController.setlogoUrl(text);
+          // },
         ),
         const SizedBox(height: 8),
-        TextField(
+        TextFormField(
           controller: editCourseController.titleController,
           decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: "Title",
           ),
-          onChanged: (text) {
-            editCourseController.setTitle(text);
+          // onChanged: (text) {
+          //   editCourseController.setTitle(text);
+          // },
+          focusNode: _titleFocusNode,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: (value) {
+            if (value!.length >= 15) {
+              return 'Title can be less than 15 letters';
+            }
+            return null;
+          },
+          textInputAction: TextInputAction.next,
+          onFieldSubmitted: (_) {
+            FocusScope.of(context).requestFocus(_subTitleFocusNode);
           },
         ),
         const SizedBox(height: 8),
-        TextField(
+        TextFormField(
           controller: editCourseController.subtitleController,
           decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: "Subtitle",
           ),
-          onChanged: (text) {
-            editCourseController.setSubTitle(text);
+          // onChanged: (text) {
+          //   editCourseController.setSubTitle(text);
+          // },
+          focusNode: _subTitleFocusNode,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: (value) {
+            if (value!.length >= 30) {
+              return 'Subtitle can be less than 30 letters';
+            }
+            return null;
           },
         ),
         const SizedBox(height: 16),
         ElevatedButton(
+          // 保存されているデータと全く同じであれば
+          // そもそも更新ボタンをdeactivateしておく
           onPressed: editCourseController.isUpdated(
             doc['title'],
             doc['subtitle'],

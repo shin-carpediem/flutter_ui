@@ -9,6 +9,7 @@ part 'user_model.freezed.dart';
 @freezed
 class UserState with _$UserState {
   const factory UserState({
+    dynamic uid,
     String? name,
     String? email,
     String? desc,

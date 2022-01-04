@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/main.dart';
 import 'package:flutter_ui/screens/add_movie_screen.dart';
@@ -9,6 +11,7 @@ class AddCoursePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final addCourseController = ref.read(AddCourseProvider.notifier);
+    final UserState = ref.watch(UserProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +58,7 @@ class AddCoursePage extends HookConsumerWidget {
                 ElevatedButton(
                   onPressed: () async {
                     try {
-                      await addCourseController.addCourse();
+                      await addCourseController.addCourse(UserState.uid);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

@@ -12,7 +12,7 @@ class AddCourseModel extends StateNotifier<AddCourseState> {
   String? logoUrl;
   String? movieUrl;
 
-  Future addCourse() async {
+  Future addCourse(userId) async {
     if (title == null || title!.isEmpty) {
       throw 'Title is not input.';
     }
@@ -40,6 +40,8 @@ class AddCourseModel extends StateNotifier<AddCourseState> {
       'movieUrl': "",
       'favoriteList': [],
       'favoriteNum': 0,
+      'userRef': "users/$userId",
+      'companyRef': "",
     });
   }
 
@@ -49,7 +51,7 @@ class AddCourseModel extends StateNotifier<AddCourseState> {
     if (pickerFile != null) {
       File file = File(pickerFile.path);
       FirebaseStorage storage = FirebaseStorage.instance;
-      final storageRef = storage.ref().child('PostVideo/');
+      final storageRef = storage.ref().child('PostVideo/$courseId');
       try {
         await storageRef.putFile(file);
         await storageRef.getDownloadURL().then((fileUrl) => {
