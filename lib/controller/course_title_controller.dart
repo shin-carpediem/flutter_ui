@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // TODO: statenotifierにし忘れ
-class CourseTitle extends ChangeNotifier {
+class CourseTitleController extends ChangeNotifier {
   List<String> searchTargets = [];
   List<String> searchResults = [];
 

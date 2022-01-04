@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/models/course_title_modal/course_title_modal.dart';
+import 'package:flutter_ui/controller/course_title_controller.dart';
 import 'package:flutter_ui/widgets/highlighted_text_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class BrowsCourseScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
-        child: Consumer<CourseTitle>(builder: (context, model, child) {
+        child: Consumer<CourseTitleController>(builder: (context, model, child) {
           return Column(
             children: [
               TextField(
