@@ -1,11 +1,11 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/controller/course_title_controller.dart';
 import 'package:flutter_ui/widgets/highlighted_text_widget.dart';
 import 'package:provider/provider.dart';
 
 class BrowsCourseScreen extends StatelessWidget {
+  const BrowsCourseScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +18,14 @@ class BrowsCourseScreen extends StatelessWidget {
           return Column(
             children: [
               TextField(
-                decoration: InputDecoration(hintText: 'Enter keyword'),
+                decoration: const InputDecoration(hintText: 'Enter keyword'),
                 onChanged: (String text) {
                   model.search(text);
                 },
               ),
               ListView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: model.searchResults.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(

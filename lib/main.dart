@@ -7,6 +7,7 @@ import 'package:flutter_ui/controller/add_course_controller.dart';
 import 'package:flutter_ui/controller/app_theme_controller.dart';
 import 'package:flutter_ui/controller/chat_controller.dart';
 import 'package:flutter_ui/controller/course_card_controller.dart';
+import 'package:flutter_ui/controller/course_title_controller.dart';
 import 'package:flutter_ui/controller/edit_course_controller.dart';
 import 'package:flutter_ui/controller/edit_profile_controller.dart';
 import 'package:flutter_ui/controller/location_controller.dart';
@@ -26,6 +27,7 @@ import 'package:flutter_ui/models/tts_model/tts_model.dart';
 import 'package:flutter_ui/models/user_model/user_model.dart';
 import 'package:flutter_ui/widgets/footer_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart' as provider;
 
 final ThemeProvider =
     StateNotifierProvider<AppTheme, AppThemeState>((ref) => AppTheme());
@@ -53,8 +55,8 @@ final TtsProvider =
     StateNotifierProvider<TtsController, TtsState>((ref) => TtsController());
 final ChatProvider =
     StateNotifierProvider<ChatController, ChatState>((ref) => ChatController());
-final ChatUserProvider = StateNotifierProvider<UserController, UserState>(
-    (ref) => UserController());
+final ChatUserProvider =
+    StateNotifierProvider<UserController, UserState>((ref) => UserController());
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -75,11 +77,17 @@ class MyApp extends HookConsumerWidget {
     final ThemeState = ref.watch(ThemeProvider);
     final ThemeController = ref.read(ThemeProvider.notifier);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'flutter ui',
-      theme: ThemeController.buildTheme(ThemeState.isDark),
-      home: const Footer(),
+    return provider.MultiProvider(
+      providers: [
+        provider.ChangeNotifierProvider<CourseTitleController>(
+            create: (ref) => CourseTitleController()..fetchCourseTitle()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'flutter ui',
+        theme: ThemeController.buildTheme(ThemeState.isDark),
+        home: const Footer(),
+      ),
     );
   }
 }

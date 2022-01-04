@@ -1,9 +1,7 @@
-// ignore_for_file: prefer_const_constructors, unused_element
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-// TODO: statenotifierにし忘れ
+// TODO: statenotifierに移行していない
 class CourseTitleController extends ChangeNotifier {
   List<String> searchTargets = [];
   List<String> searchResults = [];
